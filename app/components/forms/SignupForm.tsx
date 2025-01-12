@@ -1,5 +1,8 @@
 "use client"
 
+import { Form } from "@/components/ui/form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 const formSchema = z.object({
@@ -7,10 +10,16 @@ const formSchema = z.object({
 })
 
 const SignupForm = () => {
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: ""
+    }
+  })
   return (
-    <div>
-      
-    </div>
+    <Form>
+
+    </Form>
   )
 }
 
