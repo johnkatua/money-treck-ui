@@ -19,7 +19,7 @@ const SignupForm = () => {
   })
   return (
     <Form {...form}>
-      <form>
+      <form className="px-2 py-2">
         <FormField
           control={form.control}
           name="username"
@@ -27,7 +27,7 @@ const SignupForm = () => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Test User" {...field} required />
               </FormControl>
               <FormDescription>
                 This is your public display name

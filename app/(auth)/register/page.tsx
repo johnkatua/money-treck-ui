@@ -1,3 +1,4 @@
+import SignupForm from '@/app/components/forms/SignupForm'
 import Image from 'next/image'
 import React from 'react'
 
@@ -13,7 +14,9 @@ const Register = () => {
               <p className='text-slate-500'>Let's get started with you managing your finances</p>
             </div>
             <hr />
-            <div className='mt-2'>God</div>
+            <div className='mt-2'>
+              <SignupForm />
+            </div>
           </div>
         </div>
       </div>
