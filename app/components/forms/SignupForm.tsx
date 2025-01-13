@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import CustomFormField from "./CustomFormField"
 
 const formSchema = z.object({
   username: z.string().min(2).max(50)
@@ -20,7 +21,10 @@ const SignupForm = () => {
   return (
     <Form {...form}>
       <form className="px-2 py-2">
-        <FormField
+        <CustomFormField control={form.control} name="username" label="Username">
+          <Input placeholder="Test User" />
+        </CustomFormField>
+        {/* <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
@@ -35,7 +39,7 @@ const SignupForm = () => {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
       </form>
     </Form>
   )
