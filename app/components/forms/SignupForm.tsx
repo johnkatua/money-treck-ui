@@ -43,7 +43,7 @@ const SignupForm = () => {
         >
           <Input placeholder="***********" type="password" />
         </CustomFormField>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </Form>
   );

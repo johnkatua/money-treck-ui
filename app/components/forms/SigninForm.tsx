@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import CustomFormField from "./CustomFormField";
+import { Button } from "@/components/ui/button";
 
 const SigninForm = () => {
   const form = useForm<z.infer<typeof signinFormSchema>>({
@@ -17,10 +18,13 @@ const SigninForm = () => {
     console.log(values);
   };
 
-  const { control } = form;
+  const { control, handleSubmit } = form;
   return (
     <Form {...form}>
-      <form>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="px-2 py-2 flex gap-4 flex-col"
+      >
         <CustomFormField control={control} name="email" label="Email">
           <Input placeholder="test.user@gmail.com" />
         </CustomFormField>
@@ -31,6 +35,7 @@ const SigninForm = () => {
         >
           <Input placeholder="***********" type="password" />
         </CustomFormField>
+        <Button type="submit">Sign In</Button>
       </form>
     </Form>
   );
