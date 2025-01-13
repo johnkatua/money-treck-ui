@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Login = () => {
@@ -10,7 +11,7 @@ const Login = () => {
           <div>Brief Description</div>
         </div>
       </div>
-      <div className="w-[50%] flex justify-center items-center">
+      <div className="w-[50%] flex flex-col justify-center items-center">
         <div className="w-[560px]">
           <div className="text-center mb-2">
             <h2 className="text-2xl mb-2 font-semibold">Welcome back!</h2>
@@ -19,8 +20,17 @@ const Login = () => {
               enjoy your journey 🤘
             </p>
           </div>
+          <hr />
+          <div className="mt-2">
+            <div>Form</div>
+            <p>
+              Do not have an account yet.{" "}
+              <Link href={"/register"} className="text-blue-500">
+                Sign Up
+              </Link>
+            </p>
+          </div>
         </div>
-        <hr />
       </div>
     </main>
   );
