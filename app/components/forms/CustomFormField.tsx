@@ -1,15 +1,26 @@
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { cloneElement, ReactElement, ReactNode } from "react";
-import { Control, FieldValues, Path } from "react-hook-form"
+import { Control, FieldValues, Path } from "react-hook-form";
 
 interface CustomFormFieldProps<T extends FieldValues> {
   control: Control<T>;
   name: Path<T>;
   label: string;
-  children: ReactNode
+  children: ReactNode;
 }
 
-const CustomFormField = <T extends FieldValues>({ control, name, label, children }: CustomFormFieldProps<T>) => {
+const CustomFormField = <T extends FieldValues>({
+  control,
+  name,
+  label,
+  children,
+}: CustomFormFieldProps<T>) => {
   return (
     <FormField
       control={control}
@@ -24,7 +35,7 @@ const CustomFormField = <T extends FieldValues>({ control, name, label, children
         </FormItem>
       )}
     />
-  )
-}
+  );
+};
 
-export default CustomFormField
+export default CustomFormField;
