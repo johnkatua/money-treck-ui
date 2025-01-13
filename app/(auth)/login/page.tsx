@@ -1,14 +1,32 @@
 import SigninForm from "@/app/components/forms/SigninForm";
+import Image from "next/image";
 import Link from "next/link";
 
 const Login = () => {
   return (
     <main className="h-screen font-serif flex justify-between p-4 gap-4">
-      <div className="bg-slate-300 w-[50%]">
+      <div className="bg-slate-300 w-[50%] rounded-lg">
         <div className="h-full relative rounded-lg">
-          <div>Logo</div>
-          <div>Image</div>
-          <div>Brief Description</div>
+          <div className="absolute">
+            <Image
+              src={"/images/logo-small.png"}
+              height={150}
+              width={150}
+              alt="Logo"
+              priority
+            />
+          </div>
+          <Image
+            src={"/images/login.jpg"}
+            sizes="100vw"
+            width={0}
+            height={0}
+            className="w-full h-full object-cover rounded-lg"
+            priority
+            alt="Login"
+            title="https://unsplash.com/photos/a-laptop-and-a-cup-of-coffee-y356dQxeMn0?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash"
+          />
+          {/* <div>Brief Description</div> */}
         </div>
       </div>
       <div className="w-[50%] flex flex-col justify-center items-center">
