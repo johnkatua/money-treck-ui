@@ -1,5 +1,6 @@
 import SignupForm from "@/app/components/forms/SignupForm";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Register = () => {
@@ -28,11 +29,17 @@ const Register = () => {
             <hr />
             <div className="mt-2">
               <SignupForm />
+              <p className="px-2">
+                Already have an account?{" "}
+                <Link href={"/login"} className="text-blue-600">
+                  Log In
+                </Link>
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-slate-100 w-[50%]">
+      <div className="w-[50%]">
         <div className="h-full relative rounded-lg">
           <div className="absolute z-10 flex items-end justify-center mb-4 p-4 pb-12 text-center text-white w-[100%] h-[100%]">
             <h4 className="text-4xl font-semibold">
