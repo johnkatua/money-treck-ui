@@ -13,6 +13,10 @@ const SigninForm = () => {
     resolver: zodResolver(signinFormSchema),
   });
 
+  const onSubmit = (values: z.infer<typeof signinFormSchema>) => {
+    console.log(values);
+  };
+
   const { control } = form;
   return (
     <Form {...form}>
