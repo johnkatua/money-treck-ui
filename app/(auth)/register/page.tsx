@@ -4,9 +4,17 @@ import React from "react";
 
 const Register = () => {
   return (
-    <main className="h-screen bg-slate-100 font-serif flex justify-between p-4 gap-4">
+    <main className="h-screen font-serif flex justify-between p-4 gap-4">
       <div className="w-[50%] h-[100%] flex flex-col">
-        <div>Logo</div>
+        <div className="w-[150px] h-[150px]">
+          <Image
+            src={"/images/logo-small.png"}
+            height={150}
+            width={150}
+            alt="Logo"
+            priority
+          />
+        </div>
         <div className="flex  flex-1 justify-center items-center">
           <div className="w-[560px]">
             <div className="text-center mb-2">
@@ -37,7 +45,7 @@ const Register = () => {
             sizes="100vw"
             width={0}
             height={0}
-            className="w-full h-full object-cover rounded-lg clip-polygon"
+            className="w-full h-full object-cover rounded-lg"
             priority
             title="https://unsplash.com/photos/a-person-is-holding-a-wallet-with-money-in-it-w6tt6bFpKMA?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash"
           />
