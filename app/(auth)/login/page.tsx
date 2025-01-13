@@ -17,16 +17,20 @@ const Login = () => {
             />
           </div>
           <Image
-            src={"/images/login.jpg"}
+            src={"/images/login-new.jpg"}
             sizes="100vw"
             width={0}
             height={0}
             className="w-full h-full object-cover rounded-lg"
             priority
             alt="Login"
-            title="https://unsplash.com/photos/a-laptop-and-a-cup-of-coffee-y356dQxeMn0?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash"
+            title="https://unsplash.com/photos/a-wallet-with-a-stack-of-twenty-dollar-bills-sticking-out-of-it-NvqlamJfnk8?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash"
           />
-          {/* <div>Brief Description</div> */}
+          <div className="absolute top-[70%] w-[100%] text-center">
+            <p className="text-4xl font-semibold text-white">
+              Best way to manage your finances
+            </p>
+          </div>
         </div>
       </div>
       <div className="w-[50%] flex flex-col justify-center items-center">
