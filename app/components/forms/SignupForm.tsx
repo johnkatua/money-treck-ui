@@ -5,10 +5,12 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signupFormSchema } from "@/lib/schemas";
+import { z } from "zod";
 import CustomFormField from "./CustomFormField";
+import { Button } from "@/components/ui/button";
 
 const SignupForm = () => {
-  const form = useForm({
+  const form = useForm<z.infer<typeof signupFormSchema>>({
     resolver: zodResolver(signupFormSchema),
     defaultValues: {
       name: "",
@@ -16,6 +18,10 @@ const SignupForm = () => {
       password: "",
     },
   });
+
+  const handleSubmit = (values: z.infer<typeof signupFormSchema>) => {
+    console.log(values);
+  };
   return (
     <Form {...form}>
       <form className="px-2 py-2 flex gap-4 flex-col">
@@ -32,6 +38,7 @@ const SignupForm = () => {
         >
           <Input placeholder="***********" type="password" />
         </CustomFormField>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   );
