@@ -8,16 +8,17 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const SigninForm = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof signinFormSchema>>({
     resolver: zodResolver(signinFormSchema),
   });
 
   const onSubmit = (values: z.infer<typeof signinFormSchema>) => {
     console.log(values);
-    redirect("/");
+    router.push("/");
   };
 
   const { control, handleSubmit } = form;
