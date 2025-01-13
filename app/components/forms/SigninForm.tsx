@@ -1,13 +1,14 @@
 "use client";
 
+import CustomFormField from "./CustomFormField";
 import { Form } from "@/components/ui/form";
 import { signinFormSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
-import CustomFormField from "./CustomFormField";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
 const SigninForm = () => {
   const form = useForm<z.infer<typeof signinFormSchema>>({
@@ -16,6 +17,7 @@ const SigninForm = () => {
 
   const onSubmit = (values: z.infer<typeof signinFormSchema>) => {
     console.log(values);
+    redirect("/");
   };
 
   const { control, handleSubmit } = form;
