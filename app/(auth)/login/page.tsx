@@ -1,5 +1,5 @@
+import SigninForm from "@/app/components/forms/SigninForm";
 import Link from "next/link";
-import React from "react";
 
 const Login = () => {
   return (
@@ -22,7 +22,7 @@ const Login = () => {
           </div>
           <hr />
           <div className="mt-2">
-            <div>Form</div>
+            <SigninForm />
             <p>
               Do not have an account yet.{" "}
               <Link href={"/register"} className="text-blue-500">
