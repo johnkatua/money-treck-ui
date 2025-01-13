@@ -6,8 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signupFormSchema } from "@/lib/schemas";
 import { z } from "zod";
-import CustomFormField from "./CustomFormField";
 import { Button } from "@/components/ui/button";
+import CustomFormField from "./CustomFormField";
 
 const SignupForm = () => {
   const form = useForm<z.infer<typeof signupFormSchema>>({
