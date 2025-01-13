@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.root {
-  --theme-color-one: 0 0% 100%;
+:root {
+  --theme-color-one: #000;
   --theme-color-two: 200 38% 38%;
-  --theme-color-three: 13 148% 136%;
+  --theme-color-three: #000 /* --theme-color-three: 13 148% 136%; */;
 }
 
 body {

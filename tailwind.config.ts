@@ -12,9 +12,9 @@ const config: Config = {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        "theme-color-one": "hsl(var(--theme-color-one))",
-        "theme-color-two": "hsl(var(--theme-color-two))",
-        "theme-color-three": "hsl(var(--theme-color-three))",
+        "theme-color-one": "var(--theme-color-one)",
+        "theme-color-two": "var(--theme-color-two)",
+        "theme-color-three": "var(--theme-color-three)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
