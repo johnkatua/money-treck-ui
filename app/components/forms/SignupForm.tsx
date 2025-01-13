@@ -21,7 +21,7 @@ const SignupForm = () => {
   return (
     <Form {...form}>
       <form className="px-2 py-2">
-        <CustomFormField control={form.control} name="name" label="Username">
+        <CustomFormField control={form.control} name="name" label="Name">
           <Input placeholder="Test User" />
         </CustomFormField>
       </form>
