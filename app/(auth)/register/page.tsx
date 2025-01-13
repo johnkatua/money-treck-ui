@@ -38,6 +38,7 @@ const Register = () => {
             width={0}
             height={0}
             className="w-full h-full object-cover rounded-lg clip-polygon"
+            priority
             title="https://unsplash.com/photos/a-person-is-holding-a-wallet-with-money-in-it-w6tt6bFpKMA?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash"
           />
         </div>
