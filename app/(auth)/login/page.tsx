@@ -7,9 +7,9 @@ const Login = () => {
     <main className="h-screen font-serif flex justify-between p-4 gap-4">
       <div className="bg-slate-300 w-[50%] rounded-lg">
         <div className="h-full relative rounded-lg">
-          <div className="absolute">
+          <div className="absolute p-2">
             <Image
-              src={"/images/logo-small.png"}
+              src={"/images/logo-small-removebg.png"}
               height={150}
               width={150}
               alt="Logo"
@@ -26,7 +26,7 @@ const Login = () => {
             alt="Login"
             title="https://unsplash.com/photos/a-wallet-with-a-stack-of-twenty-dollar-bills-sticking-out-of-it-NvqlamJfnk8?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash"
           />
-          <div className="absolute top-[70%] w-[100%] text-center">
+          <div className="absolute top-[80%] w-[100%] text-center">
             <p className="text-4xl font-semibold text-white">
               Best way to manage your finances
             </p>
