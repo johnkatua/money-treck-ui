@@ -8,14 +8,18 @@ import { z } from "zod"
 import CustomFormField from "./CustomFormField"
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50)
+  name: z.string().min(2).max(50),
+  email: z.string(),
+  password: z.string()
 })
 
 const SignupForm = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: ""
+      name: "",
+      email: "",
+      password: ""
     }
   })
   return (
