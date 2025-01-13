@@ -4,18 +4,12 @@ import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import CustomFormField from "./CustomFormField";
-
-const formSchema = z.object({
-  name: z.string().min(2).max(50),
-  email: z.string(),
-  password: z.string(),
-});
+import { signupFormSchema } from "@/lib/schemas";
 
 const SignupForm = () => {
   const form = useForm({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(signupFormSchema),
     defaultValues: {
       name: "",
       email: "",
