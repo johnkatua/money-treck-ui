@@ -30,16 +30,16 @@ const SignupForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="px-2 py-2 flex gap-4 flex-col"
       >
-        <CustomFormField control={control} name="name" label="Name">
+        <CustomFormField control={control} name="name" label="Name *">
           <Input placeholder="Test User" />
         </CustomFormField>
-        <CustomFormField control={control} name="email" label="Email">
+        <CustomFormField control={control} name="email" label="Email *">
           <Input placeholder="test.user@gmail.com" />
         </CustomFormField>
         <CustomFormField
           control={form.control}
           name="password"
-          label="Password"
+          label="Password *"
         >
           <Input placeholder="***********" type="password" />
         </CustomFormField>
