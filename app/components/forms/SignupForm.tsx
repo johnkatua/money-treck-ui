@@ -19,16 +19,21 @@ const SignupForm = () => {
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof signupFormSchema>) => {
+  const onSubmit = (values: z.infer<typeof signupFormSchema>) => {
     console.log(values);
   };
+
+  const { control, handleSubmit } = form;
   return (
     <Form {...form}>
-      <form className="px-2 py-2 flex gap-4 flex-col">
-        <CustomFormField control={form.control} name="name" label="Name">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="px-2 py-2 flex gap-4 flex-col"
+      >
+        <CustomFormField control={control} name="name" label="Name">
           <Input placeholder="Test User" />
         </CustomFormField>
-        <CustomFormField control={form.control} name="email" label="Email">
+        <CustomFormField control={control} name="email" label="Email">
           <Input placeholder="test.user@gmail.com" />
         </CustomFormField>
         <CustomFormField
