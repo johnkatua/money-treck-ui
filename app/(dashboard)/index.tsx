@@ -1,6 +1,6 @@
 const Dashboard = () => {
   return (
-    <div className="bg-black text-white h-screen">
+    <div className="bg-theme-color-three text-white h-screen">
       <div>Left</div>
       <div>Right</div>
     </div>
