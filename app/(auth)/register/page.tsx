@@ -5,10 +5,10 @@ import React from "react";
 const Register = () => {
   return (
     <main className="h-screen bg-slate-100 font-serif flex justify-between p-4 gap-4">
-      <div className="w-[50%] bg-slate-300 h-[100%] flex flex-col">
+      <div className="w-[50%] h-[100%] flex flex-col">
         <div>Logo</div>
         <div className="flex  flex-1 justify-center items-center">
-          <div className="bg-red-50 w-[400px]">
+          <div className="w-[560px]">
             <div className="text-center mb-2">
               <h2 className="text-2xl mb-2 font-semibold">
                 Create your account

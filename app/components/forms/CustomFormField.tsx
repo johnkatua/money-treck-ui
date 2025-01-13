@@ -26,7 +26,7 @@ const CustomFormField = <T extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="space-y-2">
           <FormLabel>{label}</FormLabel>
           <FormControl>
             {cloneElement(children as ReactElement, { ...field })}
