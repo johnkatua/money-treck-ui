@@ -29,13 +29,24 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # Create s3 bucket using CloudFormation
-      - name: Create s3 Bucket
+      # Deploy CloudFormation stack
+      - name: Deploy CloudFormation stack
         run: | # creates and updates the stack based on the template file
           aws cloudformation deploy \
           --template-file cloudformation.yaml \
           --stack-name money-treck-stack \
           --capabilities CAPABILITY_NAMED_IAM
+
+      # Retrieve IAM credentials and AWS region from CloudFormation outputs
+      - name: Get CloudFormation outputs
+        id: outputs
+        run: |
+          STACK_OUTPUT=$(aws cloudformation describe-stacks \
+            --stack-name money-treck-stack \
+            --query "Stacks[0].Outputs" \
+            --output json
+          )
+          echo "${STACK_OUTPUT}" > stack-outputs.json
 
       # Sync Next.js files to the s3 bucket
       - name: Deploy files to s3
