@@ -48,6 +48,16 @@ jobs:
           )
           echo "${STACK_OUTPUT}" > stack-outputs.json
 
+      - name: Parse outputs for Github Actions
+        id: parse
+        run: |
+          ACCESS_KEY_ID=$(jq -r '.[] | select(.OutputKey=="AccessKeyId") | .OutputValue' stack-outputs.json)
+          SECRET_ACCESS_KEY=$(jq -r '.[] | select(.OutputKey=="SecretAccessKey") | .OutputValue' stack-outputs.json)
+          BUCKET_REGION=$(jq -r '.[] | select(.OutputKey=="AWSRegion") | .OutputValue' stack-outputs.json)
+          echo "::set-output name=access_key_id::$ACCESS_KEY_ID"
+          echo "::set-output name=secret_access_key::$SECRET_ACCESS_KEY"
+          echo "::set-output name=bucket_region::$BUCKET_REGION"
+
       # Sync Next.js files to the s3 bucket
       - name: Deploy files to s3
         run:
