@@ -51,9 +51,9 @@ jobs:
       # Output s3 bucket URL
       - name: S3 Bucket URL
         run: |
-          BUCKET_NAME=$(aws cloudformation describe-stacks \
+          BUCKET_URL=$(aws cloudformation describe-stacks \
             --stack-name money-treck-stack \
-            --query "Stacks[0].Outputs[?OutputKey=='BucketName'].OutputValue" \
+            --query "Stacks[0].Outputs[?OutputKey=='WebsiteURL'].OutputValue" \
             --output text
           ) 
-          echo "The app is deployed at https://$BUCKET_NAME.s3-website-${{ secrets.AWS_REGION }}.amazonaws.com"
+          echo "The app is deployed at $BUCKET_URL"
