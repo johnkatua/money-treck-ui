@@ -33,7 +33,7 @@ jobs:
       - name: Create s3 Bucket
         run: | # creates and updates the stack based on the template file
           aws cloudformation deploy \
-          --template-file s3_bucket.yaml \
+          --template-file cloudformation.yaml \
           --stack-name money-treck-stack \
           --capabilities CAPABILITY_NAMED_IAM
 
