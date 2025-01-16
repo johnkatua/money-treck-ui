@@ -38,3 +38,13 @@ jobs:
             --output text
           )
           aws s3 sync ./out s3://$BUCKET_NAME --delete --acl public-read
+
+      # Output s3 bucket URL
+      - name: S3 Bucket URL
+        run: |
+          BUCKET_NAME=$(aws cloudformation describe-stacks \
+            --stack-name money-treck-stack \
+            --query "Stacks[0].Outputs[?OutputKey=='BucketName'].OutputValue" \
+            --output text
+          ) 
+          echo "The app is deployed at https://$BUCKET_NAME.s3-website-${{ secrets.AWS_REGION }}.amazonaws.com"
