@@ -45,3 +45,24 @@ Resources:
     Type: AWS::IAM::AccessKey
     Properties:
       UserName: !Ref IAMUser
+
+Outputs:
+  BucketName:
+    Description: Name of the S3Bucket
+    Value: !Ref S3Bucket
+
+  WebsiteURL:
+    Description: URL of the S3 static website
+    Value: !Sub "http://${S3Bucket}.s3-website-${AWS::Region}.amazonaws.com"
+
+  AccessKeyId:
+    Description: Access key ID for IAM user
+    Value: !Ref IAMAccessKey
+
+  SecretAccessKey:
+    Description: Secret access key for IAM user
+    Value: !GetAtt IAMAccessKey.SecretAccessKey
+
+  AWSRegion:
+    Description: AWS region for the Bucket
+    Value: !Ref "AWS::Region"
