@@ -29,6 +29,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      # Create s3 bucket using CloudFormation
+      - name: Create s3 Bucket
+        run: |
+          aws cloudformation deploy \
+          --template-file s3_bucket.yaml \
+          --stack-name money-treck-stack \
+          --capabilities CAPABILITY_NAMED_IAM
+
       # Sync Next.js files to the s3 bucket
       - name: Deploy files to s3
         run: |
