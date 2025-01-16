@@ -1,1 +1,9 @@
 AWSTemplateFormatVersion: "2010-09-09"
+
+Resources:
+  S3Stack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./s3.yaml
+      Parameters:
+        BucketName: money-treck-app-bucket
