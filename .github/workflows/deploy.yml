@@ -39,7 +39,8 @@ jobs:
 
       # Sync Next.js files to the s3 bucket
       - name: Deploy files to s3
-        run: |
+        run:
+          | # uploads all the files from the build to the newly created bucket and makes the files publicly accessible
           BUCKET_NAME=$(aws cloudformation describe-stacks \
             --stack-name money-treck-stack \
             --query "Stacks[0].Outputs[?OutputKey=='BucketName'].OutputValue" \
