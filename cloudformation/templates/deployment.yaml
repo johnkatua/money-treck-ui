@@ -7,3 +7,14 @@ Resources:
       TemplateURL: ./s3.yaml
       Parameters:
         BucketName: money-treck-app-bucket
+
+  IAMStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./iam.yaml
+      Parameters:
+        UserName: MoneyTreckDeployUser
+# Outputs:
+#   BucketName:
+#     Value: !GetAtt S3Stack.Outputs.BucketName
+
