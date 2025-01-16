@@ -14,7 +14,16 @@ Resources:
       TemplateURL: ./iam.yaml
       Parameters:
         UserName: MoneyTreckDeployUser
-# Outputs:
-#   BucketName:
-#     Value: !GetAtt S3Stack.Outputs.BucketName
 
+Outputs:
+  BucketName:
+    Value: !GetAtt S3Stack.Outputs.BucketName
+
+  WebsiteURL:
+    Value: !GetAtt S3Stack.Outputs.WebsiteURL
+
+  AccessKeyId:
+    Value: !GetAtt IAMStack.Outputs.AccessKeyId
+
+  SecretAccessKey:
+    Value: !GetAtt IAMStack.Outputs.SecretAccessKey
