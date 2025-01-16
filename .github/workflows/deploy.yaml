@@ -69,10 +69,10 @@ jobs:
           )
           aws s3 sync ./out s3://$BUCKET_NAME --delete --acl public-read
 
-      # Output s3 bucket URL
-      - name: S3 Bucket URL
+      # Output s3 Website URL
+      - name: Output S3 Website URL
         run: |
-          BUCKET_URL=$(aws cloudformation describe-stacks \
+          WEBSITE_URL=$(aws cloudformation describe-stacks \
             --stack-name money-treck-stack \
             --query "Stacks[0].Outputs[?OutputKey=='WebsiteURL'].OutputValue" \
             --output text
