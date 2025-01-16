@@ -21,14 +21,6 @@ jobs:
       - name: Build app
         run: npm run build
 
-      # Setup AWS CLI
-      - name: Configure AWS CLI
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
       # Deploy CloudFormation stack
       - name: Deploy CloudFormation stack
         run: | # creates and updates the stack based on the template file
@@ -57,6 +49,14 @@ jobs:
           echo "::set-output name=access_key_id::$ACCESS_KEY_ID"
           echo "::set-output name=secret_access_key::$SECRET_ACCESS_KEY"
           echo "::set-output name=bucket_region::$BUCKET_REGION"
+
+      # Configure AWS CLI
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ steps.parse.outputs.access_key_id }}
+          aws-secret-access-key: ${{ steps.parse.outputs.secret_access_key }}
+          aws-region: ${{ steps.parse.outputs.bucket_region }}
 
       # Sync Next.js files to the s3 bucket
       - name: Deploy files to s3
