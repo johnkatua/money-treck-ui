@@ -1,0 +1,10 @@
+name: Deploy MoneyTreck to s3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
