@@ -22,3 +22,26 @@ Resources:
             Principal: "*"
             Action: s3:GetObject
             Resource: !Sub "${S3Bucket.Arn}/*"
+
+  IAMUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: MoneyTreckDeployUser
+      Policies:
+        - PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:ListBucket
+                  - s3:PutObject
+                Resource:
+                  - !GetAtt S3Bucket.Arn
+                  - !Sub "${S3Bucket.Arn}/*"
+          PolicyName: MoneyTreckS3Access
+
+  IAMAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref IAMUser
