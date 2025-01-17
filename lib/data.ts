@@ -1,3 +1,11 @@
+import {
+  Settings,
+  LayoutDashboard,
+  WalletCards,
+  Wallet,
+  CreditCard,
+} from "lucide-react";
+
 export const sidebarData = {
   user: {
     name: "John Katua",
@@ -7,28 +15,28 @@ export const sidebarData = {
   items: [
     {
       title: "Dashboard",
-      url: "",
-      icon: "",
+      url: "/",
+      icon: LayoutDashboard,
     },
     {
       title: "Revenue",
-      url: "",
-      icon: "",
+      url: "/revenue",
+      icon: WalletCards,
     },
     {
       title: "Budget",
-      url: "",
-      icon: "",
+      url: "/budget",
+      icon: Wallet,
     },
     {
       title: "Expenditure",
-      url: "",
-      icon: "",
+      url: "/expenses",
+      icon: CreditCard,
     },
     {
       title: "Settings",
-      url: "",
-      icon: "",
+      url: "/settings",
+      icon: Settings,
     },
   ],
 };
