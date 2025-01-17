@@ -4,9 +4,11 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarProvider,
-  SidebarRail,
 } from "@/components/ui/sidebar";
-import React from "react";
+import { sidebarData } from "@/lib/data";
+import SidebarUser from "./SidebarUser";
+
+const { user } = sidebarData;
 
 const CustomSidebar = () => {
   return (
@@ -21,7 +23,9 @@ const CustomSidebar = () => {
         <SidebarContent className="bg-[--theme-color-one]">
           Hello
         </SidebarContent>
-        <SidebarFooter className="bg-[--theme-color-one]">Footer</SidebarFooter>
+        <SidebarFooter className="bg-[--theme-color-one]">
+          <SidebarUser user={user} />
+        </SidebarFooter>
       </Sidebar>
     </SidebarProvider>
   );
