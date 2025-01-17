@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --theme-color-one: #000;
-  --theme-color-two: 200 38% 38%;
-  --theme-color-three: #000 /* --theme-color-three: 13 148% 136%; */;
+  --theme-color-one: #09090b;
+  --theme-color-two: #052e16;
+  --theme-color-three: #4c0519 /* --theme-color-three: 13 148% 136%; */;
 }
 
 body {
