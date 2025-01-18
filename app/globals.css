@@ -17,6 +17,10 @@ body {
     text-wrap: balance;
   }
 
+  .scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .clip-polygon {
     clip-path: polygon(
       0% 10%,
