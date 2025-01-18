@@ -1,12 +1,13 @@
 import React from "react";
 import Dashboard from "./layout";
-import Header from "../components/header";
+import PageWrapper from "../components/pageWrapper";
 
 const HomePage = () => {
   return (
     <Dashboard>
-      {/* <Header title="Dashboard" />
-      <div>Welcome</div> */}
+      <PageWrapper title="Dashboard">
+        <div>Welcome</div>
+      </PageWrapper>
     </Dashboard>
   );
 };
