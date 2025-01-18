@@ -30,7 +30,7 @@ export const sidebarData = {
     },
     {
       title: "Expenditure",
-      url: "/expenses",
+      url: "/expenditure",
       icon: CreditCard,
     },
     {
