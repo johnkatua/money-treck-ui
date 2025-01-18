@@ -3,7 +3,7 @@ import CustomSidebar from "../components/sidebar/CustomSidebar";
 const Dashboard = () => {
   return (
     <div className="bg-[--theme-color-one] text-white h-screen flex gap-4">
-      <div className="w-[300px] p-2 overflow-hidden">
+      <div className="w-[250px] p-2 overflow-hidden">
         <CustomSidebar />
       </div>
       <div className="flex-1 py-4 pr-4">
