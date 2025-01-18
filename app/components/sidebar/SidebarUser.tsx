@@ -25,6 +25,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useRouter } from "next/navigation";
 
 const SidebarUser = ({
   user,
@@ -36,6 +37,9 @@ const SidebarUser = ({
   };
 }) => {
   const { isMobile } = useSidebar();
+  const router = useRouter();
+
+  const logout = () => router.push("/login");
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -94,7 +98,7 @@ const SidebarUser = ({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={logout}>
               <LogOut />
               Log out
             </DropdownMenuItem>

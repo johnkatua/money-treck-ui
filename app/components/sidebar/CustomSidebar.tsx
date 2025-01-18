@@ -7,8 +7,9 @@ import {
 } from "@/components/ui/sidebar";
 import { sidebarData } from "@/lib/data";
 import SidebarUser from "./SidebarUser";
+import SidebarItems from "./SidebarItems";
 
-const { user } = sidebarData;
+const { user, items } = sidebarData;
 
 const CustomSidebar = () => {
   return (
@@ -17,11 +18,9 @@ const CustomSidebar = () => {
         collapsible="icon"
         className="bg-[--theme-color-one] text-white w-[300px] border-none"
       >
-        <SidebarHeader className="bg-[--theme-color-one] h-[80px]">
-          Header
-        </SidebarHeader>
+        <SidebarHeader className="bg-[--theme-color-one]">Header</SidebarHeader>
         <SidebarContent className="bg-[--theme-color-one]">
-          Hello
+          <SidebarItems items={items} />
         </SidebarContent>
         <SidebarFooter className="bg-[--theme-color-one]">
           <SidebarUser user={user} />
