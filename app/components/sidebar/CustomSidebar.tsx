@@ -17,9 +17,9 @@ const CustomSidebar = () => {
     <SidebarProvider open={true}>
       <Sidebar
         collapsible="icon"
-        className="bg-[--theme-color-one] text-white w-[250px] border-none"
+        className="bg-[--theme-color-one] text-white w-[200px] border-none"
       >
-        <SidebarHeader className="bg-[--theme-color-one]">
+        <SidebarHeader className="bg-[--theme-color-one] pb-4">
           <SidebarTitle />
         </SidebarHeader>
         <SidebarContent className="bg-[--theme-color-one]">
