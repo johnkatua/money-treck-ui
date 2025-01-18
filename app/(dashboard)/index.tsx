@@ -5,8 +5,8 @@ import Header from "../components/header";
 const HomePage = () => {
   return (
     <Dashboard>
-      <Header title="Dashboard" />
-      <div>Welcome</div>
+      {/* <Header title="Dashboard" />
+      <div>Welcome</div> */}
     </Dashboard>
   );
 };
