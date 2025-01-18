@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import CustomSidebar from "../components/sidebar/CustomSidebar";
 
-const Dashboard = ({ children }: { children: ReactNode }) => {
+const Dashboard = ({ children }: { children?: ReactNode }) => {
   return (
     <div className="bg-[--theme-color-one] text-white h-screen flex gap-4">
       <div className="w-[200px] p-2 overflow-hidden">
