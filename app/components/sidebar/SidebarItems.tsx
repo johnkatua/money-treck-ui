@@ -1,9 +1,12 @@
+"use client";
+
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { LucideIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const SidebarItems = ({
@@ -15,15 +18,16 @@ const SidebarItems = ({
     icon: LucideIcon;
   };
 }) => {
+  const router = useRouter();
   return (
     <SidebarMenu>
       {items?.map((item) => (
         <SidebarMenuItem key={item.title}>
-          <SidebarMenuButton asChild>
-            <a href="">
+          <SidebarMenuButton asChild onClick={() => router.push(item.url)}>
+            <div>
               <item.icon />
               <span>{item.title}</span>
-            </a>
+            </div>
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}
