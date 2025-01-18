@@ -18,7 +18,7 @@ const SigninForm = () => {
 
   const onSubmit = (values: z.infer<typeof signinFormSchema>) => {
     console.log(values);
-    router.push("/home");
+    router.push("/");
   };
 
   const { control, handleSubmit } = form;

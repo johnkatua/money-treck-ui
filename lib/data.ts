@@ -15,7 +15,7 @@ export const sidebarData = {
   items: [
     {
       title: "Dashboard",
-      url: "/home",
+      url: "/",
       icon: LayoutDashboard,
     },
     {
