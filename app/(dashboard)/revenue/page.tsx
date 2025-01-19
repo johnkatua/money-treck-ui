@@ -1,5 +1,4 @@
 import React from "react";
-import Dashboard from "../layout";
 import PageWrapper from "../../components/pageWrapper";
 
 const Revenue = () => {
