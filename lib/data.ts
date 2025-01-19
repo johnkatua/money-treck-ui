@@ -4,6 +4,7 @@ import {
   WalletCards,
   Wallet,
   CreditCard,
+  Banknote,
 } from "lucide-react";
 
 export const sidebarData = {
@@ -32,6 +33,11 @@ export const sidebarData = {
       title: "Expenditure",
       url: "/expenditure",
       icon: CreditCard,
+    },
+    {
+      title: "Savings",
+      url: "/savings",
+      icon: Banknote,
     },
     {
       title: "Settings",
