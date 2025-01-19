@@ -4,6 +4,28 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import RevenueList from "./RevenueList";
 import CreateRevenue from "./CreateRevenue";
 
+const tabsHeader = [
+  {
+    value: "View",
+    title: "View",
+  },
+  {
+    value: "Create",
+    title: "Create",
+  },
+];
+
+const tabsContent = [
+  {
+    value: "View",
+    children: <RevenueList />,
+  },
+  {
+    value: "Create",
+    children: <CreateRevenue />,
+  },
+];
+
 const Revenue = () => {
   return (
     <PageWrapper title="Revenue">
