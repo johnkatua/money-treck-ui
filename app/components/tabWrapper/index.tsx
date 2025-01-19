@@ -27,7 +27,7 @@ const TabWrapper: FC<TabWrapperProps> = ({
   return (
     <Tabs defaultValue={defaultValue} className="w-full">
       {/* Tab Headers */}
-      <TabsList>
+      <TabsList className="grid grid-cols-2 w-full">
         {tabsHeader.map(({ value, title }) => (
           <TabsTrigger key={value} value={value}>
             {title}
