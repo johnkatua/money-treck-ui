@@ -1,7 +1,15 @@
 import React from "react";
+import Dashboard from "../layout";
+import PageWrapper from "@/app/components/pageWrapper";
 
 const Settings = () => {
-  return <div>Settings</div>;
+  return (
+    <Dashboard>
+      <PageWrapper title="Settings">
+        <div>Settings</div>
+      </PageWrapper>
+    </Dashboard>
+  );
 };
 
 export default Settings;
