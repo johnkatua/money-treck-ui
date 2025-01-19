@@ -4,11 +4,9 @@ import PageWrapper from "../../components/pageWrapper";
 
 const Revenue = () => {
   return (
-    <Dashboard>
-      <PageWrapper title="Revenue">
-        <div>Revenue</div>
-      </PageWrapper>
-    </Dashboard>
+    <PageWrapper title="Revenue">
+      <div>Revenue</div>
+    </PageWrapper>
   );
 };
 
