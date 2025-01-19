@@ -1,17 +1,45 @@
-import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
-import { TabsTrigger } from "@radix-ui/react-tabs";
-import React from "react";
+"use client";
 
-const TabWrapper = ({ defaultValue, tabsHeader, tabsContent }) => {
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FC, ReactNode } from "react";
+
+interface TabHeader {
+  value: string;
+  title: string;
+}
+
+interface TabContent {
+  value: string;
+  children: ReactNode;
+}
+
+interface TabWrapperProps {
+  defaultValue: string;
+  tabsHeader: TabHeader[];
+  tabsContent: TabContent[];
+}
+
+const TabWrapper: FC<TabWrapperProps> = ({
+  defaultValue,
+  tabsHeader,
+  tabsContent,
+}) => {
   return (
-    <Tabs defaultValue={defaultValue}>
+    <Tabs defaultValue={defaultValue} className="w-full">
+      {/* Tab Headers */}
       <TabsList>
         {tabsHeader.map(({ value, title }) => (
-          <TabsTrigger value={value}>{title}</TabsTrigger>
+          <TabsTrigger key={value} value={value}>
+            {title}
+          </TabsTrigger>
         ))}
       </TabsList>
-      {tabsContent?.map(({ value, children }) => (
-        <TabsContent value={value}>{children}</TabsContent>
+
+      {/* Tab Content */}
+      {tabsContent.map(({ value, children }) => (
+        <TabsContent key={value} value={value}>
+          {children}
+        </TabsContent>
       ))}
     </Tabs>
   );
