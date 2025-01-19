@@ -1,7 +1,7 @@
 import React from "react";
 
-const Revenu = () => {
+const Revenue = () => {
   return <div>Revenue</div>;
 };
 
-export default Revenu;
+export default Revenue;
