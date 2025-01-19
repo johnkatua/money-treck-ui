@@ -64,4 +64,13 @@ export const budgetData = [
   { browser: "other", visitors: 90, fill: "var(--color-other)" },
 ];
 
+export const budgetExpenditureData = [
+  { date: "2024-07-15", running: 450, swimming: 300 },
+  { date: "2024-07-16", running: 380, swimming: 420 },
+  { date: "2024-07-17", running: 520, swimming: 120 },
+  { date: "2024-07-18", running: 140, swimming: 550 },
+  { date: "2024-07-19", running: 600, swimming: 350 },
+  { date: "2024-07-20", running: 480, swimming: 400 },
+];
+
 // <a href="https://www.freepik.com/free-vector/young-man-glasses-hoodie_356306296.htm">Image by brgfx on Freepik</a>
