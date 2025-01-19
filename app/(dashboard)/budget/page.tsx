@@ -1,7 +1,11 @@
-import React from "react";
+import PageWrapper from "@/app/components/pageWrapper";
 
 const Budget = () => {
-  return <div>Budget</div>;
+  return (
+    <PageWrapper title="Budget">
+      <div>Budget</div>
+    </PageWrapper>
+  );
 };
 
 export default Budget;
