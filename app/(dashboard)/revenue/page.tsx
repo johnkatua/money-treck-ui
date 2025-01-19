@@ -7,8 +7,8 @@ import CreateRevenue from "./CreateRevenue";
 const Revenue = () => {
   return (
     <PageWrapper title="Revenue">
-      <Tabs defaultValue="view" className="w-full">
-        <TabsList>
+      <Tabs defaultValue="view">
+        <TabsList className="grid grid-cols-2 w-full">
           <TabsTrigger value="view">View</TabsTrigger>
           <TabsTrigger value="create">Create</TabsTrigger>
         </TabsList>
