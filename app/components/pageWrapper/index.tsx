@@ -12,7 +12,7 @@ const PageWrapper: FC<PageWrapperProps> = ({ title, children }) => {
       <div className="sticky top-0 left-0 p-2 bg-white shadow-md z-10">
         <Header title={title} />
       </div>
-      <div>{children}</div>
+      <div className="p-4">{children}</div>
     </div>
   );
 };

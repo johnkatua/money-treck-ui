@@ -14,10 +14,10 @@ const HomePage = () => {
             <RevenueBudgetChart />
           </div>
           <div>
-            <BudgetChart />
+            <BudgetExpenditureChart />
           </div>
           <div>
-            <BudgetExpenditureChart />
+            <BudgetChart />
           </div>
         </div>
       </PageWrapper>

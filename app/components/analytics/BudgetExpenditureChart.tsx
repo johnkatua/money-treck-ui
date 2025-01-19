@@ -39,7 +39,7 @@ const BudgetExpenditureChart = () => {
       <CardContent>
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[200px] w-full"
+          className="aspect-square max-h-[200px] w-full"
         >
           <BarChart accessibilityLayer data={budgetExpenditureData}>
             <XAxis
