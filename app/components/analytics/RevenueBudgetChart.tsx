@@ -6,7 +6,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ChartConfig } from "@/components/ui/chart";
 import { TrendingUp } from "lucide-react";
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "hsl(var(--chart-1))",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig;
 
 const RevenueBudgetChart = () => {
   return (
