@@ -8,8 +8,8 @@ interface PageWrapperProps {
 
 const PageWrapper: FC<PageWrapperProps> = ({ title, children }) => {
   return (
-    <div>
-      <div>
+    <div className="relative h-full">
+      <div className="sticky top-0 left-0 p-2 bg-white shadow-md z-10">
         <Header title={title} />
       </div>
       <div>{children}</div>

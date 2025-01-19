@@ -8,7 +8,7 @@ const Dashboard = ({ children }: { children?: ReactNode }) => {
         <CustomSidebar />
       </div>
       <div className="flex-1 py-4 pr-4">
-        <div className="h-full p-2 bg-white text-[--theme-color-one] rounded-lg overflow-y-auto scrollbar">
+        <div className="h-full bg-white text-[--theme-color-one] rounded-lg overflow-y-auto scrollbar">
           <div className="h-[900px]">{children}</div>
         </div>
       </div>
