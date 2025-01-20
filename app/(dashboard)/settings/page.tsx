@@ -3,6 +3,8 @@ import PageWrapper from "@/app/components/page-wrapper";
 import GeneralSettings from "./GeneralSettings";
 import Plan from "./Plan";
 import Notifications from "./Notifications";
+import TabWrapper from "@/app/components/tab-wrapper";
+import { settingsHeader } from "@/lib/data";
 
 const tabsContent = [
   {
@@ -22,7 +24,11 @@ const tabsContent = [
 const Settings = () => {
   return (
     <PageWrapper title="Settings">
-      <div>Settings</div>
+      <TabWrapper
+        defaultValue="General-Settings"
+        tabsHeader={settingsHeader}
+        tabsContent={tabsContent}
+      />
     </PageWrapper>
   );
 };
