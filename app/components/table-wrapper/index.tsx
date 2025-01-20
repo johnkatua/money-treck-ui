@@ -12,13 +12,22 @@ import {
 import {
   flexRender,
   getCoreRowModel,
+  PaginationState,
   useReactTable,
 } from "@tanstack/react-table";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 const TableWrapper = ({ data, columns }) => {
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 5,
+  });
   const table = useReactTable({
     data,
     columns: useMemo(() => columns, []),
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     manualGrouping: true,
     debugTable: true,
@@ -72,40 +81,51 @@ const TableWrapper = ({ data, columns }) => {
         </tbody>
       </table>
       <div className="h-2" />
-      <div className="flex items-center gap-2 w-full bg-slate-500">
-        <Button
-          onClick={() => table.firstPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          {"<<"}
-        </Button>
-        <Button
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          {"<"}
-        </Button>
-        <Button
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          {">"}
-        </Button>
-        <Button
-          onClick={() => table.lastPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          {">>"}
-        </Button>
-        <span className="flex items-center gap-1">
-          <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of{" "}
-            {table.getPageCount().toLocaleString()}
-          </strong>
-        </span>
-        <span className="flex items-center gap-1">
-          | Go to page:
+      <div className="flex flex-wrap items-center justify-between p-4 bg-gray-900 text-gray-300 rounded-b-md shadow-md border-t border-gray-700">
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => table.firstPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            {"<<"}
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            {"<"}
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            {">"}
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => table.lastPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            {">>"}
+          </Button>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span className="text-sm">
+            Page <strong>{table.getState().pagination.pageIndex + 1}</strong> of{" "}
+            <strong>{table.getPageCount().toLocaleString()}</strong>
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span className="text-sm">Go to page:</span>
           <Input
             type="number"
             min="1"
@@ -115,25 +135,27 @@ const TableWrapper = ({ data, columns }) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               table.setPageIndex(page);
             }}
+            className="w-16 text-center"
           />
-        </span>
-        <Select
-          value={table.getState().pagination.pageSize}
-          onValueChange={(e) => {
-            table.setPageSize(Number(e.target.value));
-          }}
-        >
-          <SelectTrigger className="w-[280px]">
-            <SelectValue placeholder="Select page size" />
-          </SelectTrigger>
-          <SelectContent>
-            {[10, 20, 30, 40, 50].map((pageSize) => (
-              <SelectItem key={pageSize} value={pageSize}>
-                {pageSize}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Select
+            onValueChange={(value) => table.setPageSize(Number(value))}
+            defaultValue={String(table.getState().pagination.pageSize)}
+          >
+            <SelectTrigger className="w-20">
+              <SelectValue placeholder="Rows" />
+            </SelectTrigger>
+            <SelectContent>
+              {[5, 10, 20, 30, 40, 50].map((pageSize) => (
+                <SelectItem key={pageSize} value={String(pageSize)}>
+                  {pageSize} rows
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
     </div>
   );
