@@ -26,14 +26,14 @@ const CreateRevenue = () => {
     setNewRevenue({ name: "", amount: "" });
   };
   return (
-    <Card>
-      <CardHeader className="font-semibold text-2xl">
+    <Card className="bg-white rounded-lg hover:shadow-lg">
+      <CardHeader className="font-semibold text-2xl text-gray-800">
         Add New Revenue
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div>
-            <Label htmlFor="name" className="text-white">
+            <Label htmlFor="name" className="text-gray-500">
               Name:
             </Label>
             <Input
@@ -43,11 +43,11 @@ const CreateRevenue = () => {
                 setNewRevenue({ ...newRevenue, name: e.target.value })
               }
               placeholder="Enter revenue name"
-              className="mt-2 p-3 rounded-md w-full text-gray-800"
+              className="mt-2 p-3 rounded-md w-full text-gray-800 focus:ring-2 focus:ring-indigo-500 transition-all"
             />
           </div>
           <div>
-            <Label htmlFor="amount" className="text-white">
+            <Label htmlFor="amount" className="text-gray-500">
               Amount:
             </Label>
             <Input
@@ -58,7 +58,7 @@ const CreateRevenue = () => {
                 setNewRevenue({ ...newRevenue, amount: e.target.value })
               }
               placeholder="Enter revenue amount"
-              className="mt-2 p-3 rounded-md w-full text-gray-800"
+              className="mt-2 p-3 rounded-md w-full text-gray-800 focus:ring-2 focus:ring-indigo-500 transition-all"
             />
           </div>
         </div>
