@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrapper from "@/app/components/pageWrapper";
+import PageWrapper from "@/app/components/page-wrapper";
 
 const Settings = () => {
   return (

@@ -1,4 +1,4 @@
-import PageWrapper from "@/app/components/pageWrapper";
+import PageWrapper from "@/app/components/page-wrapper";
 import TabWrapper from "@/app/components/tabWrapper";
 import { tabsHeader } from "@/lib/data";
 import BudgetList from "./BudgetList";

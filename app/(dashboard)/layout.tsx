@@ -9,7 +9,7 @@ const Dashboard = ({ children }: { children?: ReactNode }) => {
       </div>
       <div className="flex-1 py-4 pr-4">
         <div className="h-full bg-white text-[--theme-color-one] rounded-lg overflow-y-auto scrollbar">
-          <div className="h-[900px]">{children}</div>
+          <div className="">{children}</div>
         </div>
       </div>
     </div>

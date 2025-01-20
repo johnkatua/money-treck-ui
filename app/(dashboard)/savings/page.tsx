@@ -1,4 +1,4 @@
-import PageWrapper from "@/app/components/pageWrapper";
+import PageWrapper from "@/app/components/page-wrapper";
 
 const Savings = () => {
   return (

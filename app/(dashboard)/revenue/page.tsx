@@ -1,5 +1,5 @@
 import React from "react";
-import PageWrapper from "../../components/pageWrapper";
+import PageWrapper from "../../components/page-wrapper";
 import RevenueList from "./RevenueList";
 import CreateRevenue from "./CreateRevenue";
 import TabWrapper from "@/app/components/tabWrapper";

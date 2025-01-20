@@ -1,6 +1,6 @@
 import React from "react";
 import Dashboard from "./layout";
-import PageWrapper from "../components/pageWrapper";
+import PageWrapper from "../components/page-wrapper";
 import RevenueBudgetChart from "../components/analytics/RevenueBudgetChart";
 import BudgetChart from "../components/analytics/BudgetChart";
 import BudgetExpenditureChart from "../components/analytics/BudgetExpenditureChart";

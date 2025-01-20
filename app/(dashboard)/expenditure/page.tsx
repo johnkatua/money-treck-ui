@@ -1,4 +1,4 @@
-import PageWrapper from "@/app/components/pageWrapper";
+import PageWrapper from "@/app/components/page-wrapper";
 import TabWrapper from "@/app/components/tabWrapper";
 import ExpenditureList from "./ExpenditureList";
 import CreateExpenditure from "./CreateExpenditure";
