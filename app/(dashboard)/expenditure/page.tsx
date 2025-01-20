@@ -1,5 +1,5 @@
 import PageWrapper from "@/app/components/page-wrapper";
-import TabWrapper from "@/app/components/tabWrapper";
+import TabWrapper from "@/app/components/tab-wrapper";
 import ExpenditureList from "./ExpenditureList";
 import CreateExpenditure from "./CreateExpenditure";
 import { tabsHeader } from "@/lib/data";
