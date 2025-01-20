@@ -1,5 +1,6 @@
+"use client";
+
 import { ColumnDef } from "@tanstack/react-table";
-import { useMemo } from "react";
 
 export type Revenue = {
   id: string;
@@ -7,20 +8,17 @@ export type Revenue = {
   amount: number;
 };
 
-export const revenueColumns: ColumnDef<Revenue>[] = useMemo(
-  () => [
-    {
-      accessorKey: "id",
-      header: () => "Id",
-    },
-    {
-      accessorKey: "name",
-      header: () => "Name",
-    },
-    {
-      accessorKey: "amount",
-      header: () => "Amount",
-    },
-  ],
-  []
-);
+export const revenueColumns: ColumnDef<Revenue>[] = [
+  {
+    accessorKey: "id",
+    header: () => "Id",
+  },
+  {
+    accessorKey: "name",
+    header: () => "Name",
+  },
+  {
+    accessorKey: "amount",
+    header: () => "Amount",
+  },
+];
