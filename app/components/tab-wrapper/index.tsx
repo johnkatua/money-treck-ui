@@ -27,9 +27,13 @@ const TabWrapper: FC<TabWrapperProps> = ({
   return (
     <Tabs defaultValue={defaultValue} className="w-full">
       {/* Tab Headers */}
-      <TabsList className="grid grid-cols-2 w-full">
+      <TabsList className="flex justify-between gap-4 mb-6 bg-gradient-to-r from-gray-700 to-black text-white rounded-lg shadow-lg">
         {tabsHeader.map(({ value, title }) => (
-          <TabsTrigger key={value} value={value}>
+          <TabsTrigger
+            key={value}
+            value={value}
+            className="text-xl w-[50%] font-semibold cursor-pointer hover:bg-pink-500 transition-all ease-in-out duration-300"
+          >
             {title}
           </TabsTrigger>
         ))}
@@ -37,7 +41,11 @@ const TabWrapper: FC<TabWrapperProps> = ({
 
       {/* Tab Content */}
       {tabsContent.map(({ value, children }) => (
-        <TabsContent key={value} value={value}>
+        <TabsContent
+          key={value}
+          value={value}
+          className="px-4 py-2 bg-gradient-to-r from-pink-400 to-purple-600 rounded-lg shadow-lg space-y-6"
+        >
           {children}
         </TabsContent>
       ))}
