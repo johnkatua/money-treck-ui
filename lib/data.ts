@@ -84,4 +84,19 @@ export const tabsHeader = [
   },
 ];
 
+export const settingsHeader = [
+  {
+    value: "General-Settings",
+    title: "General Settings",
+  },
+  {
+    value: "Notification",
+    title: "Notification",
+  },
+  {
+    value: "Plan",
+    title: "Plan",
+  },
+];
+
 // <a href="https://www.freepik.com/free-vector/young-man-glasses-hoodie_356306296.htm">Image by brgfx on Freepik</a>

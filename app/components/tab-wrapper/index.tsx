@@ -44,7 +44,7 @@ const TabWrapper: FC<TabWrapperProps> = ({
         <TabsContent
           key={value}
           value={value}
-          className="px-4 py-4 bg-gradient-to-r from-pink-400 to-purple-600 rounded-lg shadow-lg space-y-6"
+          className="px-4 py-4 bg-gradient-to-r from-pink-400 to-purple-600 rounded-lg shadow-2xl space-y-6"
         >
           {children}
         </TabsContent>
