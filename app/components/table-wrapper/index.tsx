@@ -33,7 +33,7 @@ const TableWrapper = ({ data, columns }) => {
     debugTable: true,
   });
   return (
-    <div className="p-4 bg-gradient-to-r from-red-300 to-pink-300 rounded-lg shadow-lg">
+    <div className="">
       <div className="h-2" />
       <table className="w-full border-collapse overflow-hidden shadow-lg rounded-md">
         <thead>

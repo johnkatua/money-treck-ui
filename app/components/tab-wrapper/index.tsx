@@ -27,12 +27,12 @@ const TabWrapper: FC<TabWrapperProps> = ({
   return (
     <Tabs defaultValue={defaultValue} className="w-full">
       {/* Tab Headers */}
-      <TabsList className="flex justify-between gap-4 mb-6 bg-gradient-to-r from-gray-700 to-black text-white rounded-lg shadow-lg">
+      <TabsList className="flex p-0 justify-between gap-4 mb-6 bg-gradient-to-r from-gray-700 to-black text-white rounded-lg shadow-lg">
         {tabsHeader.map(({ value, title }) => (
           <TabsTrigger
             key={value}
             value={value}
-            className="text-xl w-[50%] font-semibold cursor-pointer hover:bg-pink-500 transition-all ease-in-out duration-300"
+            className="text-lg w-[50%] font-semibold cursor-pointer hover:bg-pink-500 transition-all ease-in-out duration-300"
           >
             {title}
           </TabsTrigger>
