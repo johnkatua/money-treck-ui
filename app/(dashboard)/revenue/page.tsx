@@ -1,20 +1,9 @@
 import React from "react";
 import PageWrapper from "../../components/pageWrapper";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import RevenueList from "./RevenueList";
 import CreateRevenue from "./CreateRevenue";
 import TabWrapper from "@/app/components/tabWrapper";
-
-const tabsHeader = [
-  {
-    value: "View",
-    title: "View",
-  },
-  {
-    value: "Create",
-    title: "Create",
-  },
-];
+import { tabsHeader } from "@/lib/data";
 
 const tabsContent = [
   {

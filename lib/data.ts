@@ -73,4 +73,15 @@ export const budgetExpenditureData = [
   { date: "2024-07-20", running: 480, swimming: 400 },
 ];
 
+export const tabsHeader = [
+  {
+    value: "View",
+    title: "View",
+  },
+  {
+    value: "Create",
+    title: "Create",
+  },
+];
+
 // <a href="https://www.freepik.com/free-vector/young-man-glasses-hoodie_356306296.htm">Image by brgfx on Freepik</a>
