@@ -3,6 +3,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -110,6 +117,23 @@ const TableWrapper = ({ data, columns }) => {
             }}
           />
         </span>
+        <Select
+          value={table.getState().pagination.pageSize}
+          onValueChange={(e) => {
+            table.setPageSize(Number(e.target.value));
+          }}
+        >
+          <SelectTrigger className="w-[280px]">
+            <SelectValue placeholder="Select page size" />
+          </SelectTrigger>
+          <SelectContent>
+            {[10, 20, 30, 40, 50].map((pageSize) => (
+              <SelectItem key={pageSize} value={pageSize}>
+                {pageSize}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );
