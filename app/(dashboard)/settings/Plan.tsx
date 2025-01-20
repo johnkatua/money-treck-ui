@@ -37,8 +37,10 @@ const Plan = () => {
           </CardFooter>
         </Card>
       </div>
-      <div className="bg-yellow-100 p-1 rounded-lg">
-        <div className="h-8">Most Popular</div>
+      <div className="bg-gradient-to-b from-gray-600 to-black hover:bg-black p-1 rounded-2xl">
+        <div className="h-8 flex items-start justify-center text-white">
+          Most Popular
+        </div>
         <Card className="text-gray-800">
           <CardHeader>
             <CardTitle>Quartely Subscription</CardTitle>
@@ -60,7 +62,31 @@ const Plan = () => {
           </CardFooter>
         </Card>
       </div>
-      <div className="bg-yellow-100">Card 3</div>
+      <div className="p-1">
+        <div className="h-8" />
+        <Card className="text-gray-800">
+          <CardHeader>
+            <CardTitle>Yearly Subscription</CardTitle>
+            <CardDescription>For Smooth and Efficient Usage</CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4 mt-4">
+            <div className="flex flex-col items-center text-4xl">Ksh. 2000</div>
+            <Button className="w-full bg-transparent border-black border-2 text-black hover:bg-transparent">
+              Get Started
+            </Button>
+          </CardContent>
+          <CardFooter className="flex flex-col items-start gap-2">
+            <span className="font-semibold">Features</span>
+            <ul>
+              <li>Name</li>
+              <li>One</li>
+              <li>Name</li>
+              <li>Two</li>
+              <li>Thee</li>
+            </ul>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   );
 };
