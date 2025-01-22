@@ -1,12 +1,14 @@
+import { SignInFormSchema } from "@/lib/definitions/SignInFormSchema";
 import { createSession, deleteSession } from "@/lib/session";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 
 export const logout = async () => {
   deleteSession();
   redirect("/login");
 };
 
-export const login = async (values) => {
+export const login = async (values: z.infer<typeof SignInFormSchema>) => {
   console.log(values);
   await createSession();
   redirect("/");
