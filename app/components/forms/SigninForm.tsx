@@ -2,21 +2,15 @@
 
 import CustomFormField from "./CustomFormField";
 import { Form } from "@/components/ui/form";
-import { signinFormSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import { login } from "@/app/actions/auth";
 import { SignInFormSchema } from "@/lib/definitions/SignInFormSchema";
-// import { login } from "@/lib/auth";
-import { useActionState } from "react";
 
 const SigninForm = () => {
-  // const [state, loginAction] = useActionState(login, undefined);
-  // // const router = useRouter();
   const form = useForm<z.infer<typeof SignInFormSchema>>({
     resolver: zodResolver(SignInFormSchema),
   });
@@ -31,7 +25,6 @@ const SigninForm = () => {
 
   const { control, handleSubmit } = form;
   return (
-    // <form></form>
     <Form {...form}>
       <form
         onSubmit={handleSubmit(onSubmit)}
