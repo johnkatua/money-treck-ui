@@ -9,20 +9,29 @@ import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { login } from "@/app/actions/auth";
+import { SignInFormSchema } from "@/lib/definitions/SignInFormSchema";
+// import { login } from "@/lib/auth";
+import { useActionState } from "react";
 
 const SigninForm = () => {
-  const router = useRouter();
-  const form = useForm<z.infer<typeof signinFormSchema>>({
-    resolver: zodResolver(signinFormSchema),
+  // const [state, loginAction] = useActionState(login, undefined);
+  // // const router = useRouter();
+  const form = useForm<z.infer<typeof SignInFormSchema>>({
+    resolver: zodResolver(SignInFormSchema),
   });
 
-  const onSubmit = (values: z.infer<typeof signinFormSchema>) => {
-    console.log(values);
-    router.push("/");
+  const onSubmit = async (values: z.infer<typeof SignInFormSchema>) => {
+    try {
+      await login(values);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { control, handleSubmit } = form;
   return (
+    // <form></form>
     <Form {...form}>
       <form
         onSubmit={handleSubmit(onSubmit)}

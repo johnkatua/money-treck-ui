@@ -1,3 +1,5 @@
+"use server";
+
 import { SignInFormSchema } from "@/lib/definitions/SignInFormSchema";
 import { createSession, deleteSession } from "@/lib/session";
 import { redirect } from "next/navigation";
