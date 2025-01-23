@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 export const logout = async () => {
-  deleteSession();
+  await deleteSession();
   redirect("/login");
 };
 
