@@ -2,7 +2,7 @@ import axios from "axios";
 import { cookies } from "next/headers";
 
 export const axiosInterceptorInstance = axios.create({
-  baseURL: "/",
+  baseURL: "http://localhost:8002",
 });
 
 axiosInterceptorInstance.interceptors.request.use(
