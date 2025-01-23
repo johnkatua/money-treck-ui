@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { QueryClient, QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import localFont from "next/font/local";
 import "./globals.css";
