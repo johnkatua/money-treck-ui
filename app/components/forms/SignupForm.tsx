@@ -7,8 +7,9 @@ import { useForm } from "react-hook-form";
 import { signupFormSchema } from "@/lib/schemas";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import CustomFormField from "./CustomFormField";
 import { useSignup } from "@/app/hooks";
+import CustomFormField from "./CustomFormField";
+import toast from "react-hot-toast";
 
 const SignupForm = () => {
   const { isPending, mutate } = useSignup();
@@ -25,9 +26,11 @@ const SignupForm = () => {
     mutate(values, {
       onSuccess: (data) => {
         console.log(data);
+        toast.success("Signup successfully!");
       },
-      onError: (error) => {
+      onError: (error: any) => {
         console.log(error);
+        toast.error(error);
       },
     });
     console.log(values);
