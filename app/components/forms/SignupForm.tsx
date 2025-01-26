@@ -11,7 +11,7 @@ import CustomFormField from "./CustomFormField";
 import { useSignup } from "@/app/hooks";
 
 const SignupForm = () => {
-  const mutation = useSignup();
+  const { isPending, mutate } = useSignup();
   const form = useForm<z.infer<typeof signupFormSchema>>({
     resolver: zodResolver(signupFormSchema),
     defaultValues: {
@@ -22,9 +22,12 @@ const SignupForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof signupFormSchema>) => {
-    mutation.mutate(values, {
+    mutate(values, {
       onSuccess: (data) => {
         console.log(data);
+      },
+      onError: (error) => {
+        console.log(error);
       },
     });
     console.log(values);
@@ -50,7 +53,7 @@ const SignupForm = () => {
         >
           <Input placeholder="***********" type="password" />
         </CustomFormField>
-        <Button type="submit">Sign Up</Button>
+        <Button type="submit">{isPending ? "Loading" : "Sign Up"}</Button>
       </form>
     </Form>
   );
