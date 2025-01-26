@@ -11,6 +11,7 @@ import { login } from "@/app/actions/auth";
 import { SignInFormSchema } from "@/lib/definitions/SignInFormSchema";
 import { useSignin } from "@/app/hooks";
 import toast from "react-hot-toast";
+import CustomButton from "../buttons/CustomButton";
 
 const SigninForm = () => {
   const { isPending, mutate } = useSignin();
@@ -46,7 +47,11 @@ const SigninForm = () => {
         >
           <Input placeholder="***********" type="password" />
         </CustomFormField>
-        <Button type="submit">Sign In</Button>
+        <CustomButton
+          text={isPending ? "Please Wait" : "Sign In"}
+          type="submit"
+          disabled={isPending}
+        />
       </form>
     </Form>
   );
