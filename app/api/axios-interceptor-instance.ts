@@ -1,7 +1,7 @@
-// "use server";
+"use server";
 
 import axios from "axios";
-// import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 
 export const axiosInterceptorInstance = axios.create({
   baseURL: "http://localhost:8002/api",
@@ -9,11 +9,11 @@ export const axiosInterceptorInstance = axios.create({
 
 axiosInterceptorInstance.interceptors.request.use(
   async (config) => {
-    // const cookieStore = await cookies();
-    // const accessToken = cookieStore.get("session")?.value;
-    // if (accessToken) {
-    //   if (config.headers) config.headers.token = accessToken;
-    // }
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("session")?.value;
+    if (accessToken) {
+      if (config.headers) config.headers.token = accessToken;
+    }
     return config;
   },
   (error) => {
