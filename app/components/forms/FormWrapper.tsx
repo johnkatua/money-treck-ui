@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Form } from "@/components/ui/form";
 import { FC, ReactNode } from "react";
-import { FieldValues, Form, UseFormReturn } from "react-hook-form";
+import { FieldValues, UseFormReturn } from "react-hook-form";
 
 interface IFormWrapperProps<T extends FieldValues> {
   formTitle: string;
