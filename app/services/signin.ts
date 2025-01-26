@@ -1,3 +1,5 @@
+"use server";
+
 import { createSession } from "@/lib/session";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { redirect } from "next/navigation";
