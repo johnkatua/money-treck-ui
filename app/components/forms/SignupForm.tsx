@@ -8,8 +8,10 @@ import { signupFormSchema } from "@/lib/schemas";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import CustomFormField from "./CustomFormField";
+import { useSignup } from "@/app/hooks";
 
 const SignupForm = () => {
+  const mutation = useSignup();
   const form = useForm<z.infer<typeof signupFormSchema>>({
     resolver: zodResolver(signupFormSchema),
     defaultValues: {
@@ -20,6 +22,11 @@ const SignupForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof signupFormSchema>) => {
+    mutation.mutate(values, {
+      onSuccess: (data) => {
+        console.log(data);
+      },
+    });
     console.log(values);
   };
 

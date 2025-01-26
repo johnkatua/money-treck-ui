@@ -3,7 +3,7 @@ import { signup } from "../services";
 import { IUser, IUserResponse } from "../types";
 
 export const useSignup = () => {
-  useMutation<IUserResponse, unknown, IUser>({
+  return useMutation<IUserResponse, unknown, IUser>({
     mutationFn: (values: IUser) => signup(values),
   });
 };
