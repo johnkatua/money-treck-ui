@@ -9,18 +9,24 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { login } from "@/app/actions/auth";
 import { SignInFormSchema } from "@/lib/definitions/SignInFormSchema";
+import { useSignin } from "@/app/hooks";
+import toast from "react-hot-toast";
 
 const SigninForm = () => {
+  const { isPending, mutate } = useSignin();
   const form = useForm<z.infer<typeof SignInFormSchema>>({
     resolver: zodResolver(SignInFormSchema),
   });
 
   const onSubmit = async (values: z.infer<typeof SignInFormSchema>) => {
-    try {
-      await login(values);
-    } catch (error) {
-      console.log(error);
-    }
+    mutate(values, {
+      onSuccess: () => {
+        toast.success("Signin successfully");
+      },
+      onError: (error: any) => {
+        toast.error(error);
+      },
+    });
   };
 
   const { control, handleSubmit } = form;
