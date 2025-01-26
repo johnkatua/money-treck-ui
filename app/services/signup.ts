@@ -1,8 +1,11 @@
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-import { IUser } from "../types";
+import { IUser, IUserResponse } from "../types";
 
-export const signup = async (): Promise<IUser> => {
-  const { data } = await axiosInterceptorInstance.post("/users/register");
+export const signup = async (values: IUser): Promise<IUserResponse> => {
+  const { data } = await axiosInterceptorInstance.post(
+    "/users/register",
+    values
+  );
 
   return data;
 };
