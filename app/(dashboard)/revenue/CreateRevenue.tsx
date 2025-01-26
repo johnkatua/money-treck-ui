@@ -9,6 +9,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Revenue } from "@/lib/table-columns";
 import React, { useState } from "react";
 
@@ -25,6 +32,25 @@ const CreateRevenue = () => {
     // setRevenueList((prev) => [...prev, newRevenueItem]);
     setNewRevenue({ name: "", amount: "" });
   };
+
+  const periodItems = [
+    {
+      name: "Daily",
+      value: "daily",
+    },
+    {
+      name: "Weekly",
+      value: "weekly",
+    },
+    {
+      name: "Monthly",
+      value: "monthly",
+    },
+    {
+      name: "Yearly",
+      value: "yearly",
+    },
+  ];
   return (
     <Card className="bg-white rounded-lg hover:shadow-lg">
       <CardHeader className="font-semibold text-2xl text-gray-800">
@@ -60,6 +86,23 @@ const CreateRevenue = () => {
               placeholder="Enter revenue amount"
               className="mt-2 p-3 rounded-md w-full text-gray-800 focus:ring-2 focus:ring-indigo-500 transition-all"
             />
+          </div>
+          <div>
+            <Label htmlFor="period" className="text-gray-500">
+              Period:
+            </Label>
+            <Select>
+              <SelectTrigger>
+                <SelectValue placeholder="Select Period" />
+              </SelectTrigger>
+              <SelectContent>
+                {periodItems?.map(({ name, value }) => (
+                  <SelectItem key={value} value={value}>
+                    {name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </CardContent>
