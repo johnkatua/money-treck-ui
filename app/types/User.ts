@@ -4,8 +4,15 @@ export interface IUser {
   password: string;
 }
 
+export interface ILogin {
+  email: string;
+  password: string;
+}
+
 export interface IToken {
   token: string;
 }
 
 export interface IUserResponse extends IUser, IToken {}
+
+export interface ILoginResponse extends ILogin, IToken {}
