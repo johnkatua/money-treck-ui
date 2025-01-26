@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useSignup } from "@/app/hooks";
 import CustomFormField from "./CustomFormField";
 import toast from "react-hot-toast";
+import CustomButton from "../buttons/CustomButton";
 
 const SignupForm = () => {
   const { isPending, mutate } = useSignup();
@@ -57,6 +58,11 @@ const SignupForm = () => {
           <Input placeholder="***********" type="password" />
         </CustomFormField>
         <Button type="submit">{isPending ? "Loading" : "Sign Up"}</Button>
+        <CustomButton
+          type="submit"
+          disabled={isPending}
+          text={isPending ? "Please Wait" : "Sign Up"}
+        />
       </form>
     </Form>
   );
