@@ -11,7 +11,7 @@ interface ICustomButton {
 const CustomButton: FC<ICustomButton> = ({ text, type, disabled }) => {
   return (
     <Button type={type} disabled={disabled}>
-      <Loader2 className="animate-spin" />
+      {disabled && <Loader2 className="animate-spin" />}
       {text}
     </Button>
   );
