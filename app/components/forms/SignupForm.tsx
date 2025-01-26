@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signupFormSchema } from "@/lib/schemas";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { useSignup } from "@/app/hooks";
 import CustomFormField from "./CustomFormField";
 import toast from "react-hot-toast";
@@ -57,7 +56,6 @@ const SignupForm = () => {
         >
           <Input placeholder="***********" type="password" />
         </CustomFormField>
-        <Button type="submit">{isPending ? "Loading" : "Sign Up"}</Button>
         <CustomButton
           type="submit"
           disabled={isPending}
