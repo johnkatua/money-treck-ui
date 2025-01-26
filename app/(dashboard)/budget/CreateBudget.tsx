@@ -1,3 +1,5 @@
+"use client";
+
 import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import FormWrapper from "@/app/components/forms/FormWrapper";
@@ -28,7 +30,12 @@ const CreateBudget = () => {
       <CustomFormField control={control} name="period" label="Period *">
         <Select></Select>
       </CustomFormField>
-      <CustomButton text="Add Budget" type="submit" disabled={false} />
+      <CustomButton
+        text="Add Budget"
+        type="submit"
+        disabled={false}
+        className="w-full bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
+      />
     </FormWrapper>
   );
 };

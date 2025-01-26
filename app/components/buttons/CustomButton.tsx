@@ -6,11 +6,17 @@ interface ICustomButton {
   text: string;
   type: "submit" | "reset";
   disabled: boolean;
+  className?: string;
 }
 
-const CustomButton: FC<ICustomButton> = ({ text, type, disabled }) => {
+const CustomButton: FC<ICustomButton> = ({
+  text,
+  type,
+  disabled,
+  className,
+}) => {
   return (
-    <Button type={type} disabled={disabled}>
+    <Button type={type} disabled={disabled} className={className}>
       {disabled && <Loader2 className="animate-spin" />}
       {text}
     </Button>

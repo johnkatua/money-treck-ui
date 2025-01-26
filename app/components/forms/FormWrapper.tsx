@@ -24,7 +24,9 @@ const FormWrapper = <T extends FieldValues>({
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={handleSubmit(onSubmit)}>{children}</form>
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+            {children}
+          </form>
         </Form>
       </CardContent>
     </Card>
