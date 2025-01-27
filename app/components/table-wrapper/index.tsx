@@ -22,13 +22,9 @@ import { FC, useMemo, useState } from "react";
 interface ITableWrapper {
   data: any[];
   columns: any[];
-  isLoading: boolean;
+  isLoading?: boolean;
 }
-const TableWrapper: FC<ITableWrapper> = ({
-  data,
-  columns,
-  isLoading = true,
-}) => {
+const TableWrapper: FC<ITableWrapper> = ({ data, columns, isLoading }) => {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 5,

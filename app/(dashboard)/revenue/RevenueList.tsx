@@ -23,11 +23,16 @@ const RevenueList = () => {
   const { data, isPending, isFetching, isFetched, isLoading, isError, error } =
     useRevenues();
 
-  if (isLoading) return <div>Loading...</div>;
   if (isError && data && data?.length < 0)
     return <div>Error: {error.message}</div>;
 
-  return <TableWrapper data={data} columns={revenueColumns} />;
+  return (
+    <TableWrapper
+      data={data}
+      columns={revenueColumns}
+      isLoading={isFetching || isPending || isLoading}
+    />
+  );
 };
 
 export default RevenueList;
