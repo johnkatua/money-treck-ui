@@ -6,7 +6,6 @@ import { useRevenues } from "@/app/hooks";
 import { getRevenues } from "@/app/services";
 import { Revenue, revenueColumns } from "@/lib/table-columns";
 
-
 const revenueData: Revenue[] = [
   { id: "1", name: "Product A", amount: 12345 },
   { id: "2", name: "Product B", amount: 67890 },
@@ -24,32 +23,11 @@ const RevenueList = () => {
   const { data, isPending, isFetching, isFetched, isLoading, isError, error } =
     useRevenues();
 
-  console.log({
-    data: data?.data,
-    isPending,
-    isFetching,
-    isFetched,
-    isLoading,
-    isError,
-    error,
-  });
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const { data } = await getRevenues();
-  //     console.log(data.data);
-  //     setInitialState(data.data);
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  // Render loading/error states
   if (isLoading) return <div>Loading...</div>;
-  if (isError && data?.data.length < 0)
+  if (isError && data && data?.length < 0)
     return <div>Error: {error.message}</div>;
 
-  return <TableWrapper data={data?.data} columns={revenueColumns} />;
+  return <TableWrapper data={data} columns={revenueColumns} />;
 };
 
 export default RevenueList;

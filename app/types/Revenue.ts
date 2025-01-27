@@ -1,7 +1,5 @@
-export interface Revenue {
-  data: {
-    data: IData[];
-  };
+export interface Revenue extends IData {
+  id: number;
 }
 
 export interface IData {
