@@ -22,7 +22,7 @@ const SidebarItems = ({
   return (
     <SidebarMenu>
       {items?.map((item) => (
-        <SidebarMenuItem key={item.title}>
+        <SidebarMenuItem key={item.title} className="cursor-pointer">
           <SidebarMenuButton asChild onClick={() => router.push(item.url)}>
             <div>
               <item.icon />
