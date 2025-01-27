@@ -4,11 +4,12 @@ import RevenueList from "./RevenueList";
 import CreateRevenue from "./CreateRevenue";
 import TabWrapper from "@/app/components/tab-wrapper";
 import { tabsHeader } from "@/lib/data";
+import RevenueListWrapper from "./RevenueListWrapper";
 
 const tabsContent = [
   {
     value: "View",
-    children: <RevenueList />,
+    children: <RevenueListWrapper />,
   },
   {
     value: "Create",

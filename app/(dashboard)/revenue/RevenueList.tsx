@@ -1,11 +1,11 @@
 "use client";
 
 import TableWrapper from "@/app/components/table-wrapper";
+import { REVENEUS_QUERY_KEY } from "@/app/constants";
 import { useRevenues } from "@/app/hooks";
 import { getRevenues } from "@/app/services";
 import { Revenue, revenueColumns } from "@/lib/table-columns";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+
 
 const revenueData: Revenue[] = [
   { id: "1", name: "Product A", amount: 12345 },
@@ -21,12 +21,11 @@ const revenueData: Revenue[] = [
 ];
 
 const RevenueList = () => {
-  const [initialState, setInitialState] = useState([]);
   const { data, isPending, isFetching, isFetched, isLoading, isError, error } =
-    useRevenues(initialState);
+    useRevenues();
 
   console.log({
-    data,
+    data: data?.data,
     isPending,
     isFetching,
     isFetched,
@@ -35,37 +34,22 @@ const RevenueList = () => {
     error,
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await getRevenues();
-      console.log(data.data);
-      setInitialState(data.data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const { data } = await getRevenues();
+  //     console.log(data.data);
+  //     setInitialState(data.data);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   // Render loading/error states
   if (isLoading) return <div>Loading...</div>;
-  if (isError && data?.length < 0) return <div>Error: {error.message}</div>;
+  if (isError && data?.data.length < 0)
+    return <div>Error: {error.message}</div>;
 
-  // const myData = JSON.parse(JSON.stringify(data));
-
-  // console.log("mmyData", myData);
-
-  return (
-    <>
-      {data?.map((item) => (
-        <div>
-          <p>{item.name}</p>
-          <p>{item.amount}</p>
-          <p>{item.period}</p>
-        </div>
-      ))}
-    </>
-  );
-
-  // return <TableWrapper data={revenueData} columns={revenueColumns} />;
+  return <TableWrapper data={data?.data} columns={revenueColumns} />;
 };
 
 export default RevenueList;

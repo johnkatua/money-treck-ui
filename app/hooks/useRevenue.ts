@@ -1,14 +1,16 @@
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
 import { REVENEUS_QUERY_KEY } from "../constants";
 import { getRevenues } from "../services";
 import { Revenue } from "../types";
 
-export const useRevenues = (initialState: Revenue) => {
-  console.log(initialState);
+export const useRevenues = () => {
+  // console.log(initialState);
   return useQuery({
     queryKey: REVENEUS_QUERY_KEY,
     queryFn: getRevenues,
-    initialData: initialState,
+    // initialData: initialState,
     // initialData: [
     //   {
     //     name: "John",
