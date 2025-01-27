@@ -18,7 +18,7 @@ export const getRevenues = async (): Promise<Revenue[]> => {
       updatedData
     );
 
-    return [];
+    return updatedData;
   } catch (error: unknown) {
     console.error(
       "Error occurred while fetching revenues:",
