@@ -1,13 +1,13 @@
 import PageWrapper from "@/app/components/page-wrapper";
 import TabWrapper from "@/app/components/tab-wrapper";
 import { tabsHeader } from "@/lib/data";
-import BudgetList from "./BudgetList";
 import CreateBudget from "./CreateBudget";
+import BudgetListWrapper from "./BudgetListWrapper";
 
 const tabsContent = [
   {
     value: "View",
-    children: <BudgetList />,
+    children: <BudgetListWrapper />,
   },
   {
     value: "Create",
