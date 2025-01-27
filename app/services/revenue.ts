@@ -1,31 +1,3 @@
-// "use server";
-
-// import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-// import { IData, Revenue } from "../types";
-
-// export const getRevenues = async (): Promise<Revenue[]> => {
-//   try {
-//     const { data } = await axiosInterceptorInstance.get("/revenues");
-
-//     console.log(data.data.data);
-
-//     let extractedData = data.data.data;
-
-//     const updatedData = extractedData.map((revenue: IData, idx: number) => {
-//       return {
-//         id: idx + 1,
-//         ...revenue,
-//       };
-//     });
-
-//     console.log({ updatedData });
-
-//     return updatedData;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 "use server";
 
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
@@ -46,7 +18,7 @@ export const getRevenues = async (): Promise<Revenue[]> => {
       updatedData
     );
 
-    return updatedData;
+    return [];
   } catch (error: unknown) {
     console.error(
       "Error occurred while fetching revenues:",
