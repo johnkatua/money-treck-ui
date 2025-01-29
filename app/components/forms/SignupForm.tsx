@@ -25,15 +25,12 @@ const SignupForm = () => {
   const onSubmit = (values: z.infer<typeof signupFormSchema>) => {
     mutate(values, {
       onSuccess: (data) => {
-        console.log(data);
         toast.success("Signup successfully!");
       },
       onError: (error: any) => {
-        console.log(error);
         toast.error(error);
       },
     });
-    console.log(values);
   };
 
   const { control, handleSubmit } = form;

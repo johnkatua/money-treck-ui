@@ -11,8 +11,6 @@ export const getBudgets = async () => {
       ...budget,
     }));
 
-    console.debug("Budgets successfully fetched and transformed:", updatedData);
-
     return updatedData;
   } catch (error) {
     console.error(

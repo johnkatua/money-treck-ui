@@ -13,11 +13,6 @@ export const getRevenues = async (): Promise<Revenue[]> => {
       ...revenue,
     }));
 
-    console.debug(
-      "Revenues successfully fetched and transformed:",
-      updatedData
-    );
-
     return updatedData;
   } catch (error: unknown) {
     console.error(

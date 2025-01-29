@@ -11,7 +11,6 @@ export const logout = async () => {
 };
 
 export const login = async (values: z.infer<typeof SignInFormSchema>) => {
-  console.log(values);
   await createSession("itoeo");
   redirect("/");
 };
