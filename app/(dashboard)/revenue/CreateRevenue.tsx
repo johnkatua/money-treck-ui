@@ -6,6 +6,7 @@ import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
+import { periodItems } from "@/lib/data";
 import { RevenueFormSchema } from "@/lib/definitions/RevenueFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -28,24 +29,6 @@ const CreateRevenue = () => {
 
   const { control } = form;
 
-  const periodItems = [
-    {
-      name: "Daily",
-      value: "daily",
-    },
-    {
-      name: "Weekly",
-      value: "weekly",
-    },
-    {
-      name: "Monthly",
-      value: "monthly",
-    },
-    {
-      name: "Yearly",
-      value: "yearly",
-    },
-  ];
   return (
     <FormWrapper formTitle="Add New Revenue" form={form} onSubmit={onSubmit}>
       <CustomFormField control={control} name="name" label="Revenue Name *">

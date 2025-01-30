@@ -99,4 +99,23 @@ export const settingsHeader = [
   },
 ];
 
+export const periodItems = [
+  {
+    name: "Daily",
+    value: "daily",
+  },
+  {
+    name: "Weekly",
+    value: "weekly",
+  },
+  {
+    name: "Monthly",
+    value: "monthly",
+  },
+  {
+    name: "Yearly",
+    value: "yearly",
+  },
+];
+
 // <a href="https://www.freepik.com/free-vector/young-man-glasses-hoodie_356306296.htm">Image by brgfx on Freepik</a>
