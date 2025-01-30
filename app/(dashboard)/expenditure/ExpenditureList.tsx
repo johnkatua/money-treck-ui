@@ -1,3 +1,5 @@
+"use client";
+
 import TableWrapper from "@/app/components/table-wrapper";
 import { useExpense } from "@/app/hooks/useExpense";
 import { expenseColumns } from "@/lib/table-columns";

@@ -4,7 +4,8 @@ import { IExpenditure, IExpenditureResponse } from "../types/Expenditure";
 export const getExpenses = async () => {
   try {
     const response = await axiosInterceptorInstance.get("/expenses");
-    const extractedData: IExpenditureResponse[] = response?.data?.data || [];
+    const extractedData: IExpenditureResponse[] =
+      response?.data?.data?.data || [];
 
     const updatedData: IExpenditure[] = extractedData.map((expense, idx) => ({
       id: idx + 1,

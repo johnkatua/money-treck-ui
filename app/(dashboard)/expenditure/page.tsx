@@ -3,11 +3,18 @@ import TabWrapper from "@/app/components/tab-wrapper";
 import ExpenditureList from "./ExpenditureList";
 import CreateExpenditure from "./CreateExpenditure";
 import { tabsHeader } from "@/lib/data";
+import TableListWrapper from "@/app/components/table-wrapper/TableListWrapper";
+import { EXPENSES_QUERY_KEY } from "@/app/constants";
+import { getExpenses } from "@/app/services/expenditure";
 
 const tabsContent = [
   {
     value: "View",
-    children: <ExpenditureList />,
+    children: (
+      <TableListWrapper queryKey={EXPENSES_QUERY_KEY} queryFn={getExpenses}>
+        <ExpenditureList />
+      </TableListWrapper>
+    ),
   },
   {
     value: "Create",
