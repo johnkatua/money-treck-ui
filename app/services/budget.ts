@@ -1,5 +1,5 @@
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-import { IBudget, IBudgetResponse } from "../types/Budget";
+import { IBudget, IBudgetResponse } from "../types";
 
 export const getBudgets = async () => {
   try {

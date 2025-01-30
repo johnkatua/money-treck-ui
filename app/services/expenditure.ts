@@ -1,5 +1,5 @@
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-import { IExpenditure, IExpenditureResponse } from "../types/Expenditure";
+import { IExpenditure, IExpenditureResponse } from "../types";
 
 export const getExpenses = async () => {
   try {
