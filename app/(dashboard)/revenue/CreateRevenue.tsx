@@ -14,7 +14,9 @@ import { z } from "zod";
 const CreateRevenue = () => {
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
+    mode: "onBlur",
   });
+  const { amount } = form.getValues();
 
   const onSubmit = async (values: z.infer<typeof RevenueFormSchema>) => {
     console.log(values);
