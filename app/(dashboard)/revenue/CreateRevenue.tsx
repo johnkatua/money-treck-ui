@@ -32,7 +32,7 @@ const CreateRevenue = () => {
         toast.success("Revenue created successfully");
       },
       onError: (error: any) => {
-        toast.error(error);
+        toast.error(error.message);
       },
     });
   };
