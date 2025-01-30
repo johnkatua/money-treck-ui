@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { EXPENSES_QUERY_KEY } from "../constants";
-import { getExpenses } from "../services/expenditure";
+import { getExpenses } from "../services";
 
 export const useExpense = () => {
   return useQuery({

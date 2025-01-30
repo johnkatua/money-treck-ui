@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { getBudgets } from "../services/budget";
+import { getBudgets } from "../services";
 import { BUDGETS_QUERY_KEY } from "../constants";
 
 export const useBudget = () => {
