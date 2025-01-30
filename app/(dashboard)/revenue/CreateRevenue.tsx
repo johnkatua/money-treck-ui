@@ -4,25 +4,9 @@ import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Revenue } from "@/lib/table-columns";
+import { SelectItem } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const CreateRevenue = () => {
@@ -35,18 +19,6 @@ const CreateRevenue = () => {
   };
 
   const { control } = form;
-  const [newRevenue, setNewRevenue] = useState({ name: "", amount: "" });
-
-  const handleCreateRevenue = () => {
-    const newRevenueItem: Revenue = {
-      id: Date.now().toString(),
-      name: newRevenue.name,
-      amount: parseFloat(newRevenue.amount),
-    };
-
-    // setRevenueList((prev) => [...prev, newRevenueItem]);
-    setNewRevenue({ name: "", amount: "" });
-  };
 
   const periodItems = [
     {
