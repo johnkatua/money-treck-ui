@@ -8,14 +8,14 @@ export const RevenueFormSchema = z.object({
     })
     .trim(),
   amount: z
-    .string()
+    .number()
     .min(10, {
       message: "Amount must be atleast Ksh. 10",
     })
     .max(100, {
       message: "Amount should not exceed ksh. 100",
     })
-    .or(z.string().transform((val) => Number(val))), // Handle string inputs and convert to number
+    .transform((val) => Number(val)), // Handle string inputs and convert to number
   period: z.enum(["daily", "weekly", "monthly", "yearly"], {
     message: "Period must be either 'daily', 'weekly', 'monthly', or 'yearly'",
   }),

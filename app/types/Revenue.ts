@@ -8,3 +8,9 @@ export interface IData {
   period: string;
   user_id: string;
 }
+
+export interface IRevenueRequest {
+  name: string;
+  amount: number;
+  period: string;
+}

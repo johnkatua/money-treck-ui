@@ -14,9 +14,13 @@ import { z } from "zod";
 const CreateRevenue = () => {
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
+    defaultValues: {
+      name: "",
+      amount: 10,
+      period: "daily",
+    },
     mode: "onBlur",
   });
-  const { amount } = form.getValues();
 
   const onSubmit = async (values: z.infer<typeof RevenueFormSchema>) => {
     console.log(values);
@@ -51,11 +55,15 @@ const CreateRevenue = () => {
         <Input
           type="number"
           placeholder="1500"
-          onChange={(e) => e.target.valueAsNumber}
+          defaultValue={10}
+          // onChange={(e) => e.target.valueAsNumber}
         />
       </CustomFormField>
       <CustomFormField control={control} name="period" label="Period *">
-        <CustomSelect placeholder="Select Period">
+        <CustomSelect
+          placeholder="Select Period"
+          onValueChange={(value) => form.setValue("period", value)}
+        >
           {periodItems?.map(({ name, value }) => (
             <SelectItem key={value} value={value}>
               {name}

@@ -9,11 +9,16 @@ import { FC, ReactNode } from "react";
 interface ICustomSelect {
   placeholder: string;
   children: ReactNode;
+  onValueChange: (e: any) => void;
 }
 
-const CustomSelect: FC<ICustomSelect> = ({ placeholder, children }) => {
+const CustomSelect: FC<ICustomSelect> = ({
+  placeholder,
+  onValueChange,
+  children,
+}) => {
   return (
-    <Select>
+    <Select onValueChange={onValueChange}>
       <SelectTrigger>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>

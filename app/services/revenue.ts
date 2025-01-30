@@ -1,7 +1,7 @@
 "use server";
 
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-import { IData, Revenue } from "../types";
+import { IData, IRevenueRequest, Revenue } from "../types";
 
 export const getRevenues = async (): Promise<Revenue[]> => {
   try {
@@ -20,5 +20,22 @@ export const getRevenues = async (): Promise<Revenue[]> => {
       error instanceof Error ? error.message : error
     );
     throw new Error("Failed to fetch revenues. Please try again later.");
+  }
+};
+
+export const createRevenue = async (values: IRevenueRequest) => {
+  try {
+    const { name, amount, period } = values;
+    await axiosInterceptorInstance.post("revenues", {
+      name,
+      amount,
+      period,
+    });
+  } catch (error) {
+    console.error(
+      "Error occurred while creating revenue:",
+      error instanceof Error ? error.message : error
+    );
+    throw new Error("Failed to create revenue. Please try again later.");
   }
 };
