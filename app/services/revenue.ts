@@ -31,7 +31,6 @@ export const createRevenue = async (values: IRevenueRequest) => {
       amount,
       period,
     });
-    console.log(response);
   } catch (error) {
     console.error(
       "Error occurred while creating revenue:",
