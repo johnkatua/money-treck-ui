@@ -1,14 +1,21 @@
 import { z } from "zod";
 
 export const RevenueFormSchema = z.object({
-  name: z.string().trim(),
+  name: z
+    .string()
+    .min(1, {
+      message: "Name is required",
+    })
+    .trim(),
   amount: z
     .number()
     .min(10, {
-      message: "Be atleast 10 shillings",
+      message: "Amount must be atleast Ksh. 10",
     })
     .max(100, {
       message: "Amount should not exceed ksh. 100",
     }),
-  period: z.string().trim(),
+  period: z.enum(["daily", "weekly", "monthly", "yearly"], {
+    message: "Period must be either 'daily', 'weekly', 'monthly', or 'yearly'",
+  }),
 });
