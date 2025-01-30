@@ -26,11 +26,12 @@ export const getRevenues = async (): Promise<Revenue[]> => {
 export const createRevenue = async (values: IRevenueRequest) => {
   try {
     const { name, amount, period } = values;
-    await axiosInterceptorInstance.post("revenues", {
+    const response = await axiosInterceptorInstance.post("revenues", {
       name,
       amount,
       period,
     });
+    console.log(response);
   } catch (error) {
     console.error(
       "Error occurred while creating revenue:",

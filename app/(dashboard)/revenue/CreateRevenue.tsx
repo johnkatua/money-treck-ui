@@ -4,15 +4,18 @@ import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
+import { useCreateRevenue } from "@/app/hooks";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
 import { RevenueFormSchema } from "@/lib/definitions/RevenueFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const CreateRevenue = () => {
+  const { isPending, mutate } = useCreateRevenue();
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
     defaultValues: {
@@ -24,7 +27,14 @@ const CreateRevenue = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof RevenueFormSchema>) => {
-    console.log(values);
+    mutate(values, {
+      onSuccess: () => {
+        toast.success("Revenue created successfully");
+      },
+      onError: (error: any) => {
+        toast.error(error);
+      },
+    });
   };
 
   const { control } = form;
@@ -35,12 +45,7 @@ const CreateRevenue = () => {
         <Input placeholder="New Revenue" />
       </CustomFormField>
       <CustomFormField control={control} name="amount" label="Revenue Amount *">
-        <Input
-          type="number"
-          placeholder="1500"
-          defaultValue={10}
-          // onChange={(e) => e.target.valueAsNumber}
-        />
+        <Input type="number" placeholder="1500" />
       </CustomFormField>
       <CustomFormField control={control} name="period" label="Period *">
         <CustomSelect
@@ -56,9 +61,9 @@ const CreateRevenue = () => {
       </CustomFormField>
       <div className="h2" />
       <CustomButton
-        text="Add Budget"
+        text={isPending ? "Please Wait" : "Add Budget"}
         type="submit"
-        disabled={false}
+        disabled={isPending}
         className="w-full bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
       />
     </FormWrapper>

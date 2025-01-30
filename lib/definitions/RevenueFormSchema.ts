@@ -15,7 +15,7 @@ export const RevenueFormSchema = z.object({
     .max(100, {
       message: "Amount should not exceed ksh. 100",
     })
-    .transform((val) => Number(val)), // Handle string inputs and convert to number
+    .or(z.string().transform((val) => Number(val))), // Handle string inputs and convert to number
   period: z.enum(["daily", "weekly", "monthly", "yearly"], {
     message: "Period must be either 'daily', 'weekly', 'monthly', or 'yearly'",
   }),
