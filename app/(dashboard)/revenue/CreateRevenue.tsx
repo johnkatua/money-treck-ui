@@ -46,7 +46,11 @@ const CreateRevenue = () => {
         <Input placeholder="New Revenue" />
       </CustomFormField>
       <CustomFormField control={control} name="amount" label="Revenue Amount *">
-        <Input type="number" placeholder="1500" />
+        <Input
+          type="number"
+          placeholder="1500"
+          onChange={(e) => e.target.valueAsNumber}
+        />
       </CustomFormField>
       <CustomFormField control={control} name="period" label="Period *">
         <CustomSelect placeholder="Select Period">
