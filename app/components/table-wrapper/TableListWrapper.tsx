@@ -21,6 +21,7 @@ const TableListWrapper: FC<ITableListWrapper> = async ({
     queryKey,
     queryFn,
   });
+
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       {children}
