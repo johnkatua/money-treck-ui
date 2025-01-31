@@ -28,7 +28,9 @@ const CreateExpenditure = () => {
         <Input type="number" />
       </CustomFormField>
       <CustomFormField control={control} name="budget_id" label="Budget *">
-        <CustomSelect placeholder="Select Budget">{[]}</CustomSelect>
+        <CustomSelect placeholder="Select Budget" onValueChange={() => {}}>
+          {[]}
+        </CustomSelect>
       </CustomFormField>
       <div className="h-2" />
       <CustomButton
