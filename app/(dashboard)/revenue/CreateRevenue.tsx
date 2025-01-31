@@ -4,12 +4,14 @@ import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
+import { REVENEUS_QUERY_KEY } from "@/app/constants";
 import { useCreateRevenue } from "@/app/hooks";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
 import { RevenueFormSchema } from "@/lib/definitions/RevenueFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
@@ -27,9 +29,13 @@ const CreateRevenue = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof RevenueFormSchema>) => {
+    const queryClient = useQueryClient();
     mutate(values, {
       onSuccess: () => {
         toast.success("Revenue created successfully");
+        queryClient.invalidateQueries({
+          queryKey: REVENEUS_QUERY_KEY,
+        });
       },
       onError: (error: any) => {
         toast.error(error.message);

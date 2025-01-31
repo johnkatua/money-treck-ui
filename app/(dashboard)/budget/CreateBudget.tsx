@@ -4,16 +4,18 @@ import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
+import { useCreateBudget } from "@/app/hooks";
 import { Input } from "@/components/ui/input";
-import { Select, SelectItem } from "@/components/ui/select";
+import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
 import { BudgetFormSchema } from "@/lib/definitions/BudgetFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const CreateBudget = () => {
+  const { isPending, mutate } = useCreateBudget();
   const form = useForm<z.infer<typeof BudgetFormSchema>>({
     resolver: zodResolver(BudgetFormSchema),
     defaultValues: {
@@ -25,7 +27,14 @@ const CreateBudget = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof BudgetFormSchema>) => {
-    console.log(values);
+    mutate(values, {
+      onSuccess: () => {
+        toast.success("Budget created successfully");
+      },
+      onError: (error: any) => {
+        toast.error(error.message);
+      },
+    });
   };
 
   const { control } = form;
@@ -39,7 +48,10 @@ const CreateBudget = () => {
         <Input />
       </CustomFormField>
       <CustomFormField control={control} name="period" label="Period *">
-        <CustomSelect placeholder="Select Period" onValueChange={() => {}}>
+        <CustomSelect
+          placeholder="Select Period"
+          onValueChange={(value) => form.setValue("period", value)}
+        >
           {periodItems?.map(({ name, value }) => (
             <SelectItem key={value} value={value}>
               {name}
