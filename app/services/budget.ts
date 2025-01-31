@@ -25,7 +25,6 @@ export const getBudgets = async () => {
 };
 
 export const createBudget = async (values: IBudgetResponse) => {
-  console.log(values);
   try {
     const { name, amount, period } = values;
     await axiosInterceptorInstance.post("/budgets", {
