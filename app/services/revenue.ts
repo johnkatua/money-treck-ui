@@ -26,7 +26,7 @@ export const getRevenues = async (): Promise<Revenue[]> => {
 export const createRevenue = async (values: IRevenueRequest) => {
   try {
     const { name, amount, period } = values;
-    const response = await axiosInterceptorInstance.post("revenues", {
+    await axiosInterceptorInstance.post("revenues", {
       name,
       amount,
       period,
