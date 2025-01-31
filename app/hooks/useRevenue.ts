@@ -16,7 +16,7 @@ export const useCreateRevenue = () => {
   return useMutation({
     mutationFn: createRevenue,
     onSuccess: () => {
-      queryClient.invalidateQueries({
+      return queryClient.invalidateQueries({
         queryKey: REVENEUS_QUERY_KEY,
       });
     },

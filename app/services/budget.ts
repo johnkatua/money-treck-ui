@@ -1,3 +1,5 @@
+"use server";
+
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { IBudget, IBudgetResponse } from "../types";
 
@@ -22,14 +24,16 @@ export const getBudgets = async () => {
 };
 
 export const createBudget = async (values: IBudgetResponse) => {
+  console.log(values);
   try {
     const { name, amount, period } = values;
-    await axiosInterceptorInstance.post("/budgets", {
+    await axiosInterceptorInstance.post("/revenues", {
       name,
       amount,
       period,
     });
   } catch (error) {
+    console.log("Err::", error);
     console.error(
       "Error occurred while creating budget:",
       error instanceof Error ? error.message : error

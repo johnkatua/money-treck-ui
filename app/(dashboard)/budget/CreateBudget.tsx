@@ -32,6 +32,7 @@ const CreateBudget = () => {
         toast.success("Budget created successfully");
       },
       onError: (error: any) => {
+        console.log(error);
         toast.error(error.message);
       },
     });

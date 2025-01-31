@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { IData, IRevenueRequest, Revenue } from "../types";
 
@@ -37,5 +38,7 @@ export const createRevenue = async (values: IRevenueRequest) => {
       error instanceof Error ? error.message : error
     );
     throw new Error("Failed to create revenue. Please try again later.");
+  } finally {
+    revalidatePath("/revenue");
   }
 };
