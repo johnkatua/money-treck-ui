@@ -115,86 +115,89 @@ const TableWrapper: FC<ITableWrapper> = ({ data, columns, isLoading }) => {
         </tbody>
       </table>
       <div className="h-2" />
-      <div className="flex flex-wrap items-center justify-between p-4 bg-gray-900 text-gray-300 rounded-b-md shadow-md border-t border-gray-700">
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => table.firstPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<<"}
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<"}
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            {">"}
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => table.lastPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            {">>"}
-          </Button>
-        </div>
+      {data && data?.length > 0 && (
+        <div className="flex flex-wrap items-center justify-between p-4 bg-gray-900 text-gray-300 rounded-b-md shadow-md border-t border-gray-700">
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => table.firstPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              {"<<"}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              {"<"}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              {">"}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => table.lastPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              {">>"}
+            </Button>
+          </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-sm">
-            Page <strong>{table.getState().pagination.pageIndex + 1}</strong> of{" "}
-            <strong>
-              {table.getPageCount() > 0
-                ? table.getPageCount().toLocaleString()
-                : 1}
-            </strong>
-          </span>
-        </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm">
+              Page <strong>{table.getState().pagination.pageIndex + 1}</strong>{" "}
+              of{" "}
+              <strong>
+                {table.getPageCount() > 0
+                  ? table.getPageCount().toLocaleString()
+                  : 1}
+              </strong>
+            </span>
+          </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-sm">Go to page:</span>
-          <Input
-            type="number"
-            min="1"
-            max={table.getPageCount()}
-            defaultValue={table.getState().pagination.pageIndex + 1}
-            onChange={(e) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0;
-              table.setPageIndex(page);
-            }}
-            className="w-16 text-center"
-          />
-        </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm">Go to page:</span>
+            <Input
+              type="number"
+              min="1"
+              max={table.getPageCount()}
+              defaultValue={table.getState().pagination.pageIndex + 1}
+              onChange={(e) => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                table.setPageIndex(page);
+              }}
+              className="w-16 text-center"
+            />
+          </div>
 
-        <div className="flex items-center gap-2">
-          <Select
-            onValueChange={(value) => table.setPageSize(Number(value))}
-            defaultValue={String(table.getState().pagination.pageSize)}
-          >
-            <SelectTrigger className="w-20">
-              <SelectValue placeholder="Rows" />
-            </SelectTrigger>
-            <SelectContent>
-              {[5, 10, 20, 30, 40, 50].map((pageSize) => (
-                <SelectItem key={pageSize} value={String(pageSize)}>
-                  {pageSize} rows
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <div className="flex items-center gap-2">
+            <Select
+              onValueChange={(value) => table.setPageSize(Number(value))}
+              defaultValue={String(table.getState().pagination.pageSize)}
+            >
+              <SelectTrigger className="w-20">
+                <SelectValue placeholder="Rows" />
+              </SelectTrigger>
+              <SelectContent>
+                {[5, 10, 20, 30, 40, 50].map((pageSize) => (
+                  <SelectItem key={pageSize} value={String(pageSize)}>
+                    {pageSize} rows
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
