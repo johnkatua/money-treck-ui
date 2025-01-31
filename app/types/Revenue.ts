@@ -3,6 +3,7 @@ export interface Revenue extends IData {
 }
 
 export interface IData {
+  _id: string;
   name: string;
   amount: number;
   period: string;
