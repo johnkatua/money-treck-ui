@@ -5,7 +5,7 @@ import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
 import toast from "react-hot-toast";
-import { useCreateExpense, useRevenues } from "@/app/hooks";
+import { useBudget, useCreateExpense } from "@/app/hooks";
 import { getRevenues } from "@/app/services";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,17 +19,17 @@ import { z } from "zod";
 
 const CreateExpenditure = () => {
   const { isPending, mutate } = useCreateExpense();
-  const { data, isPending: isLoadingData } = useRevenues();
-  const [revenues, setRevenues] = useState(data);
+  const { data, isPending: isLoadingData } = useBudget();
+  const [budget, setBudget] = useState(data);
 
   useEffect(() => {
-    const refetchRevenueData = async () => {
-      if (!revenues) {
+    const refetchBudgetData = async () => {
+      if (!budget) {
         const data = await getRevenues();
-        setRevenues(data);
+        setBudget(data);
       }
     };
-    refetchRevenueData();
+    refetchBudgetData();
   }, []);
 
   const form = useForm<z.infer<typeof ExpenditureFormSchema>>({
@@ -63,8 +63,8 @@ const CreateExpenditure = () => {
               <Loader2 className="w-8 h-8 animate-spin text-gray-600" />
               <p className="text-gray-600 text-sm">Loading data...</p>
             </div>
-          ) : revenues && revenues.length > 0 ? (
-            revenues.map(({ _id, name }) => (
+          ) : budget && budget.length > 0 ? (
+            budget.map(({ _id, name }) => (
               <SelectItem key={_id} value={_id}>
                 {name}
               </SelectItem>
