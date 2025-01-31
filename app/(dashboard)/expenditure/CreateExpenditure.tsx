@@ -6,7 +6,7 @@ import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
 import toast from "react-hot-toast";
 import { useBudget, useCreateExpense } from "@/app/hooks";
-import { getRevenues } from "@/app/services";
+import { getBudgets } from "@/app/services";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
@@ -25,7 +25,7 @@ const CreateExpenditure = () => {
   useEffect(() => {
     const refetchBudgetData = async () => {
       if (!budget) {
-        const data = await getRevenues();
+        const data = await getBudgets();
         setBudget(data);
       }
     };
@@ -57,7 +57,10 @@ const CreateExpenditure = () => {
         <Input type="number" />
       </CustomFormField>
       <CustomFormField control={control} name="budget_id" label="Budget *">
-        <CustomSelect placeholder="Select Budget" onValueChange={() => {}}>
+        <CustomSelect
+          placeholder="Select Budget"
+          onValueChange={(value) => form.setValue("budget_id", value)}
+        >
           {isLoadingData ? (
             <div className="flex flex-col items-center gap-4 p-6">
               <Loader2 className="w-8 h-8 animate-spin text-gray-600" />
