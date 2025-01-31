@@ -15,9 +15,10 @@ export const useCreateRevenue = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: createRevenue,
-    onSuccess: () =>
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: REVENEUS_QUERY_KEY,
-      }),
+      });
+    },
   });
 };
