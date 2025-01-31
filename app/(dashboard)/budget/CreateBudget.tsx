@@ -7,16 +7,24 @@ import FormWrapper from "@/app/components/forms/FormWrapper";
 import { Input } from "@/components/ui/input";
 import { Select, SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
+import { BudgetFormSchema } from "@/lib/definitions/BudgetFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const CreateBudget = () => {
-  const form = useForm<>({
-    resolver: zodResolver(),
+  const form = useForm<z.infer<typeof BudgetFormSchema>>({
+    resolver: zodResolver(BudgetFormSchema),
+    defaultValues: {
+      name: "",
+      amount: 10,
+      period: "daily",
+    },
+    mode: "onBlur",
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: z.infer<typeof BudgetFormSchema>) => {
     console.log(values);
   };
 
@@ -31,7 +39,7 @@ const CreateBudget = () => {
         <Input />
       </CustomFormField>
       <CustomFormField control={control} name="period" label="Period *">
-        <CustomSelect placeholder="Select Period">
+        <CustomSelect placeholder="Select Period" onValueChange={() => {}}>
           {periodItems?.map(({ name, value }) => (
             <SelectItem key={value} value={value}>
               {name}
