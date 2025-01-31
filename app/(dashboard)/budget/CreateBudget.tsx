@@ -60,9 +60,9 @@ const CreateBudget = () => {
         </CustomSelect>
       </CustomFormField>
       <CustomButton
-        text="Add Budget"
+        text={isPending ? "Please Wait" : "Add Budget"}
         type="submit"
-        disabled={false}
+        disabled={isPending}
         className="w-full bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
       />
     </FormWrapper>
