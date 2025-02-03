@@ -29,7 +29,7 @@ const SidebarItems = ({
           <SidebarMenuButton
             asChild
             onClick={() => router.push(item.url)}
-            className={pathname === item.url ? "bg-slate-300" : ""}
+            className={pathname === item.url ? "bg-white text-black" : ""}
           >
             <div>
               <item.icon />
