@@ -1,9 +1,11 @@
 "use client";
 
+import CustomDropDown from "@/app/components/dropdown";
 import { Revenue } from "@/app/types";
 import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { ColumnDef } from "@tanstack/react-table";
 
 const periodType: Record<
@@ -38,6 +40,22 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
         <Badge variant={periodType[period] ?? "default"}>
           {row.original.period}
         </Badge>
+      );
+    },
+  },
+  {
+    accessorKey: "",
+    header: "Status",
+    cell: ({ row }) => {
+      return (
+        <CustomDropDown>
+          <DropdownMenuItem>
+            <span>Edit Project</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <span>Delete Project</span>
+          </DropdownMenuItem>
+        </CustomDropDown>
       );
     },
   },
