@@ -7,6 +7,8 @@ import {
   IExpenditureRequest,
   IExpenditureResponse,
 } from "../types";
+import { redirect } from "next/navigation";
+import { logout } from "../actions/auth";
 
 export const getExpenses = async () => {
   try {
@@ -21,6 +23,11 @@ export const getExpenses = async () => {
 
     return updatedData;
   } catch (error) {
+    const err = error instanceof Error ? error.message : error;
+    if (err === "Request failed with status code 401") {
+      console.log("here", err);
+      await logout();
+    }
     console.error(
       "Error occurred while fetching expenses:",
       error instanceof Error ? error.message : error

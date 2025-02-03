@@ -2,6 +2,8 @@
 
 import axios from "axios";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { logout } from "../actions/auth";
 
 export const axiosInterceptorInstance = axios.create({
   baseURL: "http://localhost:8002/api",
@@ -21,3 +23,17 @@ axiosInterceptorInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+//   (response) => {
+//     return response;
+//   },
+//   (error) => {
+//     ("use server");
+//     if (error.response.status === 401) {
+//       logout();
+//       // redirect("/login");
+//       // window.history.replaceState(null, "", "/login");
+//     }
+//     return Promise.reject(error);
+//   }
+// );
