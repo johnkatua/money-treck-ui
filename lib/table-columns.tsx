@@ -50,10 +50,10 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       return (
         <CustomDropDown>
           <DropdownMenuItem>
-            <span>Edit Project</span>
+            <span onClick={() => console.log(row.original)}>Edit Revene</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <span>Delete Project</span>
+          <DropdownMenuItem className="bg-red-500">
+            <span className="cursor-pointer">Delete Revenue</span>
           </DropdownMenuItem>
         </CustomDropDown>
       );
