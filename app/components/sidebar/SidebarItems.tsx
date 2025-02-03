@@ -2,11 +2,13 @@
 
 import {
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { LucideIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import path from "path";
 import React from "react";
 
 const SidebarItems = ({
@@ -19,11 +21,16 @@ const SidebarItems = ({
   };
 }) => {
   const router = useRouter();
+  const pathname = usePathname();
   return (
     <SidebarMenu>
       {items?.map((item) => (
         <SidebarMenuItem key={item.title} className="cursor-pointer">
-          <SidebarMenuButton asChild onClick={() => router.push(item.url)}>
+          <SidebarMenuButton
+            asChild
+            onClick={() => router.push(item.url)}
+            className={pathname === item.url ? "bg-slate-300" : ""}
+          >
             <div>
               <item.icon />
               <span>{item.title}</span>
