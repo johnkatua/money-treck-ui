@@ -6,22 +6,6 @@ import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 
-type PeriodType = {
-  Daily: string;
-  daily: string;
-  weekly: string;
-  monthly: string;
-  yearly: string;
-};
-
-// const periodType = {
-//   Daily: "destructive",
-//   daily: "destructive",
-//   weekly: "default",
-//   monthly: "secondary",
-//   yearly: "outline",
-// };
-
 const periodType: Record<
   "daily" | "weekly" | "monthly" | "yearly",
   "destructive" | "default" | "secondary" | "outline"
