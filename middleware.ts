@@ -1,7 +1,15 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-const protectedRoutes = ["/"];
+const protectedRoutes = [
+  "/",
+  "/dashboard",
+  "/revenue",
+  "/budget",
+  "/expenditure",
+  "/settings",
+  "/savings",
+];
 const publicRoutes = ["/login", "register"];
 
 export const middleware = async (req: NextRequest) => {
