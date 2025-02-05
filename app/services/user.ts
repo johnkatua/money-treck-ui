@@ -4,7 +4,7 @@ export const getUser = async () => {
   try {
     const response = await axiosInterceptorInstance.get("/users/me");
 
-    return response.data;
+    return response.data.data.data;
   } catch (error) {
     console.error(
       "Error occurred while fetching user:",
