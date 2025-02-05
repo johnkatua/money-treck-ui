@@ -12,8 +12,12 @@ import { Pencil } from "lucide-react";
 import React from "react";
 
 const Profile = () => {
-  const { data } = useUser();
+  const { data, isError, error, isLoading } = useUser();
   console.log(data);
+
+  if (isError && data && data?.length < 0)
+    return <div>Error: {error.message}</div>;
+
   return (
     <Card>
       <CardHeader>
