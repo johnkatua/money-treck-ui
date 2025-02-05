@@ -1,3 +1,4 @@
+import { useUser } from "@/app/hooks/useUser";
 import {
   Card,
   CardContent,
@@ -9,6 +10,8 @@ import { Pencil } from "lucide-react";
 import React from "react";
 
 const Profile = () => {
+  const { data } = useUser();
+  console.log(data);
   return (
     <Card>
       <CardHeader>
