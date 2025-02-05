@@ -28,7 +28,7 @@ const SignupForm = () => {
         toast.success("Signup successfully!");
       },
       onError: (error: any) => {
-        toast.error(error);
+        toast.error(error.message);
       },
     });
   };

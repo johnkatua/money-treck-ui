@@ -25,7 +25,7 @@ const SigninForm = () => {
         toast.success("Signin successfully");
       },
       onError: (error: any) => {
-        toast.error(error);
+        toast.error(error.message);
       },
     });
   };
