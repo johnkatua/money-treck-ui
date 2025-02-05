@@ -1,3 +1,5 @@
+"use client";
+
 import { useUser } from "@/app/hooks/useUser";
 import {
   Card,

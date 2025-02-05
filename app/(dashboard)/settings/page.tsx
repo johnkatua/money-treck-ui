@@ -5,11 +5,18 @@ import Plan from "./Plan";
 import Notifications from "./Notifications";
 import TabWrapper from "@/app/components/tab-wrapper";
 import { settingsHeader } from "@/lib/data";
+import TableListWrapper from "@/app/components/table-wrapper/TableListWrapper";
+import { USER_QUERY_KEY } from "@/app/constants";
+import { getUser } from "@/app/services";
 
 const tabsContent = [
   {
     value: "General-Settings",
-    children: <GeneralSettings />,
+    children: (
+      <TableListWrapper queryKey={USER_QUERY_KEY} queryFn={getUser}>
+        <GeneralSettings />
+      </TableListWrapper>
+    ),
   },
   {
     value: "Notification",
