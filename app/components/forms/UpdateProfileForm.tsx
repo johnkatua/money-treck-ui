@@ -61,8 +61,8 @@ const UpdateProfileForm = () => {
       <CustomButton
         type="submit"
         className="w-full bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
-        disabled={false}
-        text="Update Profile"
+        disabled={isPending}
+        text={isPending ? "Please Wait" : "Update Profile"}
       />
     </FormWrapper>
   );
