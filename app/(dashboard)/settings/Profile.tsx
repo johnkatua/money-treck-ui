@@ -41,12 +41,6 @@ const Profile = () => {
             Profile
           </CardTitle>
           <CardDescription>
-            {/* <button
-              className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition"
-              onClick={handleEditProfile}
-            >
-              <Pencil size={18} className="text-gray-700" />
-            </button> */}
             <CustomSheet
               customBtn={
                 <button className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition">
