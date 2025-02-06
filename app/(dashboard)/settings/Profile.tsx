@@ -32,13 +32,13 @@ const Profile = () => {
         </div>
       </CardHeader>
       <CardContent className="p-6 flex gap-6">
-        <div className="w-1/3 h-[256px] rounded-lg overflow-hidden shadow-md border border-gray-300">
+        <div className="w-1/3 h-64 rounded-lg overflow-hidden shadow-md border border-gray-300">
           <Image
             src={data?.avatar || "/images/avatar.jpg"}
             alt="Profile"
             width={256}
             height={256}
-            className="w-full h-full object-fill"
+            className="w-full h-full object-contain"
             priority
           />
         </div>
