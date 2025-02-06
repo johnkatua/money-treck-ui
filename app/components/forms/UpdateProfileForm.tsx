@@ -4,13 +4,40 @@ import { useForm } from "react-hook-form";
 import CustomFormField from "./CustomFormField";
 import { Input } from "@/components/ui/input";
 import CustomButton from "../buttons/CustomButton";
+import { useUpdateUser } from "@/app/hooks";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { UpdateFormSchema } from "@/lib/definitions/UpdateFormSchema";
+import { z } from "zod";
+import toast from "react-hot-toast";
 
 const UpdateProfileForm = () => {
-  const form = useForm();
+  const { isPending, mutate } = useUpdateUser();
+  const form = useForm<z.infer<typeof UpdateFormSchema>>({
+    resolver: zodResolver(UpdateFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      currency: "KSH",
+      phoneNumber: "",
+      avatar: "",
+    },
+    mode: "onBlur",
+  });
+
+  const onSubmit = async (values: z.infer<typeof UpdateFormSchema>) => {
+    mutate(values, {
+      onSuccess: () => {
+        toast.success("Profile updated successfully");
+      },
+      onError: (error: any) => {
+        toast.error(error.message);
+      },
+    });
+  };
 
   const { control } = form;
   return (
-    <FormWrapper form={form} onSubmit={() => {}} addStyling={false}>
+    <FormWrapper form={form} onSubmit={onSubmit} addStyling={false}>
       <CustomFormField label="Name" name="name" control={control}>
         <Input placeholder="John Doe" />
       </CustomFormField>

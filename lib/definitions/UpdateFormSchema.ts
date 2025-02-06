@@ -12,7 +12,7 @@ export const UpdateFormSchema = z.object({
     .email({ message: "Please enter a valid email" })
     .nonempty({ message: "Email is required" })
     .trim(),
-  phone: z
+  phoneNumber: z
     .string()
     .min(11, { message: "Phone number should be atleast 11 characters" })
     .max(11, { message: "Phone number should not be more than 11 characters" })
