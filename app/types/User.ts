@@ -2,6 +2,9 @@ export interface IUser {
   name: string;
   email: string;
   password: string;
+  currency: string;
+  phoneNumber: string;
+  avatar: string;
 }
 
 export interface ILogin {
