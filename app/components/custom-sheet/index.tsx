@@ -1,3 +1,4 @@
+import { useSheet } from "@/app/stores";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -16,8 +17,9 @@ interface CustomSheetProps {
 }
 
 const CustomSheet: FC<CustomSheetProps> = ({ customBtn }) => {
+  const open = useSheet((state) => state.open);
   return (
-    <Sheet open={false}>
+    <Sheet open={open}>
       <SheetTrigger asChild>{customBtn}</SheetTrigger>
       <SheetContent>
         <SheetHeader className="bg-gradient-to-r from-gray-800 to-gray-700 p-6">
