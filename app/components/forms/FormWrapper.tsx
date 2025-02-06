@@ -4,7 +4,7 @@ import { FC, ReactNode } from "react";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 
 interface IFormWrapperProps<T extends FieldValues> {
-  formTitle: string;
+  formTitle?: string;
   children: ReactNode;
   form: UseFormReturn<T>;
   onSubmit: (data: any) => void;

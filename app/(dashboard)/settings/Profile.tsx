@@ -1,6 +1,7 @@
 "use client";
 
 import CustomSheet from "@/app/components/custom-sheet";
+import FormWrapper from "@/app/components/forms/FormWrapper";
 import { useUser } from "@/app/hooks/useUser";
 import { useSheet } from "@/app/stores";
 import {
@@ -52,7 +53,9 @@ const Profile = () => {
                   <Pencil size={18} className="text-gray-700" />
                 </button>
               }
-            />
+            >
+              <FormWrapper></FormWrapper>
+            </CustomSheet>
           </CardDescription>
         </div>
       </CardHeader>

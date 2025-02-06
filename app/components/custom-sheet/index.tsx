@@ -14,9 +14,10 @@ import { FC, ReactNode } from "react";
 
 interface CustomSheetProps {
   customBtn: ReactNode;
+  children: ReactNode;
 }
 
-const CustomSheet: FC<CustomSheetProps> = ({ customBtn }) => {
+const CustomSheet: FC<CustomSheetProps> = ({ customBtn, children }) => {
   const open = useSheet((state) => state.open);
   const switchSheetState = useSheet((state) => state.switchSheetState);
   return (
@@ -37,11 +38,11 @@ const CustomSheet: FC<CustomSheetProps> = ({ customBtn }) => {
             </div>
           </div>
         </SheetHeader>
-        <div className="p-6">
-          <p className="text-center">Sheet Content</p>
-        </div>
+        {children}
         <SheetFooter className="p-6">
-          <Button variant={"default"}>Close Sheet</Button>
+          <Button variant={"default"} onClick={() => switchSheetState(false)}>
+            Close Sheet
+          </Button>
         </SheetFooter>
       </SheetContent>
     </Sheet>
