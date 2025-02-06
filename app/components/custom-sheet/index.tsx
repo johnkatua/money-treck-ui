@@ -18,6 +18,7 @@ interface CustomSheetProps {
 
 const CustomSheet: FC<CustomSheetProps> = ({ customBtn }) => {
   const open = useSheet((state) => state.open);
+  const switchSheetState = useSheet((state) => state.switchSheetState);
   return (
     <Sheet open={open}>
       <SheetTrigger asChild>{customBtn}</SheetTrigger>
@@ -29,7 +30,7 @@ const CustomSheet: FC<CustomSheetProps> = ({ customBtn }) => {
               className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition cursor-pointer"
               aria-label="Close Sheet"
               title="Close Sheet"
-              onClick={() => console.log("Close Sheet")}
+              onClick={() => switchSheetState(false)}
             >
               <X className="h-4 w-4" />
               <span className="sr-only">Close</span>
