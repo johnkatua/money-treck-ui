@@ -14,6 +14,21 @@ import Image from "next/image";
 const Profile = () => {
   const { data, isError, error } = useUser();
 
+  const userProfile = [
+    {
+      name: data?.name,
+    },
+    {
+      email: data?.email,
+    },
+    {
+      currency: data?.currency || "KSH",
+    },
+    {
+      phoneNumber: data?.phoneNumber || "N/A",
+    },
+  ];
+
   if (isError && data && data?.length < 0)
     return <div>Error: {error.message}</div>;
 
@@ -44,22 +59,14 @@ const Profile = () => {
         </div>
         <div className="w-2/3 bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
           <ul className="space-y-4 text-gray-700">
-            <li className="flex items-center gap-2">
-              <span className="font-semibold text-gray-900">Name:</span>{" "}
-              {data?.name}
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="font-semibold text-gray-900">Email:</span>{" "}
-              {data?.email}
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="font-semibold text-gray-900">Currency:</span>{" "}
-              {data?.currency || "KSH"}
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="font-semibold text-gray-900">Phone Number:</span>{" "}
-              {data?.phoneNumber || "N/A"}
-            </li>
+            {userProfile.map((item, index) => (
+              <li key={index} className="flex items-center gap-2">
+                <span className="font-semibold text-gray-900">
+                  {Object.keys(item)[0]}:
+                </span>{" "}
+                {Object.values(item)[0]}
+              </li>
+            ))}
           </ul>
         </div>
       </CardContent>
