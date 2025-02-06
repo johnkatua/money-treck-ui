@@ -1,5 +1,6 @@
 "use client";
 
+import CustomSheet from "@/app/components/custom-sheet";
 import { useUser } from "@/app/hooks/useUser";
 import {
   Card,
@@ -32,6 +33,10 @@ const Profile = () => {
   if (isError && data && data?.length < 0)
     return <div>Error: {error.message}</div>;
 
+  const handleEditProfile = () => {
+    return <CustomSheet />;
+  };
+
   return (
     <Card className="shadow-lg rounded-xl overflow-hidden bg-white border border-gray-200">
       <CardHeader className="bg-gradient-to-r from-gray-800 to-gray-700 p-6">
@@ -40,9 +45,19 @@ const Profile = () => {
             Profile
           </CardTitle>
           <CardDescription>
-            <button className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition">
+            {/* <button
+              className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition"
+              onClick={handleEditProfile}
+            >
               <Pencil size={18} className="text-gray-700" />
-            </button>
+            </button> */}
+            <CustomSheet
+              customBtn={
+                <button className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition">
+                  <Pencil size={18} className="text-gray-700" />
+                </button>
+              }
+            />
           </CardDescription>
         </div>
       </CardHeader>
