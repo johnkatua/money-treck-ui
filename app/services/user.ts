@@ -18,6 +18,7 @@ export const getUser = async () => {
 };
 
 export const updateUser = async (values: FormData) => {
+  console.log({ values });
   try {
     const response = await axiosInterceptorInstance.put("/users", values, {
       headers: {

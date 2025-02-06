@@ -20,6 +20,8 @@ const Profile = () => {
   const switchSheetState = useSheet((state) => state.switchSheetState);
   const { data, isError, error } = useUser();
 
+  console.log(data);
+
   const userProfile = [
     {
       name: data?.name || "N/A",

@@ -1,6 +1,6 @@
 import React from "react";
 import FormWrapper from "./FormWrapper";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import CustomFormField from "./CustomFormField";
 import { Input } from "@/components/ui/input";
 import CustomButton from "../buttons/CustomButton";
@@ -33,8 +33,10 @@ const UpdateProfileForm = () => {
     if (values.currency) formData.append("currency", values.currency);
     if (values.phoneNumber) formData.append("phoneNumber", values.phoneNumber);
     if (values.avatar) {
-      formData.append("avatar", values.avatar[0]);
+      formData.append("avatar", values.avatar);
     }
+
+    console.log(formData, values);
 
     mutate(formData, {
       onSuccess: () => {
@@ -70,7 +72,22 @@ const UpdateProfileForm = () => {
         <Input placeholder="+254712345678" />
       </CustomFormField>
       <CustomFormField label="Profile Picture" name="avatar" control={control}>
-        <Input type="file" />
+        <Controller
+          name="avatar"
+          control={control}
+          render={({ field }) => (
+            <Input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  field.onChange(file);
+                }
+              }}
+            />
+          )}
+        />
       </CustomFormField>
       <div className="h-2" />
       <CustomButton
