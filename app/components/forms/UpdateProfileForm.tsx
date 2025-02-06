@@ -27,6 +27,9 @@ const UpdateProfileForm = () => {
       >
         <Input placeholder="+254712345678" />
       </CustomFormField>
+      <CustomFormField label="Profile Picture" name="avatar" control={control}>
+        <Input type="file" />
+      </CustomFormField>
       <div className="h-2" />
       <CustomButton
         type="submit"
