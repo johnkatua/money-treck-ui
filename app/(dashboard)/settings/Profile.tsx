@@ -33,10 +33,6 @@ const Profile = () => {
   if (isError && data && data?.length < 0)
     return <div>Error: {error.message}</div>;
 
-  const handleEditProfile = () => {
-    return <CustomSheet />;
-  };
-
   return (
     <Card className="shadow-lg rounded-xl overflow-hidden bg-white border border-gray-200">
       <CardHeader className="bg-gradient-to-r from-gray-800 to-gray-700 p-6">
