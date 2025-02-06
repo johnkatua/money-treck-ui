@@ -9,8 +9,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UpdateFormSchema } from "@/lib/definitions/UpdateFormSchema";
 import { z } from "zod";
 import toast from "react-hot-toast";
+import { useSheet } from "@/app/stores";
 
 const UpdateProfileForm = () => {
+  const switchSheetState = useSheet((state) => state.switchSheetState);
   const { isPending, mutate } = useUpdateUser();
   const form = useForm<z.infer<typeof UpdateFormSchema>>({
     resolver: zodResolver(UpdateFormSchema),
@@ -40,6 +42,10 @@ const UpdateProfileForm = () => {
       },
       onError: (error: any) => {
         toast.error(error.message);
+      },
+      onSettled: () => {
+        form.reset();
+        switchSheetState(false);
       },
     });
   };
