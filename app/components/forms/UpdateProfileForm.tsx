@@ -28,10 +28,10 @@ const UpdateProfileForm = () => {
 
   const onSubmit = async (values: z.infer<typeof UpdateFormSchema>) => {
     const formData = new FormData();
-    formData.append("name", values.name);
-    formData.append("email", values.email);
-    formData.append("currency", values.currency);
-    formData.append("phoneNumber", values.phoneNumber);
+    if (values.name) formData.append("name", values.name);
+    if (values.email) formData.append("email", values.email);
+    if (values.currency) formData.append("currency", values.currency);
+    if (values.phoneNumber) formData.append("phoneNumber", values.phoneNumber);
     if (values.avatar) {
       formData.append("avatar", values.avatar[0]);
     }
