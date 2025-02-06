@@ -1,7 +1,9 @@
 "use client";
 
 import CustomSheet from "@/app/components/custom-sheet";
+import CustomFormField from "@/app/components/forms/CustomFormField";
 import FormWrapper from "@/app/components/forms/FormWrapper";
+import UpdateProfileForm from "@/app/components/forms/UpdateProfileForm";
 import { useUser } from "@/app/hooks/useUser";
 import { useSheet } from "@/app/stores";
 import {
@@ -54,7 +56,7 @@ const Profile = () => {
                 </button>
               }
             >
-              <FormWrapper></FormWrapper>
+              <UpdateProfileForm />
             </CustomSheet>
           </CardDescription>
         </div>
