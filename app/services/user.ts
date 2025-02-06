@@ -1,6 +1,7 @@
+"use server";
+
 import { revalidatePath } from "next/cache";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-import { IUser } from "../types";
 
 export const getUser = async () => {
   try {
