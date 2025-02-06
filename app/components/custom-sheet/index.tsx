@@ -17,7 +17,7 @@ interface CustomSheetProps {
 
 const CustomSheet: FC<CustomSheetProps> = ({ customBtn }) => {
   return (
-    <Sheet>
+    <Sheet open={false}>
       <SheetTrigger asChild>{customBtn}</SheetTrigger>
       <SheetContent>
         <SheetHeader className="bg-gradient-to-r from-gray-800 to-gray-700 p-6">
