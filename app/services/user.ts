@@ -18,8 +18,10 @@ export const getUser = async () => {
 
 export const updateUser = async (values: FormData) => {
   try {
-    const response = await axiosInterceptorInstance.put("/users", {
-      ...values,
+    const response = await axiosInterceptorInstance.put("/users", values, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
 
     return response.data.data.data;
