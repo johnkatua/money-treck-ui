@@ -25,7 +25,16 @@ const UpdateProfileForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof UpdateFormSchema>) => {
-    mutate(values, {
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("email", values.email);
+    formData.append("currency", values.currency);
+    formData.append("phoneNumber", values.phoneNumber);
+    if (values.avatar) {
+      formData.append("avatar", values.avatar[0]);
+    }
+
+    mutate(formData, {
       onSuccess: () => {
         toast.success("Profile updated successfully");
       },

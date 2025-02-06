@@ -16,7 +16,7 @@ export const getUser = async () => {
   }
 };
 
-export const updateUser = async (values: IUser) => {
+export const updateUser = async (values: FormData) => {
   try {
     const response = await axiosInterceptorInstance.put("/users", {
       ...values,
