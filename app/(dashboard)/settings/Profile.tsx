@@ -17,10 +17,10 @@ const Profile = () => {
 
   const userProfile = [
     {
-      name: data?.name,
+      name: data?.name || "N/A",
     },
     {
-      email: data?.email,
+      email: data?.email || "N/A",
     },
     {
       currency: data?.currency || "KSH",
