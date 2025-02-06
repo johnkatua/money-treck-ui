@@ -2,6 +2,7 @@
 
 import CustomSheet from "@/app/components/custom-sheet";
 import { useUser } from "@/app/hooks/useUser";
+import { useSheet } from "@/app/stores";
 import {
   Card,
   CardContent,
@@ -13,6 +14,7 @@ import { Pencil } from "lucide-react";
 import Image from "next/image";
 
 const Profile = () => {
+  const switchSheetState = useSheet((state) => state.switchSheetState);
   const { data, isError, error } = useUser();
 
   const userProfile = [
@@ -43,7 +45,10 @@ const Profile = () => {
           <CardDescription>
             <CustomSheet
               customBtn={
-                <button className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition">
+                <button
+                  className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition"
+                  onClick={() => switchSheetState(true)}
+                >
                   <Pencil size={18} className="text-gray-700" />
                 </button>
               }
