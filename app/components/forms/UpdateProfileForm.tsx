@@ -10,7 +10,7 @@ const UpdateProfileForm = () => {
 
   const { control } = form;
   return (
-    <FormWrapper form={form} onSubmit={() => {}}>
+    <FormWrapper form={form} onSubmit={() => {}} addStyling={false}>
       <CustomFormField label="Name" name="name" control={control}>
         <Input placeholder="John Doe" />
       </CustomFormField>

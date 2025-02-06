@@ -20,7 +20,13 @@ const FormWrapper = <T extends FieldValues>({
 }: IFormWrapperProps<T>) => {
   const { handleSubmit } = form;
   return (
-    <Card className={addStyling ? "bg-white rounded-lg hover:shadow-lg" : ""}>
+    <Card
+      className={
+        addStyling
+          ? "bg-white rounded-lg hover:shadow-lg"
+          : "shadow-none border-none"
+      }
+    >
       <CardHeader className="font-semibold text-2xl text-gray-800">
         {formTitle}
       </CardHeader>
