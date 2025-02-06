@@ -21,7 +21,7 @@ const UpdateProfileForm = () => {
       email: "",
       currency: "KSH",
       phoneNumber: "",
-      avatar: "",
+      avatar: null as any,
     },
     mode: "onBlur",
   });
@@ -35,8 +35,6 @@ const UpdateProfileForm = () => {
     if (values.avatar) {
       formData.append("avatar", values.avatar);
     }
-
-    console.log(formData, values);
 
     mutate(formData, {
       onSuccess: () => {

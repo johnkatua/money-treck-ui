@@ -20,5 +20,5 @@ export const UpdateFormSchema = z.object({
   // .trim(),
   currency: z.string().optional(),
   // .nonempty({ message: "Currency is required" }).trim(),
-  avatar: z.string().optional(),
+  avatar: z.instanceof(File).optional(),
 });
