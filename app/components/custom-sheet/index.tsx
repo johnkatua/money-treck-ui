@@ -39,11 +39,6 @@ const CustomSheet: FC<CustomSheetProps> = ({ customBtn, children }) => {
           </div>
         </SheetHeader>
         {children}
-        <SheetFooter className="p-6">
-          <Button variant={"default"} onClick={() => switchSheetState(false)}>
-            Close Sheet
-          </Button>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

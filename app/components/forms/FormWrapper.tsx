@@ -8,6 +8,7 @@ interface IFormWrapperProps<T extends FieldValues> {
   children: ReactNode;
   form: UseFormReturn<T>;
   onSubmit: (data: any) => void;
+  addStyling?: boolean;
 }
 
 const FormWrapper = <T extends FieldValues>({
@@ -15,10 +16,11 @@ const FormWrapper = <T extends FieldValues>({
   form,
   onSubmit,
   children,
+  addStyling = true,
 }: IFormWrapperProps<T>) => {
   const { handleSubmit } = form;
   return (
-    <Card className="bg-white rounded-lg hover:shadow-lg">
+    <Card className={addStyling ? "bg-white rounded-lg hover:shadow-lg" : ""}>
       <CardHeader className="font-semibold text-2xl text-gray-800">
         {formTitle}
       </CardHeader>
