@@ -16,15 +16,14 @@ const CustomDropdownMenuItem: FC<CustomDropdownMenuItemProps> = ({
   text,
   handleClick,
 }) => {
-  const switchSheetState = useSheet((state) => state.switchSheetState);
   return (
     <>
       <DropdownMenuItem
         style={{ color }}
         className="flex items-center gap-2 px-4 py-2 cursor-pointer transition-all duration-300 rounded-md"
         onClick={(e) => {
+          e.preventDefault();
           e.stopPropagation();
-          // switchSheetState("update-revenue");
           handleClick && handleClick();
         }}
       >
