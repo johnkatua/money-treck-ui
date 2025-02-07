@@ -45,7 +45,7 @@ const UpdateProfileForm = () => {
       },
       onSettled: () => {
         form.reset();
-        switchSheetState(false);
+        switchSheetState(null);
       },
     });
   };
