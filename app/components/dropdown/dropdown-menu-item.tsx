@@ -5,7 +5,7 @@ interface CustomDropdownMenuItemProps {
   color: string;
   children: ReactNode;
   text: string;
-  handleSelect: () => void;
+  handleSelect?: () => void;
 }
 
 const CustomDropdownMenuItem: FC<CustomDropdownMenuItemProps> = ({
