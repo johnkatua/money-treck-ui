@@ -1,6 +1,7 @@
 "use client";
 
 import CustomDropDown from "@/app/components/dropdown";
+import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
 import { Revenue } from "@/app/types";
 import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
@@ -50,24 +51,12 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     cell: ({ row }) => {
       return (
         <CustomDropDown>
-          <DropdownMenuItem
-            style={{
-              color: "blue",
-            }}
-            className="flex items-center gap-2 px-4 py-2 cursor-pointer transition-all duration-300 rounded-md"
-          >
+          <CustomDropdownMenuItem color="blue" text="Edit Revenue">
             <Edit size={16} />
-            <span onClick={() => console.log(row.original)}>Edit Revene</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            style={{
-              color: "red",
-            }}
-            className="flex items-center gap-2 px-4 py-2 !text-red-600 hover:bg-red-100 cursor-pointer transition-all duration-300 rounded-md"
-          >
+          </CustomDropdownMenuItem>
+          <CustomDropdownMenuItem color="red" text="Delete Revenue">
             <Trash size={16} />
-            <span className="font-medium">Delete Revenue</span>
-          </DropdownMenuItem>
+          </CustomDropdownMenuItem>
         </CustomDropDown>
       );
     },
