@@ -5,20 +5,20 @@ interface CustomDropdownMenuItemProps {
   color: string;
   children: ReactNode;
   text: string;
-  handleSelect?: () => void;
+  handleClick?: () => void;
 }
 
 const CustomDropdownMenuItem: FC<CustomDropdownMenuItemProps> = ({
   color,
   children,
   text,
-  handleSelect,
+  handleClick,
 }) => {
   return (
     <DropdownMenuItem
       style={{ color }}
       className="flex items-center gap-2 px-4 py-2 cursor-pointer transition-all duration-300 rounded-md"
-      onClick={handleSelect}
+      onClick={handleClick}
     >
       {children}
       <span className="font-medium">{text}</span>

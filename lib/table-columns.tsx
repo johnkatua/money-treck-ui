@@ -51,10 +51,18 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     cell: ({ row }) => {
       return (
         <CustomDropDown>
-          <CustomDropdownMenuItem color="blue" text="Edit Revenue">
+          <CustomDropdownMenuItem
+            color="blue"
+            text="Edit Revenue"
+            handleClick={() => console.log("Edit Revenue", row.original)}
+          >
             <Edit size={16} />
           </CustomDropdownMenuItem>
-          <CustomDropdownMenuItem color="red" text="Delete Revenue">
+          <CustomDropdownMenuItem
+            color="red"
+            text="Delete Revenue"
+            handleClick={() => console.log("Delete Revenue", row.original)}
+          >
             <Trash size={16} />
           </CustomDropdownMenuItem>
         </CustomDropDown>
