@@ -24,14 +24,12 @@ const CustomDropdownMenuItem: FC<CustomDropdownMenuItemProps> = ({
         className="flex items-center gap-2 px-4 py-2 cursor-pointer transition-all duration-300 rounded-md"
         onClick={(e) => {
           e.stopPropagation();
-          switchSheetState(true);
+          // switchSheetState("update-revenue");
           handleClick && handleClick();
         }}
       >
         {children}
-        <span className="font-medium" onClick={() => switchSheetState(true)}>
-          {text}
-        </span>
+        <span className="font-medium">{text}</span>
       </DropdownMenuItem>
     </>
   );

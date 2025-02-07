@@ -51,9 +51,11 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     accessorKey: "",
     header: "Actions",
     cell: ({ row }) => {
+      const switchSheetState = useSheet((state) => state.switchSheetState);
       const revenue = row.original as Revenue;
       const handleEdit = () => {
         console.log("Edit Revenue", revenue);
+        switchSheetState(revenue._id);
       };
       return (
         <>
@@ -73,7 +75,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
               <Trash size={16} />
             </CustomDropdownMenuItem>
           </CustomDropDown>
-          <CustomSheet>
+          <CustomSheet id={revenue._id}>
             <div>Hello</div>
           </CustomSheet>
         </>
@@ -81,6 +83,8 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     },
   },
 ];
+
+// const
 
 export const budgetColumns: ColumnDef<IBudget>[] = [
   {
