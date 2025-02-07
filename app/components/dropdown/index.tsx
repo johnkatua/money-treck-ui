@@ -16,7 +16,7 @@ const CustomDropDown: FC<ICustomDropDown> = ({ children }) => {
       <DropdownMenuTrigger>
         <MoreHorizontal />
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="right" align="start">
+      <DropdownMenuContent side="right" align="start" className="">
         {children}
       </DropdownMenuContent>
     </DropdownMenu>
