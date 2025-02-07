@@ -1,7 +1,9 @@
 "use client";
 
+import CustomSheet from "@/app/components/custom-sheet";
 import CustomDropDown from "@/app/components/dropdown";
 import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
+import { useSheet } from "@/app/stores";
 import { Revenue } from "@/app/types";
 import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
@@ -49,23 +51,32 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     accessorKey: "",
     header: "Actions",
     cell: ({ row }) => {
+      const revenue = row.original as Revenue;
+      const handleEdit = () => {
+        console.log("Edit Revenue", revenue);
+      };
       return (
-        <CustomDropDown>
-          <CustomDropdownMenuItem
-            color="blue"
-            text="Edit Revenue"
-            handleClick={() => console.log("Edit Revenue", row.original)}
-          >
-            <Edit size={16} />
-          </CustomDropdownMenuItem>
-          <CustomDropdownMenuItem
-            color="red"
-            text="Delete Revenue"
-            handleClick={() => console.log("Delete Revenue", row.original)}
-          >
-            <Trash size={16} />
-          </CustomDropdownMenuItem>
-        </CustomDropDown>
+        <>
+          <CustomDropDown>
+            <CustomDropdownMenuItem
+              color="blue"
+              text="Edit Revenue"
+              handleClick={handleEdit}
+            >
+              <Edit size={16} />
+            </CustomDropdownMenuItem>
+            <CustomDropdownMenuItem
+              color="red"
+              text="Delete Revenue"
+              handleClick={() => console.log("Delete Revenue", row.original)}
+            >
+              <Trash size={16} />
+            </CustomDropdownMenuItem>
+          </CustomDropDown>
+          <CustomSheet>
+            <div>Hello</div>
+          </CustomSheet>
+        </>
       );
     },
   },

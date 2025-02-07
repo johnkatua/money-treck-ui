@@ -13,7 +13,7 @@ import { X } from "lucide-react";
 import { FC, ReactNode } from "react";
 
 interface CustomSheetProps {
-  customBtn: ReactNode;
+  customBtn?: ReactNode;
   children: ReactNode;
 }
 
