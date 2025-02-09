@@ -7,16 +7,19 @@ import {
 } from "@radix-ui/react-dialog";
 import { FC } from "react";
 import CustomButton from "../buttons/CustomButton";
+import { useDialogStore } from "@/app/stores";
 
 interface CustomDialogProps {
   open: boolean;
   handleClose: () => void;
 }
 
-const CustomDialog: FC<CustomDialogProps> = ({ open, handleClose }) => {
-  console.log({ open });
+const CustomDialog: FC<CustomDialogProps> = () => {
+  const { isOpen, openDialog, closeDialog } = useDialogStore();
+
+  if (!isOpen) return null;
   return (
-    <Dialog open={open}>
+    <Dialog open={isOpen}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Are you absolute sure?</DialogTitle>
@@ -26,7 +29,7 @@ const CustomDialog: FC<CustomDialogProps> = ({ open, handleClose }) => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <button onClick={handleClose}>Close</button>
+          <button onClick={closeDialog}>Close</button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
