@@ -14,6 +14,7 @@ interface CustomDialogProps {
 }
 
 const CustomDialog: FC<CustomDialogProps> = ({ open, handleClose }) => {
+  console.log({ open });
   return (
     <Dialog open={open}>
       <DialogContent>
