@@ -1,5 +1,6 @@
 "use client";
 
+import CustomDialog from "@/app/components/custom-dialog";
 import CustomDropDown from "@/app/components/dropdown";
 import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
 import { useRevenueStore, useSheet } from "@/app/stores";
@@ -9,6 +10,7 @@ import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Trash } from "lucide-react";
+import { useState } from "react";
 
 const periodType: Record<
   "daily" | "weekly" | "monthly" | "yearly",
@@ -50,6 +52,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const switchSheetState = useSheet((state) => state.switchSheetState);
+      const [open, setOpen] = useState(false);
       const updateSelectedRevenueId = useRevenueStore(
         (state) => state.updateSelectedRevenueId
       );
@@ -59,6 +62,11 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
         // switchSheetState(revenue._id);
         updateSelectedRevenueId(revenue._id);
         console.log("Switched sheet state for ID:", revenue._id);
+      };
+
+      const handleDelete = () => {
+        setOpen(true);
+        console.log("Delete Revenue", row.original);
       };
       return (
         <>
@@ -73,11 +81,14 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
             <CustomDropdownMenuItem
               color="red"
               text="Delete Revenue"
-              handleClick={() => console.log("Delete Revenue", row.original)}
+              handleClick={handleDelete}
             >
               <Trash size={16} />
             </CustomDropdownMenuItem>
           </CustomDropDown>
+          {open && (
+            <CustomDialog open={open} handleClose={() => setOpen(false)} />
+          )}
         </>
       );
     },
