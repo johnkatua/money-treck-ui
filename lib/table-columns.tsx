@@ -1,6 +1,5 @@
 "use client";
 
-import CustomSheet from "@/app/components/custom-sheet";
 import CustomDropDown from "@/app/components/dropdown";
 import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
 import { useRevenueStore, useSheet } from "@/app/stores";
@@ -8,10 +7,8 @@ import { Revenue } from "@/app/types";
 import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Trash } from "lucide-react";
-import { useState } from "react";
 
 const periodType: Record<
   "daily" | "weekly" | "monthly" | "yearly",
