@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Trash } from "lucide-react";
+import { useState } from "react";
 
 const periodType: Record<
   "daily" | "weekly" | "monthly" | "yearly",
@@ -56,14 +57,15 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       const handleEdit = () => {
         console.log("Edit Revenue", revenue);
         switchSheetState(revenue._id);
+        console.log("Switched sheet state for ID:", revenue._id);
       };
       return (
         <>
-          <CustomDropDown>
+          <CustomDropDown id={revenue._id}>
             <CustomDropdownMenuItem
               color="blue"
               text="Edit Revenue"
-              handleClick={handleEdit}
+              handleClick={() => handleEdit()}
             >
               <Edit size={16} />
             </CustomDropdownMenuItem>
@@ -75,9 +77,6 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
               <Trash size={16} />
             </CustomDropdownMenuItem>
           </CustomDropDown>
-          <CustomSheet id={revenue._id}>
-            <div>Hello</div>
-          </CustomSheet>
         </>
       );
     },

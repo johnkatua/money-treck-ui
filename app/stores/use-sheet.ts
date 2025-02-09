@@ -7,5 +7,6 @@ type SheetStore = {
 
 export const useSheet = create<SheetStore>((set) => ({
   openSheetId: null,
-  switchSheetState: (id) => set({ openSheetId: id }),
+  switchSheetState: (id) =>
+    set((state) => (state.openSheetId !== id ? { openSheetId: id } : state)),
 }));

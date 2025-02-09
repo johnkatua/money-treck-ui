@@ -22,6 +22,7 @@ const CustomSheet: FC<CustomSheetProps> = ({ customBtn, id, children }) => {
   const openSheetId = useSheet((state) => state.openSheetId);
   const switchSheetState = useSheet((state) => state.switchSheetState);
   const isOpen = openSheetId === id;
+  console.log(isOpen, id);
   return (
     <Sheet
       open={isOpen}
