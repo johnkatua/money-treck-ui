@@ -1,4 +1,4 @@
-import { DialogHeader } from "@/components/ui/dialog";
+import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
 import {
   Dialog,
   DialogContent,
@@ -6,12 +6,14 @@ import {
   DialogTitle,
 } from "@radix-ui/react-dialog";
 import { FC } from "react";
+import CustomButton from "../buttons/CustomButton";
 
 interface CustomDialogProps {
   open: boolean;
+  handleClose: () => void;
 }
 
-const CustomDialog: FC<CustomDialogProps> = ({ open }) => {
+const CustomDialog: FC<CustomDialogProps> = ({ open, handleClose }) => {
   return (
     <Dialog open={open}>
       <DialogContent>
@@ -22,6 +24,9 @@ const CustomDialog: FC<CustomDialogProps> = ({ open }) => {
             account and remove your data from our servers.
           </DialogDescription>
         </DialogHeader>
+        <DialogFooter>
+          <button onClick={handleClose}>Close</button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
