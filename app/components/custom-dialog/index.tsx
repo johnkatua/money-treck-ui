@@ -9,13 +9,10 @@ import { FC } from "react";
 import CustomButton from "../buttons/CustomButton";
 import { useDialogStore } from "@/app/stores";
 
-interface CustomDialogProps {
-  open: boolean;
-  handleClose: () => void;
-}
-
-const CustomDialog: FC<CustomDialogProps> = () => {
+const CustomDialog = () => {
   const { isOpen, openDialog, closeDialog } = useDialogStore();
+
+  console.log({ isOpen });
 
   if (!isOpen) return null;
   return (

@@ -3,7 +3,7 @@
 import CustomDialog from "@/app/components/custom-dialog";
 import CustomDropDown from "@/app/components/dropdown";
 import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
-import { useRevenueStore, useSheet } from "@/app/stores";
+import { useDialogStore, useRevenueStore, useSheet } from "@/app/stores";
 import { Revenue } from "@/app/types";
 import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
@@ -52,10 +52,10 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const switchSheetState = useSheet((state) => state.switchSheetState);
-      const [open, setOpen] = useState(false);
       const updateSelectedRevenueId = useRevenueStore(
         (state) => state.updateSelectedRevenueId
       );
+      const { openDialog } = useDialogStore();
       const revenue = row.original as Revenue;
       const handleEdit = () => {
         console.log("Edit Revenue", revenue);
@@ -65,7 +65,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       };
 
       const handleDelete = () => {
-        setOpen(true);
+        openDialog();
         console.log("Delete Revenue", row.original);
       };
       return (
@@ -86,9 +86,6 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
               <Trash size={16} />
             </CustomDropdownMenuItem>
           </CustomDropDown>
-          {open && (
-            <CustomDialog open={open} handleClose={() => setOpen(false)} />
-          )}
         </>
       );
     },
