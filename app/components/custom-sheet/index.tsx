@@ -1,4 +1,6 @@
-import { useSheet } from "@/app/stores";
+"use client";
+
+import { useRevenueStore, useSheet } from "@/app/stores";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { FC, ReactNode } from "react";
 
 interface CustomSheetProps {
@@ -22,7 +25,6 @@ const CustomSheet: FC<CustomSheetProps> = ({ customBtn, id, children }) => {
   const openSheetId = useSheet((state) => state.openSheetId);
   const switchSheetState = useSheet((state) => state.switchSheetState);
   const isOpen = openSheetId === id;
-  console.log(isOpen, id);
   return (
     <Sheet
       open={isOpen}

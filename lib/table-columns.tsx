@@ -3,7 +3,7 @@
 import CustomSheet from "@/app/components/custom-sheet";
 import CustomDropDown from "@/app/components/dropdown";
 import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
-import { useSheet } from "@/app/stores";
+import { useRevenueStore, useSheet } from "@/app/stores";
 import { Revenue } from "@/app/types";
 import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
@@ -53,10 +53,14 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const switchSheetState = useSheet((state) => state.switchSheetState);
+      const updateSelectedRevenueId = useRevenueStore(
+        (state) => state.updateSelectedRevenueId
+      );
       const revenue = row.original as Revenue;
       const handleEdit = () => {
         console.log("Edit Revenue", revenue);
-        switchSheetState(revenue._id);
+        // switchSheetState(revenue._id);
+        updateSelectedRevenueId(revenue._id);
         console.log("Switched sheet state for ID:", revenue._id);
       };
       return (
