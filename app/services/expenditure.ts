@@ -69,3 +69,17 @@ export const updateExpense = async (values: IExpenditureRequest) => {
     revalidatePath("/expenditure");
   }
 };
+
+export const deleteExpense = async (id: string) => {
+  try {
+    await axiosInterceptorInstance.delete(`/expenses/${id}`);
+  } catch (error) {
+    console.error(
+      "Error occurred while deleting expenditure:",
+      error instanceof Error ? error.message : error
+    );
+    throw new Error("Failed to delete expenditure. Please try again later.");
+  } finally {
+    revalidatePath("/expenditure");
+  }
+};
