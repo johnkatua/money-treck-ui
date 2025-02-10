@@ -57,3 +57,17 @@ export const updateRevenue = async (values: IRevenueRequest) => {
     revalidatePath("/revenue");
   }
 };
+
+export const deleteRevenue = async (id: string) => {
+  try {
+    await axiosInterceptorInstance.delete(`/revenues/${id}`);
+  } catch (error) {
+    console.error(
+      "Error occurred while deleting revenue:",
+      error instanceof Error ? error.message : error
+    );
+    throw new Error("Failed to delete revenue. Please try again later.");
+  } finally {
+    revalidatePath("/revenue");
+  }
+};
