@@ -14,7 +14,7 @@ interface CustomDialogProps {
 }
 
 const CustomDialog: FC<CustomDialogProps> = ({ children }) => {
-  const { isOpen, closeDialog } = useDialogStore();
+  const { isOpen } = useDialogStore();
 
   if (!isOpen) return null;
   return (
@@ -28,10 +28,7 @@ const CustomDialog: FC<CustomDialogProps> = ({ children }) => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <div className="flex gap-4">
-            <button onClick={closeDialog}>Close</button>
-            {children}
-          </div>
+          <div className="flex gap-4">{children}</div>
         </DialogFooter>
       </DialogContent>
     </Dialog>
