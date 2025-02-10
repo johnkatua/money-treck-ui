@@ -1,7 +1,12 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createBudget, getBudgets, updateBudget } from "../services";
+import {
+  createBudget,
+  deleteBudget,
+  getBudgets,
+  updateBudget,
+} from "../services";
 import { BUDGETS_QUERY_KEY } from "../constants";
 
 export const useBudget = () => {
@@ -26,5 +31,11 @@ export const useCreateBudget = () => {
 export const useUpdateBudget = () => {
   return useMutation({
     mutationFn: updateBudget,
+  });
+};
+
+export const useDeleteBudget = () => {
+  return useMutation({
+    mutationFn: deleteBudget,
   });
 };
