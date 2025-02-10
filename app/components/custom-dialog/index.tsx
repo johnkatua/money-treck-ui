@@ -7,11 +7,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { FC, ReactNode } from "react";
 
-const CustomDialog = () => {
-  const { isOpen, openDialog, closeDialog } = useDialogStore();
+interface CustomDialogProps {
+  children?: ReactNode;
+}
 
-  console.log({ isOpen });
+const CustomDialog: FC<CustomDialogProps> = ({ children }) => {
+  const { isOpen, closeDialog } = useDialogStore();
 
   if (!isOpen) return null;
   return (
@@ -25,7 +28,10 @@ const CustomDialog = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <button onClick={closeDialog}>Close</button>
+          <div className="flex gap-4">
+            <button onClick={closeDialog}>Close</button>
+            {children}
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>

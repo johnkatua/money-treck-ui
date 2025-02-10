@@ -20,7 +20,7 @@ import { z } from "zod";
 const EditRevenueForm = () => {
   const router = useRouter();
   const { selectedRevenue } = useRevenueStore();
-  const { openDialog } = useDialogStore();
+  const { openDialog, closeDialog } = useDialogStore();
   const { isPending, mutate } = useUpdateRevenue();
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
@@ -105,11 +105,19 @@ const EditRevenueForm = () => {
       <CustomButton
         text={"Delete Revenue"}
         type="submit"
-        onClick={() => openDialog()}
+        onClick={openDialog}
         disabled={false}
         className="w-full mt-2 bg-black text-white p-3 rounded-md transition-all duration-300"
       />
-      <CustomDialog />
+      <CustomDialog>
+        <CustomButton
+          text={"Delete Revenue"}
+          type="submit"
+          onClick={closeDialog}
+          disabled={false}
+          className="w-full mt-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-md transition-all duration-300"
+        />
+      </CustomDialog>
     </>
   );
 };
