@@ -5,6 +5,7 @@ import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
 import { useUpdateRevenue } from "@/app/hooks";
+import { useRevenueStore } from "@/app/stores";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
@@ -18,6 +19,7 @@ import { z } from "zod";
 
 const EditRevenueForm = () => {
   const router = useRouter();
+  const { selectedRevenue } = useRevenueStore();
   const { isPending, mutate } = useUpdateRevenue();
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
@@ -28,6 +30,8 @@ const EditRevenueForm = () => {
     },
     mode: "onBlur",
   });
+
+  console.log({ selectedRevenue });
 
   const onSubmit = async (values: z.infer<typeof RevenueFormSchema>) => {
     mutate(values, {
