@@ -2,7 +2,12 @@
 
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { EXPENSES_QUERY_KEY } from "../constants";
-import { createExpense, getExpenses, updateExpense } from "../services";
+import {
+  createExpense,
+  deleteExpense,
+  getExpenses,
+  updateExpense,
+} from "../services";
 
 export const useExpense = () => {
   return useQuery({
@@ -20,5 +25,11 @@ export const useCreateExpense = () => {
 export const useUpdateExpense = () => {
   return useMutation({
     mutationFn: updateExpense,
+  });
+};
+
+export const useDeleteExpense = () => {
+  return useMutation({
+    mutationFn: deleteExpense,
   });
 };
