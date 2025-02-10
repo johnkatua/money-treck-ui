@@ -2,7 +2,12 @@
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { REVENEUS_QUERY_KEY } from "../constants";
-import { createRevenue, getRevenues, updateRevenue } from "../services";
+import {
+  createRevenue,
+  deleteRevenue,
+  getRevenues,
+  updateRevenue,
+} from "../services";
 
 export const useRevenues = () => {
   return useQuery({
@@ -26,5 +31,11 @@ export const useCreateRevenue = () => {
 export const useUpdateRevenue = () => {
   return useMutation({
     mutationFn: updateRevenue,
+  });
+};
+
+export const useDeleteRevenue = () => {
+  return useMutation({
+    mutationFn: deleteRevenue,
   });
 };
