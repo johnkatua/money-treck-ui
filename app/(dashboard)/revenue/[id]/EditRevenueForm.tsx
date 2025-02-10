@@ -39,18 +39,18 @@ const EditRevenueForm = () => {
           ))}
         </CustomSelect>
       </CustomFormField>
-      <div className="flex gap-4 mt-2">
+      <div className="flex gap-4">
         <CustomButton
           text={"Edit Revenue"}
           type="submit"
           disabled={false}
-          className="w-[250px] bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
+          className="w-[200px] mt-2 bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
         />
         <CustomButton
           text={"Delete Revenue"}
           type="submit"
           disabled={false}
-          className="w-[250px] bg-red-500 hover:bg-red-600 text-white p-3 rounded-md transition-all duration-300"
+          className="w-[200px] mt-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-md transition-all duration-300"
         />
       </div>
     </FormWrapper>
