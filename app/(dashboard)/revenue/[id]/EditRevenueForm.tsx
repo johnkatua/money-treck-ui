@@ -24,9 +24,9 @@ const EditRevenueForm = () => {
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
     defaultValues: {
-      name: "",
-      amount: 10,
-      period: "daily",
+      name: selectedRevenue?.name || "",
+      amount: selectedRevenue?.amount || 10,
+      period: selectedRevenue?.period || "daily",
     },
     mode: "onBlur",
   });
@@ -34,17 +34,22 @@ const EditRevenueForm = () => {
   console.log({ selectedRevenue });
 
   const onSubmit = async (values: z.infer<typeof RevenueFormSchema>) => {
+    if (selectedRevenue) {
+      values = { _id: selectedRevenue._id, ...values };
+    }
     mutate(values, {
       onSuccess: () => {
         toast.success("Revenue updated successfully");
-      },
-      onError: (error: any) => {
-        toast.error(error.message);
-      },
-      onSettled: () => {
-        form.reset();
         router.push("/revenue");
       },
+      onError: (error: unknown) => {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        } else {
+          toast.error("An unexpected error occurred");
+        }
+      },
+      onSettled: () => form.reset(),
     });
   };
 
@@ -78,7 +83,7 @@ const EditRevenueForm = () => {
         <CustomButton
           text={isPending ? "Please Wait" : "Edit Revenue"}
           type="submit"
-          disabled={false}
+          disabled={isPending}
           className="w-[200px] mt-2 bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
         />
         <CustomButton
