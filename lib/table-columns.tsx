@@ -100,8 +100,6 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
   },
 ];
 
-// const
-
 export const budgetColumns: ColumnDef<IBudget>[] = [
   {
     accessorKey: "id",

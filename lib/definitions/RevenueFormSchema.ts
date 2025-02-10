@@ -13,7 +13,7 @@ export const RevenueFormSchema = z.object({
     .min(10, {
       message: "Amount must be atleast Ksh. 10",
     })
-    .max(100, {
+    .max(10000, {
       message: "Amount should not exceed ksh. 100",
     })
     .or(z.string().transform((val) => Number(val))), // Handle string inputs and convert to number
