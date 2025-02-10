@@ -12,7 +12,6 @@ import { periodItems } from "@/lib/data";
 import { RevenueFormSchema } from "@/lib/definitions/RevenueFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
@@ -35,8 +34,6 @@ const EditRevenueForm = () => {
     },
     mode: "onBlur",
   });
-
-  console.log({ selectedRevenue });
 
   const onSubmit = async (values: z.infer<typeof RevenueFormSchema>) => {
     if (selectedRevenue) {
@@ -61,7 +58,7 @@ const EditRevenueForm = () => {
   const { control } = form;
   return (
     <FormWrapper
-      formTitle="Edit Revenue"
+      formTitle="Edit/Delete Revenue"
       form={form}
       onSubmit={onSubmit}
       isUpdate={true}
