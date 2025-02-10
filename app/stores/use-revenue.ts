@@ -1,7 +1,8 @@
 import { create } from "zustand";
+import { IData } from "../types";
 
 type State = {
-  selectedRevenue: null;
+  selectedRevenue: IData | null;
 };
 
 type Action = {
