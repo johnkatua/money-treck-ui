@@ -10,15 +10,17 @@ interface ICustomSelect {
   placeholder: string;
   children: ReactNode;
   onValueChange: (e: any) => void;
+  value?: string;
 }
 
 const CustomSelect: FC<ICustomSelect> = ({
   placeholder,
   onValueChange,
+  value,
   children,
 }) => {
   return (
-    <Select onValueChange={onValueChange}>
+    <Select onValueChange={onValueChange} value={value}>
       <SelectTrigger>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>

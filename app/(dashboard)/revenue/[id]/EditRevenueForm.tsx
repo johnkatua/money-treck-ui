@@ -26,7 +26,12 @@ const EditRevenueForm = () => {
     defaultValues: {
       name: selectedRevenue?.name || "",
       amount: selectedRevenue?.amount || 10,
-      period: selectedRevenue?.period || "daily",
+      period:
+        (selectedRevenue?.period as
+          | "daily"
+          | "weekly"
+          | "monthly"
+          | "yearly") || "daily",
     },
     mode: "onBlur",
   });
@@ -70,6 +75,7 @@ const EditRevenueForm = () => {
       <CustomFormField control={control} name="period" label="Revenue Period *">
         <CustomSelect
           placeholder="Select Period"
+          value={form.watch("period")}
           onValueChange={(val) => form.setValue("period", val)}
         >
           {periodItems?.map(({ name, value }) => (
