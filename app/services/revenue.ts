@@ -43,3 +43,17 @@ export const createRevenue = async (values: IRevenueRequest) => {
     revalidatePath("/revenue");
   }
 };
+
+export const updateRevenue = async (values: IRevenueRequest) => {
+  try {
+    await axiosInterceptorInstance.put("/revenues", { ...values });
+  } catch (error) {
+    console.error(
+      "Error occurred while updating revenue:",
+      error instanceof Error ? error.message : error
+    );
+    throw new Error("Failed to update revenue. Please try again later.");
+  } finally {
+    revalidatePath("/revenue");
+  }
+};
