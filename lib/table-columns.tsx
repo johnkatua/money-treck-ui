@@ -31,7 +31,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       const router = useRouter();
       const revenue = row.original;
       const handleNavigate = () => {
-        router.push(`/revenue/[id]`);
+        router.push(`/revenue/${revenue._id}`);
       };
       return <Eye className="cursor-pointer" onClick={handleNavigate} />;
     },
