@@ -42,3 +42,19 @@ export const createBudget = async (values: IBudgetResponse) => {
     revalidatePath("/budget");
   }
 };
+
+export const updateBudget = async (values: IBudgetResponse) => {
+  try {
+    await axiosInterceptorInstance.put("/budgets", {
+      ...values,
+    });
+  } catch (error) {
+    console.error(
+      "Error occurred while update budget:",
+      error instanceof Error ? error.message : error
+    );
+    throw new Error("Failed to update budget. Please try again later.");
+  } finally {
+    revalidatePath("/budget");
+  }
+};

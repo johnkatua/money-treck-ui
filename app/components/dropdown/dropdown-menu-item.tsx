@@ -24,6 +24,7 @@ const CustomDropdownMenuItem: FC<CustomDropdownMenuItemProps> = ({
           e.stopPropagation();
           handleClick && handleClick();
         }}
+        onSelect={(e) => e.preventDefault()}
       >
         {children}
         <span className="font-medium">{text}</span>

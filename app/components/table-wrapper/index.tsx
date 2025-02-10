@@ -1,5 +1,6 @@
 "use client";
 
+import { IData, Revenue } from "@/app/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -20,7 +21,7 @@ import { AlertCircle, Loader2 } from "lucide-react";
 import { FC, useMemo, useState } from "react";
 
 interface ITableWrapper {
-  data: any[];
+  data: Revenue[];
   columns: any[];
   isLoading?: boolean;
 }
