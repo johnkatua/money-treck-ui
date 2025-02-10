@@ -1,14 +1,13 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { logout } from "../actions/auth";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import {
   IExpenditure,
   IExpenditureRequest,
   IExpenditureResponse,
 } from "../types";
-import { redirect } from "next/navigation";
-import { logout } from "../actions/auth";
 
 export const getExpenses = async () => {
   try {
@@ -50,6 +49,22 @@ export const createExpense = async (values: IExpenditureRequest) => {
       error instanceof Error ? error.message : error
     );
     throw new Error("Failed to create budget. Please try again later.");
+  } finally {
+    revalidatePath("/expenditure");
+  }
+};
+
+export const updateExpense = async (values: IExpenditureRequest) => {
+  try {
+    await axiosInterceptorInstance.put("/expenses", {
+      ...values,
+    });
+  } catch (error) {
+    console.error(
+      "Error occurred while updating expenditure:",
+      error instanceof Error ? error.message : error
+    );
+    throw new Error("Failed to update expenditure. Please try again later.");
   } finally {
     revalidatePath("/expenditure");
   }
