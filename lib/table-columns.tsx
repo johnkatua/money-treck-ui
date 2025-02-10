@@ -9,7 +9,8 @@ import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
-import { Edit, Trash } from "lucide-react";
+import { Edit, Eye, Trash } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const periodType: Record<
@@ -23,6 +24,18 @@ const periodType: Record<
 };
 
 export const revenueColumns: ColumnDef<Revenue>[] = [
+  {
+    accessorKey: "view",
+    header: () => "View",
+    cell: ({ row }) => {
+      const router = useRouter();
+      const revenue = row.original;
+      const handleNavigate = () => {
+        router.push(`/revenue/[id]`);
+      };
+      return <Eye className="cursor-pointer" onClick={handleNavigate} />;
+    },
+  },
   {
     accessorKey: "id",
     header: () => "Id",
