@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 interface ICustomButton {
-  text: string;
+  text: string | ReactNode;
   type: "submit" | "reset";
   disabled: boolean;
   className?: string;
