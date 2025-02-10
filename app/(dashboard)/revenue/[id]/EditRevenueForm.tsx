@@ -75,6 +75,9 @@ const EditRevenueForm = () => {
         },
         onSettled: () => closeDialog(),
       });
+    } else {
+      toast.error("Please select a revenue");
+      closeDialog();
     }
   };
 
