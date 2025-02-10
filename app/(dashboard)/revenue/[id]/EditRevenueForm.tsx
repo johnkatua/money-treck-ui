@@ -61,7 +61,7 @@ const EditRevenueForm = () => {
   return (
     <>
       <FormWrapper
-        formTitle="Edit/Delete Revenue"
+        formTitle="Edit Revenue"
         form={form}
         onSubmit={onSubmit}
         isUpdate={true}
