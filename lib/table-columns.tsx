@@ -27,8 +27,10 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     header: () => "View",
     cell: ({ row }) => {
       const router = useRouter();
+      const { updateSelectedRevenue } = useRevenueStore();
       const revenue = row.original;
       const handleNavigate = () => {
+        updateSelectedRevenue(row.original);
         router.push(`/revenue/${revenue._id}`);
       };
       return <Eye className="cursor-pointer" onClick={handleNavigate} />;
@@ -63,15 +65,10 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const switchSheetState = useSheet((state) => state.switchSheetState);
-      const updateSelectedRevenueId = useRevenueStore(
-        (state) => state.updateSelectedRevenueId
-      );
       const { openDialog } = useDialogStore();
       const revenue = row.original as Revenue;
       const handleEdit = () => {
         console.log("Edit Revenue", revenue);
-        // switchSheetState(revenue._id);
-        updateSelectedRevenueId(revenue._id);
         console.log("Switched sheet state for ID:", revenue._id);
       };
 
