@@ -58,3 +58,17 @@ export const updateBudget = async (values: IBudgetResponse) => {
     revalidatePath("/budget");
   }
 };
+
+export const deleteBudget = async (id: string) => {
+  try {
+    await axiosInterceptorInstance.delete(`/budgets/${id}`);
+  } catch (error) {
+    console.error(
+      "Error occurred while deleting budget:",
+      error instanceof Error ? error.message : error
+    );
+    throw new Error("Failed to delete budget. Please try again later.");
+  } finally {
+    revalidatePath("/budget");
+  }
+};
