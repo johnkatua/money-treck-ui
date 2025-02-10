@@ -5,7 +5,7 @@ import CustomDialog from "@/app/components/custom-dialog";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
-import { useUpdateRevenue } from "@/app/hooks";
+import { useDeleteRevenue, useUpdateRevenue } from "@/app/hooks";
 import { useDialogStore, useRevenueStore } from "@/app/stores";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
@@ -22,6 +22,7 @@ const EditRevenueForm = () => {
   const { selectedRevenue } = useRevenueStore();
   const { openDialog, closeDialog } = useDialogStore();
   const { isPending, mutate } = useUpdateRevenue();
+  const { isPending: isDeleting, mutate: deleteMutate } = useDeleteRevenue();
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
     defaultValues: {
@@ -55,6 +56,26 @@ const EditRevenueForm = () => {
       },
       onSettled: () => form.reset(),
     });
+  };
+
+  const handleDelete = async () => {
+    const id = selectedRevenue?._id;
+    if (id) {
+      deleteMutate(id, {
+        onSuccess: () => {
+          toast.success("Revenue deleted successfully");
+          router.push("/revenue");
+        },
+        onError: (error: unknown) => {
+          if (error instanceof Error) {
+            toast.error(error.message);
+          } else {
+            toast.error("An unexpected error occurred");
+          }
+        },
+        onSettled: () => closeDialog(),
+      });
+    }
   };
 
   const { control } = form;
@@ -111,10 +132,10 @@ const EditRevenueForm = () => {
       />
       <CustomDialog>
         <CustomButton
-          text={"Delete Revenue"}
+          text={isDeleting ? "Please Wait" : "Delete Revenue"}
           type="submit"
-          onClick={closeDialog}
-          disabled={false}
+          onClick={handleDelete}
+          disabled={isDeleting}
           className="w-full mt-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-md transition-all duration-300"
         />
       </CustomDialog>
