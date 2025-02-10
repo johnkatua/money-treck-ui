@@ -1,6 +1,3 @@
-"use client";
-
-import CustomDialog from "@/app/components/custom-dialog";
 import TabWrapper from "@/app/components/tab-wrapper";
 import TableListWrapper from "@/app/components/table-wrapper/TableListWrapper";
 import { REVENEUS_QUERY_KEY } from "@/app/constants";
@@ -33,7 +30,6 @@ const Revenue = () => {
         tabsHeader={tabsHeader}
         tabsContent={tabsContent}
       />
-      <CustomDialog />
     </PageWrapper>
   );
 };

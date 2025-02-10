@@ -22,16 +22,16 @@ const Profile = () => {
 
   const userProfile = [
     {
-      name: data?.name || "N/A",
+      Name: data?.name || "N/A",
     },
     {
-      email: data?.email || "N/A",
+      Email: data?.email || "N/A",
     },
     {
-      currency: data?.currency || "KSH",
+      Currency: data?.currency || "KSH",
     },
     {
-      phoneNumber: data?.phoneNumber || "N/A",
+      PhoneNumber: data?.phoneNumber || "N/A",
     },
   ];
 

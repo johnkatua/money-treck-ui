@@ -1,11 +1,12 @@
 import { useDialogStore } from "@/app/stores";
-import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogTitle,
-} from "@radix-ui/react-dialog";
+} from "@/components/ui/dialog";
 
 const CustomDialog = () => {
   const { isOpen, openDialog, closeDialog } = useDialogStore();

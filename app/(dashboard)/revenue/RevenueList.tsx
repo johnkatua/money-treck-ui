@@ -1,5 +1,6 @@
 "use client";
 
+import CustomDialog from "@/app/components/custom-dialog";
 import CustomSheet from "@/app/components/custom-sheet";
 import TableWrapper from "@/app/components/table-wrapper";
 import { useRevenues } from "@/app/hooks";
@@ -37,6 +38,7 @@ const RevenueList = () => {
           <div>Hello</div>
         </CustomSheet>
       )}
+      <CustomDialog />
     </>
   );
 };
