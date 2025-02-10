@@ -1,19 +1,17 @@
 import { create } from "zustand";
 
 type State = {
-  selectedRevenueId: string | null;
+  selectedRevenue: null;
 };
 
 type Action = {
-  updateSelectedRevenueId: (
-    selectedRevenueId: State["selectedRevenueId"]
-  ) => void;
+  updateSelectedRevenue: (selectedRevenueId: State["selectedRevenue"]) => void;
 };
 
 export const useRevenueStore = create<State & Action>((set) => ({
-  selectedRevenueId: null,
-  updateSelectedRevenueId: (selectedRevenueId) =>
+  selectedRevenue: null,
+  updateSelectedRevenue: (selectedRevenue) =>
     set(() => ({
-      selectedRevenueId: selectedRevenueId,
+      selectedRevenue,
     })),
 }));
