@@ -67,6 +67,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     cell: ({ row }) => {
       const switchSheetState = useSheet((state) => state.switchSheetState);
       const { openDialog } = useDialogStore();
+      const { updateSelectedRevenue } = useRevenueStore();
       const revenue = row.original as Revenue;
       const handleEdit = () => {
         console.log("Edit Revenue", revenue);
@@ -75,6 +76,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
 
       const handleDelete = () => {
         openDialog();
+        updateSelectedRevenue(revenue);
         console.log("Delete Revenue", row.original);
       };
       return (
