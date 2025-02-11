@@ -1,5 +1,6 @@
 "use client";
 
+import CustomActions from "@/app/components/actions";
 import CustomDropDown from "@/app/components/dropdown";
 import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
 import { useDialogStore, useRevenueStore, useSheet } from "@/app/stores";
@@ -63,24 +64,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
         updateSelectedRevenue(revenue);
       };
       return (
-        <>
-          <CustomDropDown>
-            <CustomDropdownMenuItem
-              color="blue"
-              text="Edit Revenue"
-              handleClick={() => handleEdit()}
-            >
-              <Edit size={16} />
-            </CustomDropdownMenuItem>
-            <CustomDropdownMenuItem
-              color="red"
-              text="Delete Revenue"
-              handleClick={handleDelete}
-            >
-              <Trash size={16} />
-            </CustomDropdownMenuItem>
-          </CustomDropDown>
-        </>
+        <CustomActions handleDelete={handleDelete} handleEdit={handleEdit} />
       );
     },
   },
