@@ -8,6 +8,7 @@ import { revenueColumns } from "@/lib/table-columns";
 import DeleteRevenue from "./DeleteRevenue";
 import CustomSheet from "@/app/components/custom-sheet";
 import { useRevenueStore } from "@/app/stores";
+import EditRevenue from "./EditRevenue";
 
 const RevenueList = () => {
   const { selectedRevenue } = useRevenueStore();
@@ -24,9 +25,7 @@ const RevenueList = () => {
         columns={revenueColumns}
         isLoading={isFetching || isPending || isLoading}
       />
-      <CustomSheet id={selectedRevenue?._id || ""}>
-        <div>Update Revenue - {selectedRevenue?._id}</div>
-      </CustomSheet>
+      <EditRevenue />
       <DeleteRevenue />
     </>
   );

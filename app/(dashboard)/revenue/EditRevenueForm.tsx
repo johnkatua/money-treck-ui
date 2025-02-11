@@ -84,12 +84,7 @@ const EditRevenueForm = () => {
   const { control } = form;
   return (
     <>
-      <FormWrapper
-        formTitle="Edit Revenue"
-        form={form}
-        onSubmit={onSubmit}
-        isUpdate={true}
-      >
+      <FormWrapper addStyling={false} form={form} onSubmit={onSubmit}>
         <CustomFormField control={control} name="name" label="Revenue Name *">
           <Input />
         </CustomFormField>
@@ -126,22 +121,6 @@ const EditRevenueForm = () => {
           />
         </div>
       </FormWrapper>
-      <CustomButton
-        text={"Delete Revenue"}
-        type="submit"
-        onClick={openDialog}
-        disabled={false}
-        className="w-full mt-2 bg-black text-white p-3 rounded-md transition-all duration-300"
-      />
-      <CustomDialog>
-        <CustomButton
-          text={isDeleting ? "Please Wait" : "Delete Revenue"}
-          type="submit"
-          onClick={handleDelete}
-          disabled={isDeleting}
-          className="w-full mt-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-md transition-all duration-300"
-        />
-      </CustomDialog>
     </>
   );
 };
