@@ -5,7 +5,6 @@ import CustomDialog from "@/app/components/custom-dialog";
 import { useDeleteRevenue } from "@/app/hooks";
 import { useDialogStore, useRevenueStore } from "@/app/stores";
 import { useRouter } from "next/navigation";
-import React from "react";
 import toast from "react-hot-toast";
 
 const DeleteRevenue = () => {
