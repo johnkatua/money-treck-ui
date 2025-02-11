@@ -1,9 +1,11 @@
 "use client";
 
+import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomDialog from "@/app/components/custom-dialog";
 import TableWrapper from "@/app/components/table-wrapper";
 import { useRevenues } from "@/app/hooks";
 import { revenueColumns } from "@/lib/table-columns";
+import DeleteRevenue from "./DeleteRevenue";
 
 const RevenueList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
@@ -19,6 +21,7 @@ const RevenueList = () => {
         columns={revenueColumns}
         isLoading={isFetching || isPending || isLoading}
       />
+      <DeleteRevenue />
     </>
   );
 };

@@ -16,7 +16,7 @@ const PageWrapper: FC<PageWrapperProps> = ({ title, children }) => {
         <Header title={title} />
       </div>
       <div className="p-4">{children}</div>
-      <CustomDialog />
+      {/* <CustomDialog /> */}
     </div>
   );
 };
