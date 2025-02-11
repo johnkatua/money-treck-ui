@@ -1,17 +1,12 @@
 "use client";
 
-import CustomButton from "@/app/components/buttons/CustomButton";
-import CustomDialog from "@/app/components/custom-dialog";
 import TableWrapper from "@/app/components/table-wrapper";
 import { useRevenues } from "@/app/hooks";
 import { revenueColumns } from "@/lib/table-columns";
 import DeleteRevenue from "./DeleteRevenue";
-import CustomSheet from "@/app/components/custom-sheet";
-import { useRevenueStore } from "@/app/stores";
 import EditRevenue from "./EditRevenue";
 
 const RevenueList = () => {
-  const { selectedRevenue } = useRevenueStore();
   const { data, isPending, isFetching, isLoading, isError, error } =
     useRevenues();
 
