@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const BudgetFormSchema = z.object({
+  _id: z.string().optional(),
   name: z
     .string()
     .min(1, {

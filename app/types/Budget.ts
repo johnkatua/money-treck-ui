@@ -3,7 +3,7 @@ export interface IBudget extends IBudgetResponse {
 }
 
 export interface IBudgetResponse {
-  _id: string;
+  _id?: string;
   name: string;
   amount: number;
   period: string;
