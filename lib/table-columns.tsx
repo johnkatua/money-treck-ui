@@ -66,7 +66,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       };
       return (
         <>
-          <CustomDropDown id={revenue._id}>
+          <CustomDropDown>
             <CustomDropdownMenuItem
               color="blue"
               text="Edit Revenue"
