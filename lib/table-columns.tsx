@@ -49,7 +49,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
     accessorKey: "",
     header: "Actions",
     cell: ({ row }) => {
-      const switchSheetState = useSheet((state) => state.switchSheetState);
+      const { switchSheetState } = useSheet();
       const { openDialog } = useDialogStore();
       const { updateSelectedRevenue } = useRevenueStore();
       const revenue = row.original as Revenue;
