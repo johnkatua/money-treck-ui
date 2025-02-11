@@ -4,11 +4,9 @@ import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomDialog from "@/app/components/custom-dialog";
 import { useDeleteRevenue } from "@/app/hooks";
 import { useDialogStore, useRevenueStore } from "@/app/stores";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const DeleteRevenue = () => {
-  const router = useRouter();
   const { selectedRevenue } = useRevenueStore();
   const { isPending, mutate } = useDeleteRevenue();
   const { closeDialog } = useDialogStore();
@@ -24,7 +22,6 @@ const DeleteRevenue = () => {
     mutate(id, {
       onSuccess: () => {
         toast.success("Revenue deleted successfully");
-        router.push("/revenue");
       },
       onError: (error: unknown) => {
         if (error instanceof Error) {
