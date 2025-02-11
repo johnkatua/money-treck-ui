@@ -56,8 +56,6 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       const handleEdit = () => {
         switchSheetState(revenue._id);
         updateSelectedRevenue(revenue);
-        console.log("Edit Revenue", revenue);
-        console.log("Switched sheet state for ID:", revenue._id);
       };
 
       const handleDelete = () => {
