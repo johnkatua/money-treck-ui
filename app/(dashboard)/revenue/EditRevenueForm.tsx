@@ -11,13 +11,11 @@ import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
 import { RevenueFormSchema } from "@/lib/definitions/RevenueFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
 const EditRevenueForm = () => {
-  const router = useRouter();
   const { selectedRevenue, updateSelectedRevenue } = useRevenueStore();
   const { switchSheetState } = useSheet();
   const { isPending, mutate } = useUpdateRevenue();
@@ -43,7 +41,6 @@ const EditRevenueForm = () => {
     mutate(values, {
       onSuccess: () => {
         toast.success("Revenue updated successfully");
-        router.push("/revenue");
       },
       onError: (error: unknown) => {
         if (error instanceof Error) {
