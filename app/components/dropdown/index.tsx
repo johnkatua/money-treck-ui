@@ -1,5 +1,3 @@
-"use client";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,7 +5,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { FC, ReactNode } from "react";
-import CustomSheet from "../custom-sheet";
 
 interface ICustomDropDown {
   id?: string | number | null | undefined;
@@ -25,7 +22,6 @@ const CustomDropDown: FC<ICustomDropDown> = ({ id, children }) => {
           {children}
         </DropdownMenuContent>
       </DropdownMenu>
-      {/* <CustomSheet id={id}>{children}</CustomSheet> */}
     </>
   );
 };
