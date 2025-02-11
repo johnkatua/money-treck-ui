@@ -2,6 +2,7 @@
 
 import CustomActions from "@/app/components/actions";
 import { useDialogStore, useRevenueStore, useSheet } from "@/app/stores";
+import { useBudgetStore } from "@/app/stores/use-budget";
 import { Revenue } from "@/app/types";
 import { IBudget, IBudgetResponse } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
@@ -98,14 +99,17 @@ export const budgetColumns: ColumnDef<IBudget>[] = [
     cell: ({ row }) => {
       const { switchSheetState } = useSheet();
       const { openDialog } = useDialogStore();
+      const { updateSelectedBudget } = useBudgetStore();
       const budget = row.original as IBudgetResponse;
 
       const handleEdit = () => {
         switchSheetState(budget._id);
+        updateSelectedBudget(budget);
       };
 
       const handleDelete = () => {
         openDialog();
+        updateSelectedBudget(budget);
       };
 
       return (
