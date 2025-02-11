@@ -11,7 +11,7 @@ import { FC, ReactNode } from "react";
 
 interface CustomDialogProps {
   children?: ReactNode;
-  description: string;
+  description?: string;
 }
 
 const defaultDescription = `This action cannot be undone. This will permanently delete your
