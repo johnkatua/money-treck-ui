@@ -5,7 +5,7 @@ import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
 import { useUpdateRevenue } from "@/app/hooks";
-import { useRevenueStore } from "@/app/stores";
+import { useRevenueStore, useSheet } from "@/app/stores";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
@@ -18,7 +18,8 @@ import { z } from "zod";
 
 const EditRevenueForm = () => {
   const router = useRouter();
-  const { selectedRevenue } = useRevenueStore();
+  const { selectedRevenue, updateSelectedRevenue } = useRevenueStore();
+  const { switchSheetState } = useSheet();
   const { isPending, mutate } = useUpdateRevenue();
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
@@ -51,7 +52,11 @@ const EditRevenueForm = () => {
           toast.error("An unexpected error occurred");
         }
       },
-      onSettled: () => form.reset(),
+      onSettled: () => {
+        form.reset();
+        switchSheetState(null);
+        updateSelectedRevenue(null);
+      },
     });
   };
 
