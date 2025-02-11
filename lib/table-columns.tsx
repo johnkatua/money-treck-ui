@@ -3,6 +3,7 @@
 import CustomActions from "@/app/components/actions";
 import { useDialogStore, useRevenueStore, useSheet } from "@/app/stores";
 import { useBudgetStore } from "@/app/stores/use-budget";
+import { useExpenditureStore } from "@/app/stores/use-expenditure";
 import { Revenue } from "@/app/types";
 import { IBudget, IBudgetResponse } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
@@ -131,5 +132,29 @@ export const expenseColumns: ColumnDef<IExpenditure>[] = [
   {
     accessorKey: "amount",
     header: () => "Amount",
+  },
+  {
+    accessorKey: "",
+    header: "Actions",
+    cell: ({ row }) => {
+      const { switchSheetState } = useSheet();
+      const { openDialog } = useDialogStore();
+      const { updateSelectedExpenditure } = useExpenditureStore();
+
+      const expenditure = row.original as IExpenditure;
+
+      const handleEdit = () => {
+        switchSheetState(expenditure._id);
+        updateSelectedExpenditure(expenditure);
+      };
+
+      const handleDelete = () => {
+        openDialog();
+        updateSelectedExpenditure(expenditure);
+      };
+      return (
+        <CustomActions handleDelete={handleDelete} handleEdit={handleEdit} />
+      );
+    },
   },
 ];

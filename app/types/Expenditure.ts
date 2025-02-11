@@ -3,6 +3,7 @@ export interface IExpenditure extends IExpenditureResponse {
 }
 
 export interface IExpenditureResponse {
+  _id: string;
   name: string;
   amount: number;
 }
