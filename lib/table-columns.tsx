@@ -1,6 +1,5 @@
 "use client";
 
-import CustomDialog from "@/app/components/custom-dialog";
 import CustomDropDown from "@/app/components/dropdown";
 import CustomDropdownMenuItem from "@/app/components/dropdown/dropdown-menu-item";
 import { useDialogStore, useRevenueStore, useSheet } from "@/app/stores";
@@ -9,8 +8,7 @@ import { IBudget } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
-import { Edit, Eye, Trash } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { Edit, Trash } from "lucide-react";
 
 const periodType: Record<
   "daily" | "weekly" | "monthly" | "yearly",
@@ -23,20 +21,6 @@ const periodType: Record<
 };
 
 export const revenueColumns: ColumnDef<Revenue>[] = [
-  // {
-  //   accessorKey: "view",
-  //   header: () => "View",
-  //   cell: ({ row }) => {
-  //     const router = useRouter();
-  //     const { updateSelectedRevenue } = useRevenueStore();
-  //     const revenue = row.original;
-  //     const handleNavigate = () => {
-  //       updateSelectedRevenue(row.original);
-  //       router.push(`/revenue/${revenue._id}`);
-  //     };
-  //     return <Eye className="cursor-pointer" onClick={handleNavigate} />;
-  //   },
-  // },
   {
     accessorKey: "id",
     header: () => "Id",
