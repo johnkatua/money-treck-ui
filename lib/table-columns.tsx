@@ -3,7 +3,7 @@
 import CustomActions from "@/app/components/actions";
 import { useDialogStore, useRevenueStore, useSheet } from "@/app/stores";
 import { Revenue } from "@/app/types";
-import { IBudget } from "@/app/types/Budget";
+import { IBudget, IBudgetResponse } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
 import { ColumnDef } from "@tanstack/react-table";
@@ -95,6 +95,23 @@ export const budgetColumns: ColumnDef<IBudget>[] = [
   {
     accessorKey: "",
     header: "Actions",
+    cell: ({ row }) => {
+      const { switchSheetState } = useSheet();
+      const { openDialog } = useDialogStore();
+      const budget = row.original as IBudgetResponse;
+
+      const handleEdit = () => {
+        switchSheetState(budget._id);
+      };
+
+      const handleDelete = () => {
+        openDialog();
+      };
+
+      return (
+        <CustomActions handleDelete={handleDelete} handleEdit={handleEdit} />
+      );
+    },
   },
 ];
 
