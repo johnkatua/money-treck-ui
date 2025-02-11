@@ -1,12 +1,11 @@
 "use client";
 
 import CustomButton from "@/app/components/buttons/CustomButton";
-import CustomDialog from "@/app/components/custom-dialog";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
-import { useDeleteRevenue, useUpdateRevenue } from "@/app/hooks";
-import { useDialogStore, useRevenueStore } from "@/app/stores";
+import { useUpdateRevenue } from "@/app/hooks";
+import { useRevenueStore } from "@/app/stores";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
@@ -20,9 +19,7 @@ import { z } from "zod";
 const EditRevenueForm = () => {
   const router = useRouter();
   const { selectedRevenue } = useRevenueStore();
-  const { openDialog, closeDialog } = useDialogStore();
   const { isPending, mutate } = useUpdateRevenue();
-  const { isPending: isDeleting, mutate: deleteMutate } = useDeleteRevenue();
   const form = useForm<z.infer<typeof RevenueFormSchema>>({
     resolver: zodResolver(RevenueFormSchema),
     defaultValues: {
@@ -56,29 +53,6 @@ const EditRevenueForm = () => {
       },
       onSettled: () => form.reset(),
     });
-  };
-
-  const handleDelete = async () => {
-    const id = selectedRevenue?._id;
-    if (id) {
-      deleteMutate(id, {
-        onSuccess: () => {
-          toast.success("Revenue deleted successfully");
-          router.push("/revenue");
-        },
-        onError: (error: unknown) => {
-          if (error instanceof Error) {
-            toast.error(error.message);
-          } else {
-            toast.error("An unexpected error occurred");
-          }
-        },
-        onSettled: () => closeDialog(),
-      });
-    } else {
-      toast.error("Please select a revenue");
-      closeDialog();
-    }
   };
 
   const { control } = form;
