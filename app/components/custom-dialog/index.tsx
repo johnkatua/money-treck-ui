@@ -11,9 +11,16 @@ import { FC, ReactNode } from "react";
 
 interface CustomDialogProps {
   children?: ReactNode;
+  description: string;
 }
 
-const CustomDialog: FC<CustomDialogProps> = ({ children }) => {
+const defaultDescription = `This action cannot be undone. This will permanently delete your
+            Revenue and remove the data from our servers.`;
+
+const CustomDialog: FC<CustomDialogProps> = ({
+  description = defaultDescription,
+  children,
+}) => {
   const { isOpen } = useDialogStore();
 
   if (!isOpen) return null;
@@ -22,10 +29,7 @@ const CustomDialog: FC<CustomDialogProps> = ({ children }) => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Are you absolute sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            Revenue and remove the data from our servers.
-          </DialogDescription>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <div className="flex gap-4">{children}</div>
