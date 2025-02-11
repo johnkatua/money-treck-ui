@@ -14,7 +14,7 @@ interface CustomDialogProps {
   description?: string;
 }
 
-const defaultDescription = `This action cannot be undone. This will permanently delete your
+const defaultDescription = `This action cannot be undone. This will permanently delete the
             Revenue and remove the data from our servers.`;
 
 const CustomDialog: FC<CustomDialogProps> = ({

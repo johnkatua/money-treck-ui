@@ -6,7 +6,12 @@ import React from "react";
 const DeleteBudget = () => {
   const { isPending, mutate } = useDeleteBudget();
   return (
-    <CustomDialog>
+    <CustomDialog
+      description={`
+          This action cannot be undone. This will permanently delete the
+            Budget and remove the data from our servers.
+        `}
+    >
       <CustomButton
         text={isPending ? "Please Wait" : "Delete Budget"}
         type="submit"
