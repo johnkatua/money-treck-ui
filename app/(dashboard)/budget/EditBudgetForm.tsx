@@ -1,6 +1,9 @@
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
+import { useUpdateBudget } from "@/app/hooks";
+import { useSheet } from "@/app/stores";
+import { useBudgetStore } from "@/app/stores/use-budget";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
 import { periodItems } from "@/lib/data";
@@ -11,9 +14,18 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const EditBudgetForm = () => {
+  const { selectedBudget, updateSelectedBudget } = useBudgetStore();
+  const { switchSheetState } = useSheet();
+  const { isPending, mutate } = useUpdateBudget();
   const form = useForm<z.infer<typeof BudgetFormSchema>>({
     resolver: zodResolver(BudgetFormSchema),
-    defaultValues: {},
+    defaultValues: {
+      name: selectedBudget?.name || "",
+      amount: selectedBudget?.amount || 10,
+      period:
+        (selectedBudget?.period as "daily" | "weekly" | "monthly" | "yearly") ||
+        "daily",
+    },
     mode: "onBlur",
   });
 
