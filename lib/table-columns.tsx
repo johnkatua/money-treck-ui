@@ -113,6 +113,10 @@ export const budgetColumns: ColumnDef<IBudget>[] = [
       );
     },
   },
+  {
+    accessorKey: "",
+    header: "Actions",
+  },
 ];
 
 export const expenseColumns: ColumnDef<IExpenditure>[] = [

@@ -7,11 +7,10 @@ import { MoreHorizontal } from "lucide-react";
 import { FC, ReactNode } from "react";
 
 interface ICustomDropDown {
-  id?: string | number | null | undefined;
   children: ReactNode;
 }
 
-const CustomDropDown: FC<ICustomDropDown> = ({ id, children }) => {
+const CustomDropDown: FC<ICustomDropDown> = ({ children }) => {
   return (
     <>
       <DropdownMenu modal={false}>
