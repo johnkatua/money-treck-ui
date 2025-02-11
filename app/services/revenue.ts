@@ -10,7 +10,6 @@ export const getRevenues = async (): Promise<Revenue[]> => {
     const extractedData: IData[] = response.data?.data?.data || [];
 
     const updatedData: Revenue[] = extractedData.map((revenue, index) => ({
-      view: true,
       id: index + 1,
       ...revenue,
     }));

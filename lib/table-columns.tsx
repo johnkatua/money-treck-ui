@@ -23,20 +23,20 @@ const periodType: Record<
 };
 
 export const revenueColumns: ColumnDef<Revenue>[] = [
-  {
-    accessorKey: "view",
-    header: () => "View",
-    cell: ({ row }) => {
-      const router = useRouter();
-      const { updateSelectedRevenue } = useRevenueStore();
-      const revenue = row.original;
-      const handleNavigate = () => {
-        updateSelectedRevenue(row.original);
-        router.push(`/revenue/${revenue._id}`);
-      };
-      return <Eye className="cursor-pointer" onClick={handleNavigate} />;
-    },
-  },
+  // {
+  //   accessorKey: "view",
+  //   header: () => "View",
+  //   cell: ({ row }) => {
+  //     const router = useRouter();
+  //     const { updateSelectedRevenue } = useRevenueStore();
+  //     const revenue = row.original;
+  //     const handleNavigate = () => {
+  //       updateSelectedRevenue(row.original);
+  //       router.push(`/revenue/${revenue._id}`);
+  //     };
+  //     return <Eye className="cursor-pointer" onClick={handleNavigate} />;
+  //   },
+  // },
   {
     accessorKey: "id",
     header: () => "Id",
@@ -70,6 +70,8 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       const { updateSelectedRevenue } = useRevenueStore();
       const revenue = row.original as Revenue;
       const handleEdit = () => {
+        switchSheetState(revenue._id);
+        updateSelectedRevenue(revenue);
         console.log("Edit Revenue", revenue);
         console.log("Switched sheet state for ID:", revenue._id);
       };
@@ -77,7 +79,6 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       const handleDelete = () => {
         openDialog();
         updateSelectedRevenue(revenue);
-        console.log("Delete Revenue", row.original);
       };
       return (
         <>
