@@ -60,44 +60,44 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
       );
     },
   },
-  // {
-  //   accessorKey: "",
-  //   header: "Actions",
-  //   cell: ({ row }) => {
-  //     const switchSheetState = useSheet((state) => state.switchSheetState);
-  //     const { openDialog } = useDialogStore();
-  //     const revenue = row.original as Revenue;
-  //     const handleEdit = () => {
-  //       console.log("Edit Revenue", revenue);
-  //       console.log("Switched sheet state for ID:", revenue._id);
-  //     };
+  {
+    accessorKey: "",
+    header: "Actions",
+    cell: ({ row }) => {
+      const switchSheetState = useSheet((state) => state.switchSheetState);
+      const { openDialog } = useDialogStore();
+      const revenue = row.original as Revenue;
+      const handleEdit = () => {
+        console.log("Edit Revenue", revenue);
+        console.log("Switched sheet state for ID:", revenue._id);
+      };
 
-  //     const handleDelete = () => {
-  //       openDialog();
-  //       console.log("Delete Revenue", row.original);
-  //     };
-  //     return (
-  //       <>
-  //         <CustomDropDown id={revenue._id}>
-  //           <CustomDropdownMenuItem
-  //             color="blue"
-  //             text="Edit Revenue"
-  //             handleClick={() => handleEdit()}
-  //           >
-  //             <Edit size={16} />
-  //           </CustomDropdownMenuItem>
-  //           <CustomDropdownMenuItem
-  //             color="red"
-  //             text="Delete Revenue"
-  //             handleClick={handleDelete}
-  //           >
-  //             <Trash size={16} />
-  //           </CustomDropdownMenuItem>
-  //         </CustomDropDown>
-  //       </>
-  //     );
-  //   },
-  // },
+      const handleDelete = () => {
+        openDialog();
+        console.log("Delete Revenue", row.original);
+      };
+      return (
+        <>
+          <CustomDropDown id={revenue._id}>
+            <CustomDropdownMenuItem
+              color="blue"
+              text="Edit Revenue"
+              handleClick={() => handleEdit()}
+            >
+              <Edit size={16} />
+            </CustomDropdownMenuItem>
+            <CustomDropdownMenuItem
+              color="red"
+              text="Delete Revenue"
+              handleClick={handleDelete}
+            >
+              <Trash size={16} />
+            </CustomDropdownMenuItem>
+          </CustomDropDown>
+        </>
+      );
+    },
+  },
 ];
 
 export const budgetColumns: ColumnDef<IBudget>[] = [

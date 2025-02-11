@@ -1,5 +1,8 @@
+"use client";
+
 import React, { FC, ReactNode } from "react";
 import Header from "../header";
+import CustomDialog from "../custom-dialog";
 
 interface PageWrapperProps {
   title: string;
@@ -13,6 +16,7 @@ const PageWrapper: FC<PageWrapperProps> = ({ title, children }) => {
         <Header title={title} />
       </div>
       <div className="p-4">{children}</div>
+      <CustomDialog />
     </div>
   );
 };

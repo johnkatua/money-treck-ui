@@ -17,7 +17,7 @@ interface ICustomDropDown {
 const CustomDropDown: FC<ICustomDropDown> = ({ id, children }) => {
   return (
     <>
-      <DropdownMenu>
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger>
           <MoreHorizontal />
         </DropdownMenuTrigger>

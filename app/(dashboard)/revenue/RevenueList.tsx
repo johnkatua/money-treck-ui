@@ -1,5 +1,6 @@
 "use client";
 
+import CustomDialog from "@/app/components/custom-dialog";
 import TableWrapper from "@/app/components/table-wrapper";
 import { useRevenues } from "@/app/hooks";
 import { revenueColumns } from "@/lib/table-columns";

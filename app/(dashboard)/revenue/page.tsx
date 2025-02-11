@@ -6,6 +6,7 @@ import { tabsHeader } from "@/lib/data";
 import PageWrapper from "../../components/page-wrapper";
 import CreateRevenue from "./CreateRevenue";
 import RevenueList from "./RevenueList";
+import CustomDialog from "@/app/components/custom-dialog";
 
 const tabsContent = [
   {
@@ -24,13 +25,15 @@ const tabsContent = [
 
 const Revenue = () => {
   return (
-    <PageWrapper title="Revenue">
-      <TabWrapper
-        defaultValue="View"
-        tabsHeader={tabsHeader}
-        tabsContent={tabsContent}
-      />
-    </PageWrapper>
+    <>
+      <PageWrapper title="Revenue">
+        <TabWrapper
+          defaultValue="View"
+          tabsHeader={tabsHeader}
+          tabsContent={tabsContent}
+        />
+      </PageWrapper>
+    </>
   );
 };
 
