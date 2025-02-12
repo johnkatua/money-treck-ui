@@ -1,3 +1,4 @@
+import CustomButton from "@/app/components/buttons/CustomButton";
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
@@ -106,6 +107,12 @@ const EditExpenditureForm = () => {
           )}
         </CustomSelect>
       </CustomFormField>
+      <CustomButton
+        text={isPending ? "Please Wait" : "Edit Budget"}
+        type="submit"
+        disabled={isPending}
+        className="w-full mt-2 bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
+      />
     </FormWrapper>
   );
 };
