@@ -24,10 +24,18 @@ const EditExpenditureForm = () => {
     defaultValues: {
       name: selectedExpenditure?.name,
       amount: selectedExpenditure?.amount,
-      budget_id: "",
+      budget_id: selectedExpenditure?.budget_id,
     },
+    mode: "onBlur",
   });
   const { control, watch, setValue } = form;
+
+  const onSubmit = async (values: z.infer<typeof ExpenditureFormSchema>) => {
+    if (selectedExpenditure) {
+      const { _id } = selectedExpenditure;
+      values = { _id, ...values };
+    }
+  };
 
   useEffect(() => {
     const refetchBudgetData = async () => {
