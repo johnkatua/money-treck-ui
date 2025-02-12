@@ -1,8 +1,9 @@
 import CustomFormField from "@/app/components/forms/CustomFormField";
 import CustomSelect from "@/app/components/forms/CustomSelect";
 import FormWrapper from "@/app/components/forms/FormWrapper";
-import { useBudget } from "@/app/hooks";
+import { useBudget, useUpdateExpense } from "@/app/hooks";
 import { getBudgets } from "@/app/services";
+import { useSheet } from "@/app/stores";
 import { useExpenditureStore } from "@/app/stores/use-expenditure";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,11 +11,15 @@ import { SelectItem } from "@/components/ui/select";
 import { ExpenditureFormSchema } from "@/lib/definitions/ExpenditureFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertCircle, Loader2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const EditExpenditureForm = () => {
+  const { switchSheetState } = useSheet();
+  const { isPending, mutate } = useUpdateExpense();
   const { data, isPending: isLoadingData } = useBudget();
   const [budget, setBudget] = useState(data);
   const { selectedExpenditure, updateSelectedExpenditure } =
@@ -28,13 +33,30 @@ const EditExpenditureForm = () => {
     },
     mode: "onBlur",
   });
-  const { control, watch, setValue } = form;
+  const { control, watch, reset, setValue } = form;
 
   const onSubmit = async (values: z.infer<typeof ExpenditureFormSchema>) => {
     if (selectedExpenditure) {
       const { _id } = selectedExpenditure;
       values = { _id, ...values };
     }
+    mutate(values, {
+      onSuccess: () => {
+        toast.success("Expenditure update successfully");
+      },
+      onError: (error: unknown) => {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        } else {
+          toast.error("An unexpected error occurred");
+        }
+      },
+      onSettled: () => {
+        reset();
+        switchSheetState(null);
+        updateSelectedExpenditure(null);
+      },
+    });
   };
 
   useEffect(() => {
@@ -47,7 +69,7 @@ const EditExpenditureForm = () => {
     refetchBudgetData();
   }, []);
   return (
-    <FormWrapper addStyling={false} form={form} onSubmit={() => {}}>
+    <FormWrapper addStyling={false} form={form} onSubmit={onSubmit}>
       <CustomFormField control={control} name="name" label="Expenditure Name *">
         <Input />
       </CustomFormField>
