@@ -4,6 +4,7 @@ import TableWrapper from "@/app/components/table-wrapper";
 import { useExpense } from "@/app/hooks/useExpense";
 import { expenseColumns } from "@/lib/table-columns";
 import EditExpenditure from "./EditExpenditure";
+import DeleteExpenditure from "./DeleteExpenditure";
 
 const ExpenditureList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
@@ -20,6 +21,7 @@ const ExpenditureList = () => {
         isLoading={isFetching || isPending || isLoading}
       />
       <EditExpenditure />
+      <DeleteExpenditure />
     </>
   );
 };
