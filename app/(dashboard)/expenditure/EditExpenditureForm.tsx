@@ -22,8 +22,8 @@ const EditExpenditureForm = () => {
   const form = useForm<z.infer<typeof ExpenditureFormSchema>>({
     resolver: zodResolver(ExpenditureFormSchema),
     defaultValues: {
-      name: "",
-      amount: 0,
+      name: selectedExpenditure?.name,
+      amount: selectedExpenditure?.amount,
       budget_id: "",
     },
   });
