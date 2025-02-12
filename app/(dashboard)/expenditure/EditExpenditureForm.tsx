@@ -11,7 +11,6 @@ import { SelectItem } from "@/components/ui/select";
 import { ExpenditureFormSchema } from "@/lib/definitions/ExpenditureFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertCircle, Loader2 } from "lucide-react";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
