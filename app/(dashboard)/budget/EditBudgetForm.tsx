@@ -34,7 +34,7 @@ const EditBudgetForm = () => {
   const onSubmit = async (values: z.infer<typeof BudgetFormSchema>) => {
     if (selectedBudget) {
       const { _id } = selectedBudget;
-      values = { _id: selectedBudget._id, ...values };
+      values = { _id, ...values };
     }
     mutate(values, {
       onSuccess: () => {
