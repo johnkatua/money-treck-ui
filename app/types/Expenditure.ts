@@ -6,6 +6,7 @@ export interface IExpenditureResponse {
   _id: string;
   name: string;
   amount: number;
+  budget_id: string;
 }
 
 export interface IExpenditureRequest {
