@@ -6,12 +6,10 @@ import { useBudget, useUpdateExpense } from "@/app/hooks";
 import { getBudgets } from "@/app/services";
 import { useSheet } from "@/app/stores";
 import { useExpenditureStore } from "@/app/stores/use-expenditure";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { SelectItem } from "@/components/ui/select";
 import { ExpenditureFormSchema } from "@/lib/definitions/ExpenditureFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AlertCircle, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -86,32 +84,19 @@ const EditExpenditureForm = () => {
           value={watch("budget_id")}
           onValueChange={(val) => setValue("budget_id", val)}
         >
-          {isLoadingData ? (
-            <div className="flex flex-col items-center gap-4 p-6">
-              <Loader2 className="w-8 h-8 animate-spin text-gray-600" />
-              <p className="text-gray-600 text-sm">Loading data...</p>
-            </div>
-          ) : budget && budget.length > 0 ? (
+          {budget &&
             budget.map(({ _id, name }) => (
               <SelectItem key={_id} value={_id}>
                 {name}
               </SelectItem>
-            ))
-          ) : (
-            <Card className="bg-gray-50 shadow-md border border-gray-200 rounded-bl-md rounded-s-none rounded-e-none rounded-br-md">
-              <CardContent className="flex flex-col items-center gap-4 p-6">
-                <AlertCircle className="w-10 h-10 text-gray-600" />
-                <p className="text-gray-600 text-sm">No data available.</p>
-              </CardContent>
-            </Card>
-          )}
+            ))}
         </CustomSelect>
       </CustomFormField>
       <CustomButton
         text={isPending ? "Please Wait" : "Edit Budget"}
         type="submit"
         disabled={isPending}
-        className="w-full mt-2 bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300"
+        className="submit-button"
       />
     </FormWrapper>
   );

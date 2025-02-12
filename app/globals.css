@@ -21,6 +21,10 @@ body {
     display: none;
   }
 
+  .submit-button {
+    @apply w-full mt-2 bg-green-500 hover:bg-green-600 text-white p-3 rounded-md transition-all duration-300;
+  }
+
   .clip-polygon {
     clip-path: polygon(
       0% 10%,
