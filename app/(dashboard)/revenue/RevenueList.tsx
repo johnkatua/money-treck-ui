@@ -16,7 +16,7 @@ const RevenueList = () => {
   return (
     <>
       <TableWrapper
-        data={data}
+        data={data ?? []}
         columns={revenueColumns}
         isLoading={isFetching || isPending || isLoading}
       />
