@@ -21,8 +21,8 @@ import { AlertCircle, Loader2 } from "lucide-react";
 import { FC, useMemo, useState } from "react";
 import CustomDialog from "../custom-dialog";
 
-interface ITableWrapper {
-  data: Revenue[];
+interface ITableWrapper<T = unknown> {
+  data: T[];
   columns: any[];
   isLoading?: boolean;
 }

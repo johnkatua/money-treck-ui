@@ -16,7 +16,7 @@ const BudgetList = () => {
   return (
     <>
       <TableWrapper
-        data={data}
+        data={data ?? []}
         columns={budgetColumns}
         isLoading={isFetching || isPending || isLoading}
       />
