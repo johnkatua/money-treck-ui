@@ -16,7 +16,7 @@ const ExpenditureList = () => {
   return (
     <>
       <TableWrapper
-        data={data}
+        data={data ?? []}
         columns={expenseColumns}
         isLoading={isFetching || isPending || isLoading}
       />
