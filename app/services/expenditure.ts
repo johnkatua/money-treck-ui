@@ -14,12 +14,19 @@ export const getExpenses = async () => {
     const response = await axiosInterceptorInstance.get("/expenses");
     const extractedData: IExpenditureResponse[] = response?.data?.data || [];
 
+    const metaData = response?.data;
+
     const updatedData: IExpenditure[] = extractedData.map((expense, idx) => {
       const { amount, ...fields } = expense;
       return { id: idx + 1, amount: amount.toLocaleString(), ...fields };
     });
 
-    return updatedData;
+    return {
+      updatedData,
+      total: metaData?.total || 0,
+      page: metaData?.page || 0,
+      limit: metaData?.page || 0,
+    };
   } catch (error) {
     const err = error instanceof Error ? error.message : error;
     if (err === "Request failed with status code 401") {
