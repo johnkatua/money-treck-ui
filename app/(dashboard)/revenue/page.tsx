@@ -12,7 +12,7 @@ const tabsContent = [
   {
     value: "View",
     children: (
-      <TableListWrapper queryKey={REVENEUS_QUERY_KEY} queryFn={getRevenues}>
+      <TableListWrapper queryKey={[REVENEUS_QUERY_KEY]} queryFn={getRevenues}>
         <RevenueList />
       </TableListWrapper>
     ),

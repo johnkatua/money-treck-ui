@@ -8,7 +8,7 @@ import EditRevenue from "./EditRevenue";
 
 const RevenueList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
-    useRevenues();
+    useRevenues(1, 5);
 
   console.log(data);
 

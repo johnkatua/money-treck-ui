@@ -9,10 +9,10 @@ import {
   updateRevenue,
 } from "../services";
 
-export const useRevenues = () => {
+export const useRevenues = (page: number, limit: number) => {
   return useQuery({
-    queryKey: REVENEUS_QUERY_KEY,
-    queryFn: () => getRevenues(1, 5),
+    queryKey: [REVENEUS_QUERY_KEY, page, limit],
+    queryFn: ({ queryKey }) => getRevenues(queryKey[1], queryKey[2]),
   });
 };
 
