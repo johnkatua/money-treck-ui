@@ -18,8 +18,9 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { AlertCircle, Loader2 } from "lucide-react";
-import { FC, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import CustomDialog from "../custom-dialog";
+import { usePaginationStore } from "@/app/stores/use-pagination";
 
 interface ITableWrapper<T = unknown> {
   data: T[];
@@ -33,6 +34,7 @@ const TableWrapper: FC<ITableWrapper> = ({
   rowCount,
   isLoading,
 }) => {
+  const { updatePaginationState } = usePaginationStore();
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 5,
@@ -50,6 +52,13 @@ const TableWrapper: FC<ITableWrapper> = ({
     debugTable: true,
   });
   console.log({ rowCount, data, pagination });
+
+  useEffect(() => {
+    updatePaginationState({
+      pageIndex: pagination.pageIndex,
+      pageSize: pagination.pageSize,
+    });
+  }, [pagination]);
   return (
     <>
       <div className="">
