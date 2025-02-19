@@ -10,17 +10,15 @@ const ExpenditureList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
     useExpense();
 
-  const { updatedData } = data;
-
   console.log({ data });
 
-  if (isError && updatedData && updatedData?.length < 0)
+  if (isError && data?.updatedData && data?.updatedData?.length < 0)
     return <div>Error: {error.message}</div>;
 
   return (
     <>
       <TableWrapper
-        data={updatedData ?? []}
+        data={data?.updatedData ?? []}
         columns={expenseColumns}
         isLoading={isFetching || isPending || isLoading}
       />

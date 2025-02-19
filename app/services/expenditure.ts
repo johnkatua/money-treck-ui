@@ -5,11 +5,14 @@ import { logout } from "../actions/auth";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import {
   IExpenditure,
+  IExpenditureMetadata,
   IExpenditureRequest,
   IExpenditureResponse,
 } from "../types";
 
-export const getExpenses = async () => {
+export const getExpenses = async (): Promise<
+  IExpenditureMetadata | undefined
+> => {
   try {
     const response = await axiosInterceptorInstance.get("/expenses");
     const extractedData: IExpenditureResponse[] = response?.data?.data || [];
