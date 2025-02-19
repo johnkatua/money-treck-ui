@@ -25,8 +25,14 @@ interface ITableWrapper<T = unknown> {
   data: T[];
   columns: any[];
   isLoading?: boolean;
+  rowCount?: number;
 }
-const TableWrapper: FC<ITableWrapper> = ({ data, columns, isLoading }) => {
+const TableWrapper: FC<ITableWrapper> = ({
+  data,
+  columns,
+  rowCount,
+  isLoading,
+}) => {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 5,
@@ -39,6 +45,7 @@ const TableWrapper: FC<ITableWrapper> = ({ data, columns, isLoading }) => {
     },
     onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
+    rowCount,
     manualGrouping: true,
     debugTable: true,
   });
