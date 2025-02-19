@@ -14,10 +14,10 @@ export const getExpenses = async () => {
     const response = await axiosInterceptorInstance.get("/expenses");
     const extractedData: IExpenditureResponse[] = response?.data?.data || [];
 
-    const updatedData: IExpenditure[] = extractedData.map((expense, idx) => ({
-      id: idx + 1,
-      ...expense,
-    }));
+    const updatedData: IExpenditure[] = extractedData.map((expense, idx) => {
+      const { amount, ...fields } = expense;
+      return { id: idx + 1, amount: amount.toLocaleString(), ...fields };
+    });
 
     return updatedData;
   } catch (error) {
