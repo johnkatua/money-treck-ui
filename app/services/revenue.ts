@@ -15,7 +15,12 @@ export const getRevenues = async (): Promise<Revenue[]> => {
       ...revenue,
     }));
 
-    return updatedData;
+    return {
+      updatedData,
+      total: metaData?.total || 0,
+      page: metaData?.page || 0,
+      limit: metaData?.page || 0,
+    };
   } catch (error: unknown) {
     console.error(
       "Error occurred while fetching revenues:",

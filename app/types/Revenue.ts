@@ -1,3 +1,10 @@
+export interface IRevenue {
+  updatedData: Revenue[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
 export interface Revenue extends IData {
   id: number;
 }
