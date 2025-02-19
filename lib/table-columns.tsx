@@ -132,6 +132,7 @@ export const expenseColumns: ColumnDef<IExpenditure>[] = [
   {
     accessorKey: "amount",
     header: () => "Amount",
+    cell: ({ row }) => <span>{row.original.amount.toLocaleString()}</span>,
   },
   {
     accessorKey: "",
