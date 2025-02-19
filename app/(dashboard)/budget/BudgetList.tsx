@@ -10,13 +10,13 @@ const BudgetList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
     useBudget();
 
-  if (isError && data && data?.length < 0)
+  if (isError && data?.updatedData && data?.updatedData.length < 0)
     return <div>Error: {error.message}</div>;
 
   return (
     <>
       <TableWrapper
-        data={data ?? []}
+        data={data?.updatedData ?? []}
         columns={budgetColumns}
         isLoading={isFetching || isPending || isLoading}
       />
