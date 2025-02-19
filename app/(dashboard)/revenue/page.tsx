@@ -6,13 +6,15 @@ import { tabsHeader } from "@/lib/data";
 import PageWrapper from "../../components/page-wrapper";
 import CreateRevenue from "./CreateRevenue";
 import RevenueList from "./RevenueList";
-import CustomDialog from "@/app/components/custom-dialog";
 
 const tabsContent = [
   {
     value: "View",
     children: (
-      <TableListWrapper queryKey={[REVENEUS_QUERY_KEY]} queryFn={getRevenues}>
+      <TableListWrapper
+        queryKey={[REVENEUS_QUERY_KEY, "1", "5"]}
+        queryFn={() => getRevenues(1, 5)}
+      >
         <RevenueList />
       </TableListWrapper>
     ),
