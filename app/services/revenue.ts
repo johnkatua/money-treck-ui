@@ -7,12 +7,15 @@ import { IData, IRevenueRequest, Revenue } from "../types";
 export const getRevenues = async (): Promise<Revenue[]> => {
   try {
     const response = await axiosInterceptorInstance.get("/revenues");
-    const extractedData: IData[] = response.data?.data?.data || [];
+    const extractedData: IData[] = response.data?.data || [];
+    const responseMetadata = response?.data;
 
     const updatedData: Revenue[] = extractedData.map((revenue, index) => ({
       id: index + 1,
       ...revenue,
     }));
+
+    console.log({ updatedData, responseMetadata });
 
     return updatedData;
   } catch (error: unknown) {
@@ -27,11 +30,7 @@ export const getRevenues = async (): Promise<Revenue[]> => {
 export const createRevenue = async (values: IRevenueRequest) => {
   try {
     const { name, amount, period } = values;
-    await axiosInterceptorInstance.post("/revenues", {
-      name,
-      amount,
-      period,
-    });
+    await axiosInterceptorInstance.post("/revenues", { name, amount, period });
   } catch (error) {
     console.error(
       "Error occurred while creating revenue:",
