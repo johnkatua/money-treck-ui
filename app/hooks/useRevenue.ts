@@ -12,7 +12,8 @@ import {
 export const useRevenues = (page: number, limit: number) => {
   return useQuery({
     queryKey: [REVENEUS_QUERY_KEY, page, limit],
-    queryFn: ({ queryKey }) => getRevenues(queryKey[1], queryKey[2]),
+    queryFn: ({ queryKey }) =>
+      getRevenues(Number(queryKey[1]), Number(queryKey[2])),
   });
 };
 
