@@ -2,13 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-import { IData, IRevenueRequest, Revenue } from "../types";
+import { IData, IRevenue, IRevenueRequest, Revenue } from "../types";
 
-export const getRevenues = async (): Promise<Revenue[]> => {
+export const getRevenues = async (): Promise<IRevenue> => {
   try {
     const response = await axiosInterceptorInstance.get("/revenues");
     const extractedData: IData[] = response.data?.data || [];
-    const metadata = response?.data;
+    const metaData = response?.data;
 
     const updatedData: Revenue[] = extractedData.map((revenue, index) => ({
       id: index + 1,

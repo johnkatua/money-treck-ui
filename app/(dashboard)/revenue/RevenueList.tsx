@@ -10,13 +10,13 @@ const RevenueList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
     useRevenues();
 
-  if (isError && data && data?.length < 0)
+  if (isError && data?.updatedData && data?.updatedData.length < 0)
     return <div>Error: {error.message}</div>;
 
   return (
     <>
       <TableWrapper
-        data={data ?? []}
+        data={data?.updatedData ?? []}
         columns={revenueColumns}
         isLoading={isFetching || isPending || isLoading}
       />
