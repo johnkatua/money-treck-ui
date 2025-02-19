@@ -20,8 +20,12 @@ export const getExpenses = async (): Promise<
     const metaData = response?.data;
 
     const updatedData: IExpenditure[] = extractedData.map((expense, idx) => {
-      const { amount, ...fields } = expense;
-      return { id: idx + 1, amount: amount.toLocaleString(), ...fields };
+      // const { amount, ...fields } = expense;
+      return {
+        id: idx + 1,
+        ...expense,
+        // amount: amount.toLocaleString(), ...fields
+      };
     });
 
     return {
