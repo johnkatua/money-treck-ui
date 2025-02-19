@@ -32,6 +32,7 @@ export const revenueColumns: ColumnDef<Revenue>[] = [
   {
     accessorKey: "amount",
     header: () => "Amount",
+    cell: ({ row }) => <span>{row.original.amount.toLocaleString()}</span>,
   },
   {
     accessorKey: "period",
@@ -81,6 +82,7 @@ export const budgetColumns: ColumnDef<IBudget>[] = [
   {
     accessorKey: "amount",
     header: () => "Amount",
+    cell: ({ row }) => <span>{row.original.amount.toLocaleString()}</span>,
   },
   {
     accessorKey: "period",
