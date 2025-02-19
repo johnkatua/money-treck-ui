@@ -49,7 +49,7 @@ const TableWrapper: FC<ITableWrapper> = ({
     manualGrouping: true,
     debugTable: true,
   });
-  console.log({ rowCount, data });
+  console.log({ rowCount, data, pagination });
   return (
     <>
       <div className="">
