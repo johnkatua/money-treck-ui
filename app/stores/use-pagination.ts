@@ -10,11 +10,11 @@ type Action = {
 };
 
 export const usePaginationStore = create<State & Action>((set) => ({
-  pageIndex: 0,
+  pageIndex: 1,
   pageSize: 5,
   updatePaginationState: ({ pageIndex, pageSize }) =>
     set({
-      pageIndex,
+      pageIndex: pageIndex + 1,
       pageSize,
     }),
 }));
