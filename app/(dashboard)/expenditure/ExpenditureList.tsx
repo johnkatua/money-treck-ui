@@ -10,8 +10,6 @@ const ExpenditureList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
     useExpense();
 
-  console.log({ data });
-
   if (isError && data?.updatedData && data?.updatedData?.length < 0)
     return <div>Error: {error.message}</div>;
 
