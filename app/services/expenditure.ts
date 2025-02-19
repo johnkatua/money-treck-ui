@@ -12,8 +12,7 @@ import {
 export const getExpenses = async () => {
   try {
     const response = await axiosInterceptorInstance.get("/expenses");
-    const extractedData: IExpenditureResponse[] =
-      response?.data?.data?.data || [];
+    const extractedData: IExpenditureResponse[] = response?.data?.data || [];
 
     const updatedData: IExpenditure[] = extractedData.map((expense, idx) => ({
       id: idx + 1,
@@ -56,9 +55,7 @@ export const createExpense = async (values: IExpenditureRequest) => {
 
 export const updateExpense = async (values: IExpenditureRequest) => {
   try {
-    await axiosInterceptorInstance.put("/expenses", {
-      ...values,
-    });
+    await axiosInterceptorInstance.put("/expenses", { ...values });
   } catch (error) {
     console.error(
       "Error occurred while updating expenditure:",
