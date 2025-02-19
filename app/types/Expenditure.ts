@@ -1,3 +1,10 @@
+export interface IExpenditureMetadata {
+  updatedData: IExpenditure[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
 export interface IExpenditure extends IExpenditureResponse {
   id: number;
 }
