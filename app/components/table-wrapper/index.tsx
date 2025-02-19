@@ -49,6 +49,7 @@ const TableWrapper: FC<ITableWrapper> = ({
     manualGrouping: true,
     debugTable: true,
   });
+  console.log({ rowCount, data });
   return (
     <>
       <div className="">

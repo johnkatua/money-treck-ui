@@ -10,8 +10,6 @@ const RevenueList = () => {
   const { data, isPending, isFetching, isLoading, isError, error } =
     useRevenues(1, 5);
 
-  console.log(data);
-
   if (isError && data?.updatedData && data?.updatedData.length < 0)
     return <div>Error: {error.message}</div>;
 
@@ -21,6 +19,7 @@ const RevenueList = () => {
         data={data?.updatedData ?? []}
         columns={revenueColumns}
         isLoading={isFetching || isPending || isLoading}
+        rowCount={data?.total}
       />
       <EditRevenue />
       <DeleteRevenue />
