@@ -12,7 +12,7 @@ import {
 export const useRevenues = () => {
   return useQuery({
     queryKey: REVENEUS_QUERY_KEY,
-    queryFn: getRevenues,
+    queryFn: () => getRevenues(1, 5),
   });
 };
 

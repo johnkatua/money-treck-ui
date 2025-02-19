@@ -4,9 +4,17 @@ import { revalidatePath } from "next/cache";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { IData, IRevenue, IRevenueRequest, Revenue } from "../types";
 
-export const getRevenues = async (): Promise<IRevenue> => {
+export const getRevenues = async (
+  page: number,
+  limit: number
+): Promise<IRevenue> => {
   try {
-    const response = await axiosInterceptorInstance.get("/revenues");
+    const response = await axiosInterceptorInstance.get("/revenues", {
+      params: {
+        page,
+        limit,
+      },
+    });
     const extractedData: IData[] = response.data?.data || [];
     const metaData = response?.data;
 
@@ -14,6 +22,8 @@ export const getRevenues = async (): Promise<IRevenue> => {
       id: index + 1,
       ...revenue,
     }));
+
+    console.log({ response });
 
     return {
       updatedData,
