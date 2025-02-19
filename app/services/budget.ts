@@ -7,15 +7,20 @@ import { IBudget, IBudgetResponse } from "../types";
 export const getBudgets = async () => {
   try {
     const response = await axiosInterceptorInstance.get("/budgets");
-    console.log({ response });
     const extractedData: IBudgetResponse[] = response?.data?.data || [];
+    const metaData = response?.data;
 
     const updatedData: IBudget[] = extractedData.map((budget, idx) => ({
       id: idx + 1,
       ...budget,
     }));
 
-    return updatedData;
+    return {
+      updatedData,
+      total: metaData?.total || 0,
+      page: metaData?.page || 0,
+      limit: metaData?.page || 0,
+    };
   } catch (error) {
     console.error(
       "Error occurred while fetching budgets:",
