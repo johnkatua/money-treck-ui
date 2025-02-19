@@ -1,11 +1,10 @@
 export interface IExpenditure extends IExpenditureResponse {
   id: number;
 }
-
 export interface IExpenditureResponse {
   _id: string;
   name: string;
-  amount: number;
+  amount: string;
   budget_id: string;
 }
 
