@@ -20,13 +20,9 @@ const TableListWrapper: FC<ITableListWrapper> = async ({
   children,
 }) => {
   const queryClient = new QueryClient();
-  // const { pageIndex, pageSize } = usePaginationStore();
-  // console.log("page", pageIndex, pageSize);
   await queryClient.prefetchQuery({
     queryKey: queryKey,
     queryFn: queryFn,
-    // queryKey: [queryKey, pageIndex, pageSize],
-    // queryFn: () => queryFn(pageIndex, pageSize),
   });
 
   return (
