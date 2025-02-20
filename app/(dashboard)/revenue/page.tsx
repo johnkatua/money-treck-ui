@@ -6,7 +6,6 @@ import { tabsHeader } from "@/lib/data";
 import PageWrapper from "../../components/page-wrapper";
 import CreateRevenue from "./CreateRevenue";
 import RevenueList from "./RevenueList";
-import { usePaginationStore } from "@/app/stores/use-pagination";
 
 const tabsContent = [
   {
