@@ -85,7 +85,7 @@ const EditExpenditureForm = () => {
           onValueChange={(val) => setValue("budget_id", val)}
         >
           {budget &&
-            budget.map(({ _id, name }) => (
+            budget.updatedData.map(({ _id, name }) => (
               <SelectItem key={_id} value={_id}>
                 {name}
               </SelectItem>
