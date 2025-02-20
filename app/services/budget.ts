@@ -4,9 +4,14 @@ import { revalidatePath } from "next/cache";
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { IBudget, IBudgetResponse } from "../types";
 
-export const getBudgets = async () => {
+export const getBudgets = async (page: number, limit: number) => {
   try {
-    const response = await axiosInterceptorInstance.get("/budgets");
+    const response = await axiosInterceptorInstance.get("/budgets", {
+      params: {
+        page: page + 1,
+        limit,
+      },
+    });
     const extractedData: IBudgetResponse[] = response?.data?.data || [];
     const metaData = response?.data;
 
