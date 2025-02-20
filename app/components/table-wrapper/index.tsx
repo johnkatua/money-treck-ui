@@ -1,6 +1,6 @@
 "use client";
 
-import { IData, Revenue } from "@/app/types";
+import { usePaginationStore } from "@/app/stores/use-pagination";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,8 +19,6 @@ import {
 } from "@tanstack/react-table";
 import { AlertCircle, Loader2 } from "lucide-react";
 import { FC, useEffect, useMemo, useState } from "react";
-import CustomDialog from "../custom-dialog";
-import { usePaginationStore } from "@/app/stores/use-pagination";
 
 interface ITableWrapper<T = unknown> {
   data: T[];
