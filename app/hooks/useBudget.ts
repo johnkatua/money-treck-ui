@@ -14,7 +14,7 @@ import {
   updateBudget,
 } from "../services";
 
-export const useBudget = (page: number, limit: number) => {
+export const useBudget = (page?: number, limit?: number) => {
   return useQuery({
     queryKey: [BUDGETS_QUERY_KEY, page, limit],
     queryFn: () => getBudgets(page, limit),
