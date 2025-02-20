@@ -1,6 +1,3 @@
-// "use client";
-
-import { usePaginationStore } from "@/app/stores/use-pagination";
 import {
   dehydrate,
   HydrationBoundary,
