@@ -66,8 +66,8 @@ const CreateExpenditure = () => {
               <Loader2 className="w-8 h-8 animate-spin text-gray-600" />
               <p className="text-gray-600 text-sm">Loading data...</p>
             </div>
-          ) : budget && budget.length > 0 ? (
-            budget.map(({ _id, name }) => (
+          ) : budget && budget.updatedData.length > 0 ? (
+            budget.updatedData.map(({ _id, name }) => (
               <SelectItem key={_id} value={_id}>
                 {name}
               </SelectItem>
