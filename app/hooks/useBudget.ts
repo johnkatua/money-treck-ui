@@ -1,18 +1,24 @@
 "use client";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { BUDGETS_QUERY_KEY } from "../constants";
 import {
   createBudget,
   deleteBudget,
   getBudgets,
   updateBudget,
 } from "../services";
-import { BUDGETS_QUERY_KEY } from "../constants";
 
-export const useBudget = () => {
+export const useBudget = (page: number, limit: number) => {
   return useQuery({
-    queryKey: BUDGETS_QUERY_KEY,
-    queryFn: getBudgets,
+    queryKey: [BUDGETS_QUERY_KEY, page, limit],
+    queryFn: () => getBudgets(page, limit),
+    placeholderData: keepPreviousData,
   });
 };
 
