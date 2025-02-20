@@ -8,7 +8,6 @@ export const getRevenues = async (
   page: number,
   limit: number
 ): Promise<IRevenue> => {
-  console.log(page);
   try {
     const response = await axiosInterceptorInstance.get("/revenues", {
       params: {
