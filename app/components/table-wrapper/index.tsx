@@ -52,16 +52,12 @@ const TableWrapper: FC<ITableWrapper> = ({
     manualGrouping: true,
     debugTable: true,
   });
-  console.log({ rowCount, data, pagination });
-
-  const { pageIndex, pageSize } = pagination;
 
   useEffect(() => {
     if (pagination) {
       updatePaginationState(pagination);
     }
-    console.log("Zustand State Updated:", { pageIndex, pageSize });
-  }, [pageIndex, pageSize]);
+  }, [pagination]);
   return (
     <>
       <div className="">
@@ -92,26 +88,7 @@ const TableWrapper: FC<ITableWrapper> = ({
             ))}
           </thead>
           <tbody>
-            {table
-              .getRowModel()
-              .rows.map(({ id, getVisibleCells }, rowIndex) => (
-                <tr
-                  key={id}
-                  className={`${
-                    rowIndex % 2 === 0 ? "bg-gray-100" : "bg-gray-50"
-                  } hover:bg-gray-200`}
-                >
-                  {getVisibleCells().map(({ id, column, getContext }) => (
-                    <td
-                      key={id}
-                      className="px-6 py-4 text-sm border-b border-gray-300"
-                    >
-                      {flexRender(column.columnDef.cell, getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            {/* {isLoading ? (
+            {isLoading ? (
               <tr>
                 <td colSpan={100} className="text-center py-10">
                   <div className="flex flex-col items-center gap-4">
@@ -155,7 +132,7 @@ const TableWrapper: FC<ITableWrapper> = ({
                   </Card>
                 </td>
               </tr>
-            )} */}
+            )}
           </tbody>
         </table>
         <div className="h-2" />
