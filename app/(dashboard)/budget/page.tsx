@@ -11,7 +11,10 @@ const tabsContent = [
   {
     value: "View",
     children: (
-      <TableListWrapper queryKey={BUDGETS_QUERY_KEY} queryFn={getBudgets}>
+      <TableListWrapper
+        queryKey={[BUDGETS_QUERY_KEY, 1, 5]}
+        queryFn={() => getBudgets(1, 5)}
+      >
         <BudgetList />
       </TableListWrapper>
     ),
