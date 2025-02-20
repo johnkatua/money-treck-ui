@@ -1,3 +1,6 @@
+// "use client";
+
+import { usePaginationStore } from "@/app/stores/use-pagination";
 import {
   dehydrate,
   HydrationBoundary,
@@ -6,7 +9,7 @@ import {
 import { FC, ReactNode } from "react";
 
 interface ITableListWrapper {
-  queryKey: string[];
+  queryKey: [string, number, number];
   queryFn: () => void;
   children: ReactNode;
 }
@@ -17,9 +20,13 @@ const TableListWrapper: FC<ITableListWrapper> = async ({
   children,
 }) => {
   const queryClient = new QueryClient();
+  // const { pageIndex, pageSize } = usePaginationStore();
+  // console.log("page", pageIndex, pageSize);
   await queryClient.prefetchQuery({
-    queryKey,
-    queryFn,
+    queryKey: queryKey,
+    queryFn: queryFn,
+    // queryKey: [queryKey, pageIndex, pageSize],
+    // queryFn: () => queryFn(pageIndex, pageSize),
   });
 
   return (

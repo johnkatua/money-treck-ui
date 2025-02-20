@@ -8,10 +8,11 @@ export const getRevenues = async (
   page: number,
   limit: number
 ): Promise<IRevenue> => {
+  console.log(page);
   try {
     const response = await axiosInterceptorInstance.get("/revenues", {
       params: {
-        page,
+        page: page + 1,
         limit,
       },
     });
@@ -22,8 +23,6 @@ export const getRevenues = async (
       id: index + 1,
       ...revenue,
     }));
-
-    console.log({ response });
 
     return {
       updatedData,

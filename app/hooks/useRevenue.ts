@@ -1,6 +1,11 @@
 "use client";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { REVENEUS_QUERY_KEY } from "../constants";
 import {
   createRevenue,
@@ -14,6 +19,7 @@ export const useRevenues = (page: number, limit: number) => {
     queryKey: [REVENEUS_QUERY_KEY, page, limit],
     queryFn: ({ queryKey }) =>
       getRevenues(Number(queryKey[1]), Number(queryKey[2])),
+    placeholderData: keepPreviousData,
   });
 };
 

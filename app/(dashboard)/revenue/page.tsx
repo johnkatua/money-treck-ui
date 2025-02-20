@@ -6,13 +6,14 @@ import { tabsHeader } from "@/lib/data";
 import PageWrapper from "../../components/page-wrapper";
 import CreateRevenue from "./CreateRevenue";
 import RevenueList from "./RevenueList";
+import { usePaginationStore } from "@/app/stores/use-pagination";
 
 const tabsContent = [
   {
     value: "View",
     children: (
       <TableListWrapper
-        queryKey={[REVENEUS_QUERY_KEY, "1", "5"]}
+        queryKey={[REVENEUS_QUERY_KEY, 1, 5]}
         queryFn={() => getRevenues(1, 5)}
       >
         <RevenueList />
@@ -24,7 +25,6 @@ const tabsContent = [
     children: <CreateRevenue />,
   },
 ];
-
 const Revenue = () => {
   return (
     <>
