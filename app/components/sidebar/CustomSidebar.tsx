@@ -17,7 +17,7 @@ const CustomSidebar = () => {
   return (
     <Sidebar
       collapsible="icon"
-      className="bg-[--theme-color-three] text-white max-w-[200px] border-none pr-4"
+      className="bg-[--theme-color-three] text-white max-w-[200px] border-none"
     >
       <SidebarHeader className="bg-[--theme-color-one] pb-4">
         <SidebarTitle />

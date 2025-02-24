@@ -11,7 +11,7 @@ const Dashboard = ({ children }: { children?: ReactNode }) => {
     <SidebarProvider className="bg-black w-full">
       <div className="bg-[--theme-color-one] w-full text-white h-screen flex">
         {/* {isMobile || ( */}
-        <aside className="p-2 overflow-hidden">
+        <aside className="overflow-hidden">
           <CustomSidebar />
         </aside>
         {/* )} */}
