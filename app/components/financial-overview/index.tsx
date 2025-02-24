@@ -1,3 +1,5 @@
+"use client";
+
 import { useGetFinancialOverview } from "@/app/hooks";
 import React from "react";
 
