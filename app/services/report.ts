@@ -1,7 +1,7 @@
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
-import { IFinancialOverview } from "../types/Report";
+import { FinancialOverview } from "../types/Report";
 
-export const getFinancialOverview = async (): Promise<IFinancialOverview> => {
+export const getFinancialOverview = async (): Promise<FinancialOverview> => {
   try {
     const response = await axiosInterceptorInstance.get(
       "/reports/financial-overview"
