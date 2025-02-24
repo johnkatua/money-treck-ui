@@ -6,7 +6,7 @@ import { IData, IRevenue, IRevenueRequest, Revenue } from "../types";
 
 export const getRevenues = async (
   page: number,
-  limit: number
+  limit: number,
 ): Promise<IRevenue> => {
   try {
     const response = await axiosInterceptorInstance.get("/revenues", {
@@ -32,7 +32,7 @@ export const getRevenues = async (
   } catch (error: unknown) {
     console.error(
       "Error occurred while fetching revenues:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to fetch revenues. Please try again later.");
   }
@@ -45,7 +45,7 @@ export const createRevenue = async (values: IRevenueRequest) => {
   } catch (error) {
     console.error(
       "Error occurred while creating revenue:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to create revenue. Please try again later.");
   } finally {
@@ -59,7 +59,7 @@ export const updateRevenue = async (values: IRevenueRequest) => {
   } catch (error) {
     console.error(
       "Error occurred while updating revenue:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to update revenue. Please try again later.");
   } finally {
@@ -73,7 +73,7 @@ export const deleteRevenue = async (id: string) => {
   } catch (error) {
     console.error(
       "Error occurred while deleting revenue:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to delete revenue. Please try again later.");
   } finally {

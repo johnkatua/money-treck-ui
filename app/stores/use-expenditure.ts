@@ -7,7 +7,7 @@ type State = {
 
 type Action = {
   updateSelectedExpenditure: (
-    selectedExpenditureId: State["selectedExpenditure"]
+    selectedExpenditureId: State["selectedExpenditure"],
   ) => void;
 };
 

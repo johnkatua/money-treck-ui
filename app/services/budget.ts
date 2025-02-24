@@ -30,7 +30,7 @@ export const getBudgets = async (page?: number, limit?: number) => {
   } catch (error) {
     console.error(
       "Error occurred while fetching budgets:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to fetch budgets. Please try again later.");
   }
@@ -43,7 +43,7 @@ export const createBudget = async (values: IBudgetResponse) => {
   } catch (error) {
     console.error(
       "Error occurred while creating budget:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to create budget. Please try again later.");
   } finally {
@@ -57,7 +57,7 @@ export const updateBudget = async (values: IBudgetResponse) => {
   } catch (error) {
     console.error(
       "Error occurred while update budget:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to update budget. Please try again later.");
   } finally {
@@ -71,7 +71,7 @@ export const deleteBudget = async (id: string) => {
   } catch (error) {
     console.error(
       "Error occurred while deleting budget:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to delete budget. Please try again later.");
   } finally {

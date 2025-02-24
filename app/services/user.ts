@@ -11,7 +11,7 @@ export const getUser = async () => {
   } catch (error) {
     console.error(
       "Error occurred while fetching user:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to fetch user. Please try again later.");
   }
@@ -30,7 +30,7 @@ export const updateUser = async (values: FormData) => {
   } catch (error) {
     console.error(
       "Error occurred while updating user:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to update user. Please try again later.");
   } finally {

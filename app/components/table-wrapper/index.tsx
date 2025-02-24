@@ -80,7 +80,7 @@ const TableWrapper: FC<ITableWrapper> = ({
                         </div>
                       )}
                     </th>
-                  )
+                  ),
                 )}
               </tr>
             ))}

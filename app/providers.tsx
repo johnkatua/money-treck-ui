@@ -16,7 +16,7 @@ export const Providers: FC<PropsWithChildren<{}>> = ({ children }) => {
             refetchOnReconnect: false,
           },
         },
-      })
+      }),
   );
 
   return (

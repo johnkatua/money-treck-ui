@@ -40,7 +40,7 @@ export const getExpenses = async (): Promise<
     }
     console.error(
       "Error occurred while fetching expenses:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to fetch expenses. Please try again later.");
   }
@@ -57,7 +57,7 @@ export const createExpense = async (values: IExpenditureRequest) => {
   } catch (error) {
     console.error(
       "Error occurred while creating budget:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to create budget. Please try again later.");
   } finally {
@@ -71,7 +71,7 @@ export const updateExpense = async (values: IExpenditureRequest) => {
   } catch (error) {
     console.error(
       "Error occurred while updating expenditure:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to update expenditure. Please try again later.");
   } finally {
@@ -85,7 +85,7 @@ export const deleteExpense = async (id: string) => {
   } catch (error) {
     console.error(
       "Error occurred while deleting expenditure:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
     throw new Error("Failed to delete expenditure. Please try again later.");
   } finally {
