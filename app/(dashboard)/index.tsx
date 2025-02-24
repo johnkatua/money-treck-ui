@@ -12,7 +12,7 @@ const HomePage = () => {
     <Dashboard>
       <PageWrapper title="Dashboard">
         <FinancialOverview />
-        <div className="h-2" />
+        <div className="h-4" />
         <BudgetUtilization />
         <div className="grid grid-cols-2 gap-4">
           <div>

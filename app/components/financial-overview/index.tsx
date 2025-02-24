@@ -19,7 +19,7 @@ const FinancialOverview = () => {
   >;
 
   return (
-    <Card className="shadow-lg border border-gray-700 bg-gray-900 text-gray-300 rounded-md p-6">
+    <Card className="shadow-lg border border-gray-700 bg-gray-900 text-gray-300 rounded-md">
       <CardHeader>
         <CardTitle className="text-xl font-semibold tracking-wide text-white">
           Financial Overview
