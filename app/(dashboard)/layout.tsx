@@ -16,7 +16,7 @@ const Dashboard = ({ children }: { children?: ReactNode }) => {
         </aside>
         {/* )} */}
         <main className="flex-1 p-4">
-          <SidebarTrigger />
+          {/* <SidebarTrigger /> */}
           <div className="h-full bg-white text-[--theme-color-one] rounded-lg overflow-y-auto scrollbar w-full">
             {children}
           </div>
