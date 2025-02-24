@@ -134,7 +134,7 @@ const TableWrapper: FC<ITableWrapper> = ({
           </tbody>
         </table>
         <div className="h-2" />
-        {data && data?.length > 0 && (
+        {data && data?.length > 0 && rowCount && (
           <div className="flex flex-wrap items-center justify-between p-4 bg-gray-900 text-gray-300 rounded-b-md shadow-md border-t border-gray-700">
             <div className="flex items-center gap-2">
               <Button
