@@ -1,8 +1,7 @@
 "use client";
 
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import Header from "../header";
-import CustomDialog from "../custom-dialog";
 
 interface PageWrapperProps {
   title: string;
