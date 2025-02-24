@@ -2,11 +2,12 @@
 
 import { useBudgetUtilization } from "@/app/hooks";
 import React from "react";
+import TableWrapper from "../table-wrapper";
 
 const BudgetUtilization = () => {
-  const { data } = useBudgetUtilization();
+  const { data, isLoading } = useBudgetUtilization();
   console.log({ data });
-  return <div>BudgetUtilization</div>;
+  return <TableWrapper data={data} columns={[]} isLoading={isLoading} />;
 };
 
 export default BudgetUtilization;

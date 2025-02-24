@@ -4,7 +4,7 @@ import CustomActions from "@/app/components/actions";
 import { useDialogStore, useRevenueStore, useSheet } from "@/app/stores";
 import { useBudgetStore } from "@/app/stores/use-budget";
 import { useExpenditureStore } from "@/app/stores/use-expenditure";
-import { Revenue } from "@/app/types";
+import { BudgetUtilizationData, Revenue } from "@/app/types";
 import { IBudget, IBudgetResponse } from "@/app/types/Budget";
 import { IExpenditure } from "@/app/types/Expenditure";
 import { Badge } from "@/components/ui/badge";
@@ -159,5 +159,31 @@ export const expenseColumns: ColumnDef<IExpenditure>[] = [
         <CustomActions handleDelete={handleDelete} handleEdit={handleEdit} />
       );
     },
+  },
+];
+
+export const budgetUtilizationColumns: ColumnDef<BudgetUtilizationData>[] = [
+  {
+    accessorKey: "name",
+    header: () => "Name",
+  },
+  {
+    accessorKey: "totalBudget",
+    header: () => "Total Budget",
+    cell: ({ row }) => <span>{row.original.totalBudget.toLocaleString()}</span>,
+  },
+  {
+    accessorKey: "totalExpenses",
+    header: () => "Total Expenses",
+    cell: ({ row }) => (
+      <span>{row.original.totalExpenses.toLocaleString()}</span>
+    ),
+  },
+  {
+    accessorKey: "utilizationRate",
+    header: () => "Utilization Rate",
+    cell: ({ row }) => (
+      <span>{row.original.utilizationRate.toLocaleString()}</span>
+    ),
   },
 ];
