@@ -10,7 +10,6 @@ const HomePage = () => {
   return (
     <Dashboard>
       <PageWrapper title="Dashboard">
-        <div>Cards</div>
         <FinancialOverview />
         <div className="grid grid-cols-2 gap-4">
           <div>
