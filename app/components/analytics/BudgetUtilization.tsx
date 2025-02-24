@@ -33,7 +33,7 @@ const BudgetUtilization = () => {
   const { data, isLoading } = useBudgetUtilization();
 
   return (
-    <Card className="shadow-md rounded-md overflow-hidden bg-gray-100">
+    <Card className="shadow-md rounded-md overflow-hidden bg-gray-100 mb-4">
       <CardHeader>
         <CardTitle className="text-lg font-semibold tracking-wide">
           Budget Utilization
