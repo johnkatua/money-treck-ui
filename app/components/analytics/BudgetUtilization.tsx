@@ -1,3 +1,5 @@
+"use client";
+
 import { useBudgetUtilization } from "@/app/hooks";
 import React from "react";
 
