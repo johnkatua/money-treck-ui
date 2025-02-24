@@ -1,19 +1,22 @@
 "use client";
 
 import { useBudgetUtilization } from "@/app/hooks";
-import React from "react";
-import TableWrapper from "../table-wrapper";
 import { budgetUtilizationColumns } from "@/lib/table-columns";
+import TableWrapper from "../table-wrapper";
 
 const BudgetUtilization = () => {
   const { data, isLoading } = useBudgetUtilization();
-  console.log({ data });
   return (
-    <TableWrapper
-      data={data}
-      columns={budgetUtilizationColumns}
-      isLoading={isLoading}
-    />
+    <>
+      <h2 className="text-xl font-semibold tracking-wide mt-8">
+        Budget Utilization
+      </h2>
+      <TableWrapper
+        data={data}
+        columns={budgetUtilizationColumns}
+        isLoading={isLoading}
+      />
+    </>
   );
 };
 
