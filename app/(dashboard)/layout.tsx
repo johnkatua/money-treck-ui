@@ -8,16 +8,16 @@ const Dashboard = ({ children }: { children?: ReactNode }) => {
   const isMobile = useIsMobile();
   return (
     <div className="bg-[--theme-color-one] text-white h-screen flex">
-      {!isMobile && (
-        <div className="w-[200px] p-2 overflow-hidden">
+      {isMobile || (
+        <aside className="w-[200px] p-2 overflow-hidden">
           <CustomSidebar />
-        </div>
+        </aside>
       )}
-      <div className="flex-1 p-4">
+      <main className="flex-1 p-4">
         <div className="h-full bg-white text-[--theme-color-one] rounded-lg overflow-y-auto scrollbar">
-          <div className="">{children}</div>
+          {children}
         </div>
-      </div>
+      </main>
     </div>
   );
 };
