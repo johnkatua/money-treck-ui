@@ -35,7 +35,9 @@ const FinancialOverview = () => {
               <h3 className="text-sm font-medium uppercase tracking-wide text-gray-400">
                 {key.replace(/([A-Z])/g, " $1").trim()}
               </h3>
-              <p className="text-lg font-semibold text-white">{data[key]}</p>
+              <p className="text-lg font-semibold text-white">
+                {data[key].toLocaleString()}
+              </p>
             </div>
           ))}
         </div>
