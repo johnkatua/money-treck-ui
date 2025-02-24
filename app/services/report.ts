@@ -1,3 +1,5 @@
+"use server";
+
 import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { FinancialOverview } from "../types/Report";
 
