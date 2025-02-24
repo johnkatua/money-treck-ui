@@ -3,7 +3,10 @@ import {
   getBudgetAndExpenditureUtilization,
   getFinancialOverview,
 } from "../services";
-import { FINANCIAL_OVERVIEW_QUERY_KEY } from "../constants";
+import {
+  BUDGET_UTILIZATION_QUERY_KEY,
+  FINANCIAL_OVERVIEW_QUERY_KEY,
+} from "../constants";
 
 export const useGetFinancialOverview = () => {
   return useQuery({
@@ -14,7 +17,7 @@ export const useGetFinancialOverview = () => {
 
 export const useBudgetUtilization = () => {
   return useQuery({
-    queryKey: [],
+    queryKey: [BUDGET_UTILIZATION_QUERY_KEY],
     queryFn: getBudgetAndExpenditureUtilization,
   });
 };
