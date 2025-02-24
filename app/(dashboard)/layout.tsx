@@ -6,7 +6,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 
 const Dashboard = ({ children }: { children?: ReactNode }) => {
   return (
-    <SidebarProvider className="bg-black w-full">
+    <SidebarProvider className="bg-black w-full overflow-scroll">
       <div className="bg-[--theme-color-one] w-full text-white h-screen flex">
         <aside className="overflow-hidden">
           <CustomSidebar />
