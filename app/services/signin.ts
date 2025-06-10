@@ -1,8 +1,8 @@
 "use server";
 
 import { createSession } from "@/lib/session";
-import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { redirect } from "next/navigation";
+import { axiosInterceptorInstance } from "../api/axios-interceptor-instance";
 import { ILogin } from "../types";
 
 export const signin = async (values: ILogin) => {
